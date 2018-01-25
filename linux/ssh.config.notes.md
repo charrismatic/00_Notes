@@ -164,7 +164,6 @@ To edit the banner itself try
 sudo gedit /etc/issue.net
 Here is an example for what you might put in an issue or issue.net file and you could just copy&paste this in:
 
-
 ***************************************************************************
                             NOTICE TO USERS
 
