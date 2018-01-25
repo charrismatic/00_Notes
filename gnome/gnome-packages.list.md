@@ -1,0 +1,3 @@
+gnome-commander
+gnome-mpv
+

@@ -1,0 +1,497 @@
+RELOAD BASH PROFILE
+
+`source .bash_profile`
+
+https://www.quora.com/What-are-some-useful-bash_profile-and-bashrc-tips
+
+RSYSLOGD_OPTIONS = rsyslogd(8)
+
+CONFIG
+
+### Always enable GREP colors
+
+`export GREP_OPTIONS='--color=auto'`
+
+### Separate aliases file
+
+```bash
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+fi
+```
+
+
+
+### Separate functions file
+
+```shell
+if [ -f ~/.bash_functions ]; then
+	. ~/.bash_functions
+fi
+```
+
+
+
+### GNOME-TERMINAL
+
+Save, exit, close terminal and start another to see the result.
+
+- http://www.linuxselfhelp.com/howtos/Bash-Prompt/Bash-Prompt-HOWTO-2.html
+
+
+- http://askubuntu.com/a/17738/58612
+
+To change it for the current terminal instance only
+
+`PS1='\u:\W\$ '`
+
+and press enter.
+
+```shell
+if [ "$color_prompt" = yes ];
+then
+
+  # COLOR	- 	USER@HOST:~/PWD/1/2/3/.../$
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+  PS1='\[\033[1;33m\](\@)\[\033[1;36m\]\u\[\033[1;31m\]|\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\]$ '
+
+  # COLOR - USER:PWD$ -- SHORTEST
+  #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+
+  # COLOR - HOST:PWD$ || HOST:PWD ( git branch)$
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;30m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(__git_ps1)\$ '
+
+  # VERY COLORFUL - UESR@HOST:/PWD/1/2/3/4/5/.../$
+  PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\]$(__git_ps1)\$ '
+
+else
+
+  # NO COLOR - USER@HOST:~/PWD$
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+
+  # NO COLOR - USER:PWD$
+  PS1='${debian_chroot:+($debian_chroot)}\u:\W\$ '
+
+  # SUPER MINIMIAL -- ONLY >
+  PS1" ;; *)   ;;
+
+fi
+```
+
+```
+ 0;30 	black
+ 1;30 	Dark gray
+ 0;31 	red
+ 1;31 	Bright red
+ 0;32 	green
+ 1;32 	Light green
+ 0;33 	brown
+ 1;33 	yellow
+ 0;34 	blue
+ 1;34 	Light Blue
+ 0;35 	Dunkellila
+ 1;35 	Bright purple
+ 0;36 	Dark turkish
+ 1;36 	turquoise
+ 0;37 	Light gray
+ 1;37 	White
+ 0		 	colorless
+```
+ red clock only
+ [11:25:01]$
+ PS1='\[\033[1;73m\][`date +%H:%M:%S`]\$\[\033[0m\]  '
+
+PS1='\[\033[1;31m\][\[\033[1;32m\]`date +%H:%M`\[\033[1;3m\]|\[\033[1;33m\]\d\[\033[1;31m\]][\[\033[1;34m\]\u\[\033[1;35m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\W \$\[\033[0m\] '
+PS1='\[\033[1;32m\]\d\[\033[1;20m\]|\[\033[1;33m\]`date +%H:%M`\[\033[1;31m\][\[\033[1;34m\]\n\u\[\033[1;35m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\W \$\[\033[0m\] '
+PS1='\[\033[1;32m\]\d\[\033[1;31m\]|\[\033[1;33m\]`date +%H:%M`\n\[\033[1;37m\]\u\[\033[1;35m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\W \$\[\033[0m\] '
+
+[mjharris@es-hive:~] $
+PS1='\[\033[1;34;40m[\033[1;31;40m\u@\h:\w\033[1;34;40m]\033[1;37;40m $\033[0;37;0m\] '
+
+[10:40:58][mjharris@es-hive:~]$
+PS1='\[\033[1;73m\][`date +%H:%M:%S`]\[\033[1;36m\][\[\033[1;34m\]\u\[\033[1;33m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;36m\]]\[\033[1;31m\]\\$\[\033[0m\] '
+
+PS1='\[\033[1;35m\][`date +%H:%M`]\n\[\033[1;36m\][\[\033[1;34m\]\u\[\033[1;33m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;36m\]]\[\033[1;31m\]\\$\[\033[0m\] '
+
+
+mjharris@es-hive:~$
+PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
+
+
+
+					CUSTOMIZE THE BASH PROMPT
+#####################################################
+https://wiki.ubuntuusers.de/Bash/Prompt/
+The prompt is in the variable PS1stored
+
+echo $PS1
+
+${debian_chroot:+($debian_chroot)}\u@\h:\w\$
+Since this is an environment variable , it can also be overwritten. This is done in a very simple case using a string.
+
+PS1='> '
+After that, the prompt is only the relation symbol " > " plus a space. However, output from all commands can also be included in the prompt.
+
+PS1='$(pwd) > '
+This displays the current directory followed by the relational sign. In addition to the commands, there are a number of variables that can be used:
+
+variable	output
+\a	The ASCII bell sign (07)
+\A	Time in 24-hour format ( hh: mm )
+\d	Date in " Weekday Month Day " eg, " With May 26 ")
+\e	ASCII escape characters (033)
+\h	Hostname on which the shell runs until the first "."
+\H	Hostname complete
+\j	Number of jobs in the shell
+\l	The tty on which the shell is running
+\n	New line
+\t	Time in 24-hour format ( hh: mm: ss )
+\T	Time in 12-hour format ( hh: mm: ss )
+\r	Carriage return
+\s	Name of the shell used (sh, bash, ..)
+\u	Name of the user who started the shell
+\v	Version of bash (eg 2.00)
+\V	Release of bash, version, patchlevel
+\w	Current working directory
+\W	Last component of the work directory
+\!	Current history number
+\#	Current command number
+\$	If root is a " # ", otherwise a " $ "
+\\	Backslash
+\nnn	Characters corresponding to the octal number nnn
+\[	Start of a sequence of non-representable characters
+\]	End of a sequence of non-representable characters
+\@	Current time in 12-hour am / pm format
+The output of " time user @ computer directory history number " is generated by
+
+PS1='\A \u@\h \W \! >'
+These standard escape characters and commands can be arbitrarily complex. In addition, quite normal alphanumeric characters can be installed.
+
+Limit the length
+If one is deeply in the directory hierarchy, the standard promises can become unclearly long. You can limit the number of output directories by setting the variable PROMPT_DIRTRIM. Cut off parts of the path are then marked by ellipses (outlet points). The following command limits the output to four directories:
+
+PROMPT_DIRTRIM=4
+In order to make the newly created prompt even more attractive and not only with information to feed, colors can be used. Color codings are built into the string for setting the PS1 variable. Colors make sense and help to improve clarity, provided that you do not overdo it. In order to avoid interpretation errors on the part of the shell in the colors, they are limited by \[the beginning and \]the end. In this confinement, terminal control sequences are given which \033[start with and mend with. A color definition remains valid until a new one follows. The last color specified is the one in which the user inputs are made.
+
+sequence	Colour
+\[\033[0;30m\]	black
+\[\033[1;30m\]	Dark gray
+\[\033[0;31m\]	red
+\[\033[1;31m\]	Bright red
+\[\033[0;32m\]	green
+\[\033[1;32m\]	Light green
+\[\033[0;33m\]	brown
+\[\033[1;33m\]	yellow
+\[\033[0;34m\]	blue
+\[\033[1;34m\]	Light Blue
+\[\033[0;35m\]	Dunkellila
+\[\033[1;35m\]	Bright purple
+\[\033[0;36m\]	Dark turkish
+\[\033[1;36m\]	turquoise
+\[\033[0;37m\]	Light gray
+\[\033[1;37m\]	White
+\[\033[0m\]	colorless
+
+
+If you want to change the background color, you can find the corresponding escape sequences here:
+sequence	Background color
+\[\033[XXm\]	No background color
+\[\033[40;XXm\]	Black Background
+\[\033[41;XXm\]	Red background
+\[\033[42;XXm\]	Green background
+\[\033[43;XXm\]	Light brown background
+\[\033[44;XXm\]	Blue background
+\[\033[45;XXm\]	Purple background
+\[\033[46;XXm\]	Turquoise background
+\[\033[47;XXm\]	Light gray background
+
+
+
+
+
+
+################ FUNCTIONS ####################
+# AUTOMATICALLY LS WHEN YOU CD INTO A DIR
+cd ()
+{
+	builtin cd $1
+	ls -ltr
+}
+
+# CD AND LA
+alias la='ls -lah $LS_COLOR'
+function cl(){ cd "$@" && la; }
+
+
+
+# cdn n; GO BACK N FOLDERS
+function cdn(){ for i in `seq $1`; do cd ..; done;}
+
+
+
+#Display a PDF of a given man page
+function pdfman() {
+        man -t $@ | pstopdf -i -o /tmp/$1.pdf && open /tmp/$1.pdf
+}
+
+
+psgrep ()
+{
+    ps -ef | {
+        read -r;
+        echo "$REPLY";
+        grep --color=auto "$@"
+    }
+}
+
+
+goto () {
+  if [ -f $1 ] ; then
+      case $1 in
+          	home)   cd ~/     					 	;;
+       downloads)   cd ~/Downloads     		;;
+            logs)   cd /var/log/   			 	;;
+         weblogs)   cd /var/log/apache2/ 	;;
+       localhost)   cd /var/www/      		;;
+      apacheconf)   cd /etc/apache2/      ;;
+        projects)   cd ~/projects	    		;;
+          *)           echo "'$1'... not a valid bookmark" ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+
+
+
+## TELEPORT
+#This is something I found very useful when working with multiple terminals on different directories. Sometimes the new terminal opens in the #home directory instead of the current working directory (depending on the terminal program).
+#Use gg in the terminal where you want to go. Then go to the new terminal and use hh.
+gg() { pwd > /tmp/last_path; }
+hh() { cd $(cat /tmp/last_path); }
+
+
+# remind me, its important!
+# usage: remindme <time> <text>
+# e.g.: remindme 10m "omg, the pizza"
+function remindme()
+{
+    sleep $1 && zenity --info --text "$2" &
+}
+
+function togglecpu () {
+    [ "$(cpufreq-info | grep \"ondemand\")" ] && \
+    sudo cpufreq-set -g performance || \
+    sudo cpufreq-set -g ondemand ;
+}
+
+
+# Where/What is this binary? Shows extended ls output
+function what() {
+    which $1 | xargs ls -la
+}
+
+
+
+### APPS
+
+# Open files in Chrome browser
+chrome() {
+    open -a "Google Chrome" "$1"
+}
+
+# Open files or directory in TextMate
+mate() {
+    open -a /Applications/TextMate.app/ "$1"
+}
+
+# Google it!
+function @google {
+    open "https://google.com/search?q=$*"
+}
+
+############# DEV
+# NOT GOOD FOR ME BUT A GOOD IDEA
+# Create basic project (tsapp)
+projectinit() {
+    # create a new assets directory
+    mkdir assets
+    # download basic files needed for new web project
+    wget https://raw.github.com/colmjude/Projectus/master/_js/script.js -O assets/script.js
+    wget https://raw.github.com/colmjude/Projectus/master/_naked.html -O index.html
+    # initiate compass CSS preprocessor
+    compass create
+}
+
+
+
+
+
+#############		VARIABLES 		######################################33333
+http://www.caliban.org/bash/index.shtml
+
+$CDPATH
+This is a little known and very underrated shell variable. CDPATH does for the cd built-in what PATH does for executables. By setting this wisely, you can cut down on the number of key-strokes you enter per day.
+Try this:
+
+$ export CDPATH=.:~:~/docs:~/src:~/src/ops/docs:/mnt:/usr/src/redhat:/usr/src/redhat/RPMS:/usr/src:/usr/lib:/usr/local:/software:/software/redhat
+Using this, cd i386 would likely take you to /usr/src/redhat/RPMS/i386 on a Red Hat Linux system. Make sure that you do include . in the list or you'll find that you can't change to directories relative to your current one without prefixing them with ./
+
+
+shopt -s autocd             # change to named directory
+shopt -s cdable_vars        # if cd arg is not valid, assumes its a var defining a dir
+shopt -s cdspell            # autocorrects cd misspellings
+shopt -s checkwinsize       # update the value of LINES and COLUMNS after each command if altered
+shopt -s cmdhist            # save multi-line commands in history as single line
+shopt -s dotglob            # include dotfiles in pathname expansion
+shopt -s expand_aliases     # expand aliases
+shopt -s extglob            # enable extended pattern-matching features
+		This will give you ksh-88 egrep-style extended pattern matching or,
+		in other words, turbo-charged pattern matching within bash. The available operators are:
+		?(pattern-list) 	Matches zero or one occurrence of the given patterns
+		*(pattern-list)   Matches zero or more occurrences of the given patterns
+		+(pattern-list)   Matches one or more occurrences of the given patterns
+		@(pattern-list)   Matches exactly one of the given patterns
+		!(pattern-list)   Matches anything except one of the given patterns
+	
+		install all RPMs in a given directory, except built for the noarch architecture
+			rpm -Uvh /usr/src/RPMS/!(*noarch*)
+		expressions can be nested, you wanted a directory listing of all non PDF and PostScript files in current directory,
+			ls -lad !(*.p@(df|s))
+
+shopt -s hostcomplete       # attempt hostname expansion when @ is at the beginning of a word
+shopt -s nocaseglob         # pathname expansion will be treated as case-insensitive
+
+
+
+
+
+
+alias ltree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+alias tree='tree -C'
+
+alias 'dus=du -sckx * | sort -nr' #directories sorted by size
+
+alias findless="less -a"
+
+# SECURITY CHECKS // USEFUL FOR DEPLOY ON LIVE SERVER
+# not really? (sudo -i)
+alias su="sudo -i"
+#alias su="su -"
+#alias sudo="sudo -E"
+
+
+# More colors, show dir with / and executable with *
+#alias debugless='less -r'  # -r | -R show raw control characters - user for debugging
+
+alias grep="grep --color=auto"
+alias skim="(head -5; tail -5) <"
+
+
+# List dirs
+alias lsdirs="ls -l | grep '^d'"
+alias lsd="ls -d */"
+
+# Sort files by Size
+alias sortbysize="ls -s | sort -n"
+
+# Show where you copy
+#alias cp="cp -v"
+
+# Make it no matter what
+alias peek_tar="tar -tvf"
+alias peek_tar_gz="tar -ztvf"
+alias peek_tar_bz2="ta -jtvf"
+
+alias myip="dig +short http://myip.opendns.com @http://resolver1.opendns.com"
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+
+# ADD "ALERT" FOR LONG RUNNING COMMANDS | EX:> sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+
+# NAVIGATION
+alias j="cd .."
+Switch between current and previous working directory
+alias Cd='cd -'
+
+
+### FILE SYSTEM
+# Show mounted partitions in nice format
+alias mounts='mount | column -t'
+alias 'dus=du -sckx * | sort -nr' #directories sorted by size
+
+
+# TREE VIEW
+alias ltree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+alias tree='tree -C'
+
+
+
+
+# HISTORY
+# Bash history completion bound to arrow keys (down, up). You can history-search-backward
+# and history-search-forward instead of default previous history.
+#bind '"\e[A": history-search-backward'
+#bind '"\e[B": history-search-forward'
+
+
+# SEARCH AND PREVIEW
+alias findless="less -a"
+#alias debugless='less -r'  # -r | -R show raw control characters - user for debugging
+alias skim="(head -5; tail -5) <"
+
+
+#	ARCHIVE CONTROL
+alias peek_tar="tar -tvf"
+alias peek_tar_gz="tar -ztvf"
+alias peek_tar_bz2="ta -jtvf"
+
+
+
+# SECURITY CHECKS // USEFUL FOR DEPLOY ON LIVE SERVER
+#alias su="sudo -i" 		# Enforce login
+#alias sudo="sudo -E" # Preserve ENV policy
+#alias cp="cp -v" 		# Show where you copy
+alias cp='cp -i' 		# PROMPT ON OVERWRITE
+alias mv='mv -i -u' # PROMPT ON OVERWRITE - ONLY MOVE IS SOURCE NEWER
+alias rm='rm -i'		#	PROMPT BEFORE EVERY REMOVAL
+alias df='df -h'		# HUMAN READABLE
+
+# NETWORKING
+alias myip="dig +short http://myip.opendns.com @http://resolver1.opendns.com"
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# resume a broken scp transfer
+alias scpresume='rsync --partial --progress --rsh=ssh'
+
+
+alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
+alias psgrep='ps aux |grep -v grep |grep -i'
+
+# List dirs
+#alias lx='ls -lXB'        # sort by extension
+#alias lk='ls -lSr'        # sort by size
+#alias lt='ls -ltr'        # sort by date
+#alias l='ls -hF --color'    # quick listing
+#alias lsize='ls --sort=size -lhr' # list by size
+alias lsdirs="ls -l | grep '^d'"
+alias lsd='ls -l | grep "^d"'   #list only directories
+alias lsd="ls -d */"
+
+# Sort files by Size
+  alias sortbysize="ls -s | sort -n"
+# Show where you copy
+# alias cp="cp -v"
+
+# Make it no matter what
+alias peek_tar="tar -tvf"
+alias peek_tar_gz="tar -ztvf"
+alias peek_tar_bz2="ta -jtvf"
+

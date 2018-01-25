@@ -1,0 +1,2 @@
+`msgconvert *.msg`
+
