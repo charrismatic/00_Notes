@@ -1,27 +1,66 @@
 # ADMIN FILTERS, HOOKS, AND ACTIONS
 
 
+apply_filters( 'admin_body_class', string $classes )
+
+Filters the CSS classes for the body tag in the admin.
+
+
+This filter differs from the ‘post_class’ and ‘body_class’ filters in two important ways:
+
+    $classes is a space-separated string of class names instead of an array.
+    Not all core admin classes are filterable, notably: wp-admin, wp-core-ui, and no-js cannot be removed.
+
+
+    $classes
+
+        (string) Space-separated list of CSS classes.
+
+
+
+
 ## ADMIN HOOKS
 
 ```
-do_action( 'admin_enqueue_scripts', string $hook_suffix )
-do_action( 'admin_head' ) - Fires in head section for all admin pages.
-do_action( "admin_head-{$hook_suffix}" )  - Fires in head section for a specific admin page.
-do_action( 'admin_print_styles' )
-do_action( 'admin_print_scripts' )
-do_action( "admin_print_scripts-{$hook_suffix}" )
-do_action( "admin_print_styles-{$hook_suffix}" ) - Fires when styles are printed for a specific admin page based on $hook_suffix.
-do_action( 'admin_print_footer_scripts' ) - Prints any scripts and data queued for the footer.
-do_action( "admin_print_footer_scripts-{$hook_suffix}" ) - Prints scripts and data queued for the footer.
-do_action( "admin_footer-{$GLOBALS[‘hook_suffix’]}", string $hook_suffix ) - Print scripts or data after the default footer scripts.
-do_action( "$page_hook" ) 	- Used to call the registered callback for a plugin screen.
-do_action( 'in_admin_header' ) - Fires at the beginning of the content section in an admin page.
-do_action( 'admin_init' ) - Fires as an admin screen or script is being initialized.
-- Note, this does not just run on user-facing admin screens. It runs on admin-ajax.php and admin-post.php as well.
-- This is roughly analogous to the more general ‘init’ hook, which fires earlier.
-do_action( 'admin_post' ) - Fires on an authenticated admin post request where no action was supplied.
+`admin_enqueue_scripts`                       - Enqueue scripts for all admin pages.
+                                              - $hook_suffix
+`admin_head`                                  - Fires in head section for all admin pages.
+`admin_head                                   - Fires in head section for a specific admin page.
+                                              - -`{$hook_suffix}"-
+`admin_print_styles`-                        
+`admin_print_scripts`-                       
+`admin_print_scripts`{$hook_suffix}"-        
+`admin_print_styles`{$hook_suffix}"-          - Fires when styles are printed for a specific admin page based on $hook_suffix.
+`admin_print_footer_scripts`-                 - Prints any scripts and data queued for the footer.
+`admin_print_footer_scripts`{$hook_suffix}"-  - Prints scripts and data queued for the footer.
+`admin_footer`                                - Print scripts or data after the default footer scripts.
+                                              - {$GLOBALS[‘hook_suffix’]}
+                                              - $hook_suffix string
+                                              - $page_hook
+                                            	- Used to call the registered callback for a plugin screen.
+`in_admin_header`-                            - Fires at the beginning of the content section in an admin page.
+`admin_init`-                                 - Fires as an admin screen or script is being initialized.
+                                              - Note, this does not just run on user-facing admin screens. It runs on admin-ajax.php and admin-post.php as well.
+                                              - This is roughly analogous to the more general ‘init’ hook, which fires earlier.
+`admin_post`-                                 - Fires on an authenticated admin post request where no action was supplied.
 
 ```
+
+
+The dynamic portion of the hook name, $GLOBALS['hook_suffix']
+
+refers to the global hook suffix of the current page.
+
+__$hook_suffix__  
+- (string)
+- The current admin page.
+
+
+Fires when scripts are printed for a specific admin page based on $hook_suffix.
+
+Use `admin_enqueue_scripts` for Admin pages
+
+Use `login_enqueue_scripts` for the login page
 
 
 ## ADMIN ACTIONS
@@ -56,21 +95,6 @@ __$status__
 
 
 
-
-
-The dynamic portion of the hook name, $GLOBALS['hook_suffix']
-refers to the global hook suffix of the current page.
-
-__$hook_suffix__  
-- (string)
-- The current admin page.
-
-
-Fires when scripts are printed for a specific admin page based on $hook_suffix.
-
-Use `admin_enqueue_scripts` for Admin pages
-
-Use `login_enqueue_scripts` for the login page
 
 
 

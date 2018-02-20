@@ -1,5 +1,8 @@
 ## SITE SETTINGS
 
+- HIDDEN OPTIONS PAGE `~/wp-admin/options.php`
+
+
 ### register_setting()
 
 Register a setting and its data.
