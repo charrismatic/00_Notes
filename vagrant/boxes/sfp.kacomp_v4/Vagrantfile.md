@@ -1,3 +1,4 @@
+```
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -8,10 +9,10 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 # SET VAGRANT BOX
-config.vm.box = "kacomp_v4"
+config.vm.box = "boxname"
 
 # SET VM CONFIG URL
-config.vm.box_url = "http://dash.sfp.cc/kacomp_v4.box"
+config.vm.box_url = "http://box_host/box_name.box"
 
 # SET FORWARDED PORT
 config.vm.network :forwarded_port, guest: 80, host: 8080
@@ -28,12 +29,13 @@ config.vm.network :forwarded_port, guest: 80, host: 8080
 
 # MOUNT FOLDERS (1) LOCAL, (2) MOUNTED, (3) options    #
 #########################################################
-# 1 DEFAULT
-config.vm.synced_folder "./public_html", "/home/fujita/public_html"
+# 1. DEFAULT
+config.vm.synced_folder "./public_html", "/home/developer/public_html"
 
-# 2 FUJITA / LARAVEL
-#  config.vm.synced_folder "./app", "/home/fujita/app"
-#  config.vm.synced_folder "./vendor", "/home/fujita/vendor"
-#  config.vm.synced_folder "./bootstrap", "/home/fujita/bootstrap"
+# 2. LARAVEL
+#  config.vm.synced_folder "./app", "/home/developer/app"
+#  config.vm.synced_folder "./vendor", "/home/developer/vendor"
+#  config.vm.synced_folder "./bootstrap", "/home/developer/bootstrap"
 
 end
+```

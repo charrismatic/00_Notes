@@ -6,3 +6,5 @@ SELECT table_schema as `Database`,
 FROM information_schema.TABLES 
 ORDER BY (data_length + index_length) DESC;
 ```
+
+`#mysql`,`#query`, `#database`, `#optimization`

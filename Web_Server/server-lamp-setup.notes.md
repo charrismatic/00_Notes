@@ -10,7 +10,7 @@ sudo apt-get install apache2
 ```
 
 
-### INSTALL PHP
+### INSTALL PHP (Ubuntu 16.04)
 ```
 sudo apt-get install php5 libapache2-mod-php php-mcrypt php-mysql
 ```

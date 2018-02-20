@@ -1,17 +1,15 @@
-
-
 # VAGRANT BOX NOTES
 
 
-### How to create a base box
 
-https://gordonlesti.com/create-debian-8-jessie-vagrant-box/
-
-<div class="blog-post">
 
 # Create Debian 8 Jessie Vagrant Box
 
-TAGS: #Debian #Linux #Vagrant #VirtualBox
+How to create a vagrant base box
+
+https://gordonlesti.com/create-debian-8-jessie-vagrant-box/
+
+TAGS: `#Debian`, `#Linux`, `#Vagrant`, `#VirtualBox`
 
 This is the third and last post of this series.
 
@@ -109,7 +107,7 @@ Let's remove some unused stuff.
 ### Zerofree
 
 > Zerofree finds the unallocated blocks with non-zero value content in an ext2, ext3 or ext4 file-system and fills them with zeroes.
-> 
+>
 > <footer>[packages.debian.org](https://packages.debian.org/en/jessie/zerofree "Debian -- Details of package zerofree in jessie")</footer>
 
 Run the following comamnd to get _root_.
