@@ -1,37 +1,33 @@
 ## SITE SETTINGS
 
-- HIDDEN OPTIONS PAGE `~/wp-admin/options.php`
-
+HIDDEN OPTIONS PAGE :   `~/wp-admin/options.php`
 
 ### register_setting()
 
-Register a setting and its data.
+*Register a setting and its data.*
 
-register_setting( string $option_group, string $option_name, array $args = array() )
+`register_setting( string $option_group, string $option_name, array $args = array() )`
 
-Parameters
+**$option_group**
 
-$option_group
-
-    (string) (Required) A settings group name. Should correspond to a whitelisted option key name. Default whitelisted option key names include "general," "discussion," and "reading," among others.
-$option_name
+    (string) (Required) 
+    A settings group name. Should correspond to a whitelisted option key name. 
+    Default whitelisted option key names include "general," "discussion," and "reading," among others.
+**$option_name**
 
     (string) (Required) The name of an option to sanitize and save.
-$args
+**$args**
 
     (array) (Optional) Data used to describe the setting when registered.
 
-        'type'
-        (string) The type of data associated with this setting. Valid values are 'string', 'boolean', 'integer', and 'number'.
-        'description'
-        (string) A description of the data attached to this setting.
-        'sanitize_callback'
-        (callable) A callback function that sanitizes the option's value.
-        'show_in_rest'
-        (bool) Whether data associated with this setting should be included in the REST API.
-        'default'
-        (mixed) Default value when calling get_option().
-
+    'type'               (string) The type of data associated with this setting. 
+    				     Valid values are 'string', 'boolean', 'integer', and 'number'.
+    'description'        (string) A description of the data attached to this setting.
+    'sanitize_callback'  (callable) A callback function that sanitizes the option's value.
+    'show_in_rest'       (bool) Whether data associated with this setting should 
+    					     be included in the REST API.
+    'default'            (mixed) Default value when calling get_option().
+    
     Default value: array()
 
 
@@ -41,9 +37,7 @@ $args
 
 Unregister a setting.
 
-unregister_setting( string $option_group, string $option_name, callable $deprecated = '' )
-
-Parameters
+`unregister_setting( string $option_group, string $option_name, callable $deprecated = '' )`
 
 $option_group
 
@@ -88,12 +82,15 @@ used by:
 ### register_initial_settings()
 
 Register default settings available in WordPress.
+
 The settings registered here are primarily useful for the REST API, so this does not encompass all settings available in WordPress.
 
 
-hook update_site_option_{$option}
 
-do_action( "update_site_option_{$option}", string $option, mixed $value, mixed $old_value, int $network_id )
+
+**update_site_option_{$option}**
+
+`do_action( "update_site_option_{$option}", string $option, mixed $value, mixed $old_value, int $network_id )`
 
 Fires after the value of a specific network option has been successfully updated.
 
@@ -144,6 +141,7 @@ function get_site_option( $option, $default = false, $deprecated = true ) {
 ```
 
 
+
 ### add_site_option()
 
 Add a new option for the current network.
@@ -168,14 +166,15 @@ function add_site_option( $option, $value ) {
 }
 ```
 
-### hook add_site_option
+### add_site_option
 
 do_action( 'add_site_option', string $option, mixed $value, int $network_id )
 
 Fires after a network option has been successfully added.
 
 
-### hook update_site_option
+
+### update_site_option
 
 do_action( 'update_site_option', string $option, mixed $value, mixed $old_value, int $network_id )
 
@@ -198,14 +197,14 @@ $network_id
 
 ### pre_update_site_option_{$option}
 
-apply_filters( "pre_update_site_option_{$option}", mixed $value, mixed $old_value, string $option, int $network_id )
+`apply_filters( "pre_update_site_option_{$option}", mixed $value, mixed $old_value, string $option, int $network_id )`
 
 Filters a specific network option before its value is updated.
 
 
 
 ### hook delete_site_option
-do_action( 'delete_site_option', string $option, int $network_id )
+`do_action( 'delete_site_option', string $option,  int $network_id )`
 
 Fires after a network option has been deleted.
 
@@ -219,23 +218,23 @@ $network_id
 
 ### delete_site_option_{$option}
 
-do_action( "delete_site_option_{$option}", string $option, int $network_id )
+`do_action( "delete_site_option_{$option}", string $option, int $network_id )`
 
 Fires after a specific network option has been deleted.
 
 
 ### pre_delete_site_option_{$option}
 
-do_action( "pre_delete_site_option_{$option}", string $option, int $network_id )
+`do_action( "pre_delete_site_option_{$option}", string $option, int $network_id )`
 
 Fires immediately before a specific network option is deleted.
 
 
 
-### filter pre_site_option_{$option}
+### pre_site_option_{$option}
 
 
-apply_filters( "pre_site_option_{$option}", mixed $pre_option, string $option, int $network_id )
+`apply_filters( "pre_site_option_{$option}", mixed $pre_option, string $option, int $network_id )`
 
 Filters an existing network option before it is retrieved.
 
@@ -255,13 +254,9 @@ $network_id
     (int) ID of the network.
 
 
-```
-```
-
-
 ### hook add_option
 
-do_action( 'add_option', string $option, mixed $value )
+`do_action( 'add_option', string $option, mixed $value )`
 
 Fires before an option is added.
 
@@ -282,9 +277,9 @@ Loads and caches all autoloaded options, if available or all options.
 
 ### add_option()
 
-add_option( string $option, mixed $value = '', string $deprecated = '', string|bool $autoload = 'yes' )
+*Add a new option.*
 
-Add a new option.
+add_option( string $option, mixed $value = '', string $deprecated = '', string|bool $autoload = 'yes' )`
 
 
 You do not need to serialize values. If the value needs to be serialized, then it will be serialized before it is inserted into the database. Remember, resources can not be serialized or added as an option.
@@ -316,20 +311,25 @@ $autoload
 
 update_option( string $option, mixed $value, string|bool $autoload = null )
 
-Update the value of an option that was already added
+
+
+*Update* the value of an option that was already added*
+
 
 
 ### Hook option_{$option}
 
-apply_filters( "option_{$option}", mixed $value, string $option )
+`apply_filters( "option_{$option}", mixed $value, string $option )`
 
 Filters the value of an existing option.
 
+
+
 ### form_option()
 
-form_option( string $option )
+`form_option( string $option )`
 
-Print option value after sanitizing for forms.
+*Print option value after sanitizing for forms.*
 
 
 __$option__
@@ -345,37 +345,34 @@ function form_option( $option ) {
 
 
 
+**register_setting_args**
 
-```
-```
-register_setting_args
 Filters the registration arguments when registering a setting.
-apply_filters( 'register_setting_args', array $args, array $defaults, string $option_group, string $option_name )
+
+`apply_filters( 'register_setting_args', array $args, array $defaults, string $option_group, string $option_name )`
 
 
 
-$args
+**$args**
     (array) Array of setting registration arguments.
 
-$defaults
+**$defaults**
 
     (array) Array of default arguments.
-$option_group
+**$option_group**
 
     (string) Setting group.
-$option_name
+**$option_name**
 
     (string) Setting name.
 
 
 
+*Filters all options after retrieving them.*
+
+`apply_filters( 'alloptions', array $alloptions )`
 
 
-Filters all options after retrieving them.
-
-apply_filters( 'alloptions', array $alloptions )
-
-
-$alloptions
+**$alloptions**
 
     (array) Array with all options.

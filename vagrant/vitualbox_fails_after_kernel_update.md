@@ -1,6 +1,6 @@
 # Virtualbox
 
-Reinstall virtualbox packages
+1. Reinstall virtualbox packages
 
 ```shell
 sudo dpkg-reconfigure virtualbox-dkms && sudo dpkg-reconfigure virtualbox && sudo modprobe vboxdrvvboxconfig
@@ -8,7 +8,7 @@ sudo dpkg-reconfigure virtualbox-dkms && sudo dpkg-reconfigure virtualbox && sud
 
 
 
-Rebuild modules and symlinks
+2. Rebuild modules and symlinks
 
 ```sudo /sbin/vboxconfig```
 

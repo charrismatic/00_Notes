@@ -1,22 +1,22 @@
 # ADMIN FILTERS, HOOKS, AND ACTIONS
 
 
-apply_filters( 'admin_body_class', string $classes )
+### BODY CLASS 
 
-Filters the CSS classes for the body tag in the admin.
+*Filters the CSS classes for the body tag in the admin.*
 
+`apply_filters( 'admin_body_class', string $classes )`
 
 This filter differs from the ‘post_class’ and ‘body_class’ filters in two important ways:
 
-    $classes is a space-separated string of class names instead of an array.
-    Not all core admin classes are filterable, notably: wp-admin, wp-core-ui, and no-js cannot be removed.
+`$classes` is a space-separated string of class names instead of an array.
 
+Not all core admin classes are filterable, notably: 
+ - wp-admin,
+ - wp-core-ui,
+ - no-js  
 
-    $classes
-
-        (string) Space-separated list of CSS classes.
-
-
+cannot be removed
 
 
 ## ADMIN HOOKS
@@ -33,11 +33,10 @@ This filter differs from the ‘post_class’ and ‘body_class’ filters in tw
 `admin_print_styles`{$hook_suffix}"-          - Fires when styles are printed for a specific admin page based on $hook_suffix.
 `admin_print_footer_scripts`-                 - Prints any scripts and data queued for the footer.
 `admin_print_footer_scripts`{$hook_suffix}"-  - Prints scripts and data queued for the footer.
-`admin_footer`                                - Print scripts or data after the default footer scripts.
-                                              - {$GLOBALS[‘hook_suffix’]}
+`admin_footer`                                - Print scripts or data after the default footer scripts.                               - {$GLOBALS[‘hook_suffix’]}
                                               - $hook_suffix string
                                               - $page_hook
-                                            	- Used to call the registered callback for a plugin screen.
+                                              - Used to call the registered callback for a plugin screen.
 `in_admin_header`-                            - Fires at the beginning of the content section in an admin page.
 `admin_init`-                                 - Fires as an admin screen or script is being initialized.
                                               - Note, this does not just run on user-facing admin screens. It runs on admin-ajax.php and admin-post.php as well.
@@ -47,7 +46,7 @@ This filter differs from the ‘post_class’ and ‘body_class’ filters in tw
 ```
 
 
-The dynamic portion of the hook name, $GLOBALS['hook_suffix']
+The dynamic portion of the hook name, `$GLOBALS['hook_suffix']`
 
 refers to the global hook suffix of the current page.
 
@@ -61,6 +60,7 @@ Fires when scripts are printed for a specific admin page based on $hook_suffix.
 Use `admin_enqueue_scripts` for Admin pages
 
 Use `login_enqueue_scripts` for the login page
+
 
 
 ## ADMIN ACTIONS
@@ -92,8 +92,6 @@ __$status__
 - (string)
 - Status of the plugin.
 - Defaults are 'All', 'Active', 'Inactive', 'Recently Activated', 'Upgrade', 'Must-Use', 'Drop-ins', 'Search'.
-
-
 
 
 

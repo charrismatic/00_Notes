@@ -1,48 +1,50 @@
 # SITE INFO
 
-### _Function:_ get_bloginfo()
+### get_bloginfo()
 
-Retrieves information about the current site.
+*Retrieves information about the current site.*
 
 `get_bloginfo( string $show = '', string $filter = 'raw' )`
 
 
 __$show__
-- (string)
-- (Optional)
-- Default empty (site name).
--  Site info to retrieve.
+- (string) (Optional)
+- Default empty (site name)
+-  Site info to retrieve
 
 __$filter__
-- (string)
-- (Optional)
+- (string) (Optional)
 -  Default value: 'raw'
 -  How to filter what is retrieved.
 
 
-Possible values for $show include:
 
--  _‘name’_`                 | Site title (set in Settings > General)`
--  _‘description’_`          | Site tagline (set in Settings > General)`
--  _‘wpurl’_`                | The WordPress address (URL) (set in Settings > General)`
--  _‘url’_`                  | The Site address (URL) (set in Settings > General)`
--  _‘admin_email’_`          | Admin email (set in Settings > General)`
--  _‘charset’_`              | The "Encoding for pages and feeds" (set in Settings > Reading)`
--  _‘version’_`              | The current WordPress version`
--  _‘html_type’_`            | The content-type (default: "text/html"). Themes and plugins can override the default value using the ‘pre_option_html_type’ filter`
--  _‘text_direction’_`       | The text direction determined by the site’s language. is_rtl() should be used instead`
--  _‘language’_`             | Language code for the current site`
--  _‘stylesheet_url’_`       | URL to the stylesheet for the active theme. An active child theme will take precedence over this value`
--  _‘stylesheet_directory’_` | Directory path for the active theme. An active child theme will take precedence over this value`
--  _‘template_url’_`         | URL of the active theme’s directory. An active child theme will NOT take precedence over this value `
--  _‘template_directory’_`   | URL of the active theme’s directory. An active child theme will NOT take precedence over this value`
--  _‘pingback_url’_`         | The pingback XML-RPC file URL (xmlrpc.php)`
--  _‘atom_url’_`             | The Atom feed URL (/feed/atom)`
--  _‘rdf_url’_`              | The RDF/RSS 1.0 feed URL (/feed/rfd)`
--  _‘rss_url’_`              | The RSS 0.92 feed URL (/feed/rss)`
--  _‘rss2_url’_`             | The RSS 2.0 feed URL (/feed)`
--  _‘comments_atom_url’_`    | The comments Atom feed URL (/comments/feed)`
--  _‘comments_rss2_url’_`    | The comments RSS 2.0 feed URL (/comments/feed)`
+
+**Possible values for $show include:**
+
+-  __name__`                  Site title (Settings > General)`
+-  __description__`           Site tagline (Settings > General)`
+-  __wpurl__`                 WordPress address (URL) (Settings > General)`
+-  __url__`                   Site address (URL) (Settings > General)`
+-  __admin_email__`           Admin email (Settings > General)`
+-  __charset__`               Encoding for pages and feeds (Settings > Reading)`
+-  __version__`               Current WordPress version`
+-  __html_type__`             Content-type (default: "text/html")`
+`                              Themes and plugins can override default with filter `pre_option_html_type``
+-  __text_direction__`        Text direction determined by the site’s language. `is_rtl()` should be used instead`
+-  __language__`              Language code for current site`
+-  __stylesheet_url__`        URL to stylesheet of active theme (or child theme)`
+-  __stylesheet_directory__`  Directory path for the active theme (or child theme)`
+-  __template_url__`          URL of the active themes directory (child theme will NOT override)`
+-  __template_directory__`    URL of the active themes directory (child theme will NOT override)`
+-  __pingback_url__`          Pingback XML-RPC file URL (xmlrpc.php)`
+-  __atom_url__`              Atom feed URL (/feed/atom)`
+-  __rdf_url__`               RDF/RSS 1.0 feed URL (/feed/rfd)`
+-  __rss_url__`               RSS 0.92 feed URL (/feed/rss)`
+-  __rss2_url__`              RSS 2.0 feed URL (/feed)`
+-  __comments_atom_url__`     Comments Atom feed URL (/comments/feed)`
+-  __comments_rss2_url__`     Comments RSS 2.0 feed URL (/comments/feed)`
+
 
 
 Some `$show` values are deprecated and will be removed in future versions

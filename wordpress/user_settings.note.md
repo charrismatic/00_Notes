@@ -1,59 +1,62 @@
 
 ### get_user_setting()
 
-get_user_setting( string $name, string $default = false )
+`get_user_setting( string $name, string $default = false )`
 
 Retrieve user interface setting value based on setting name.
 
-$name
+**$name**
 
-    (string) (Required) The name of the setting.
-$default
+    (string) (Required) 
+    The name of the setting.
+__$default *(Optional)*__
 
-    (string) (Optional) default value to return when $name is not set.
+    (string) 
+    default value to return when $name is not set.
 
-    Default value: false
 
-
+````php
 function get_user_setting( $name, $default = false ) {
-    $all_user_settings = get_all_user_settings();
-
-    return isset( $all_user_settings[$name] ) ? $all_user_settings[$name] : $default;
+	$all_user_settings = get_all_user_settings();
+	return isset( $all_user_settings[$name] ) ? $all_user_settings[$name] : $default;
 }
+````
 
 
 
 ### set_user_setting()
 
-set_user_setting( string $name, string $value )
+`set_user_setting( string $name, string $value )`
 
 Add or update user interface setting.
 
-Both $name and $value can contain only ASCII letters, numbers and underscores.
+Both `$name` and `$value` can contain only ASCII letters, numbers and underscores.
 
-This function has to be used before any output has started as it calls setcookie().
+This function has to be used before any output has started as it calls `setcookie()`
 
 
-$name
+**$name**
 
     (string) (Required) The name of the setting.
-$value
+**$value**
 
     (string) (Required) The value for the setting.
 
 
-
-
-  function set_user_setting( $name, $value ) {
-      if ( headers_sent() ) {
-          return false;
-      }
-
-      $all_user_settings = get_all_user_settings();
-      $all_user_settings[$name] = $value;
-
-      return wp_set_all_user_settings( $all_user_settings );
+```php
+function set_user_setting( name, value ) {
+  if ( headers_sent() ) {
+      return false;
   }
+
+  $all_user_settings = get_all_user_settings();
+  $all_user_settings[$name] = $value;
+
+  return wp_set_all_user_settings( $all_user_settings );
+}
+```
+
+
 
 
 ## get_all_user_settings()
@@ -138,6 +141,6 @@ function update_user_option( $user_id, $option_name, $newvalue, $global = false 
 
     if ( !$global )
         $option_name = $wpdb->get_blog_prefix() . $option_name;
-
+    
     return update_user_meta( $user_id, $option_name, $newvalue );
 }

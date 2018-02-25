@@ -2,11 +2,9 @@ https://developer.wordpress.org/reference/classes/wp_screen/
 
 Core class used to implement an admin screen API.
 
-Methods #Methods
+### Methods
 
-
-
-    \__construct — Constructor
+    __construct — Constructor
     add_help_tab — Add a help tab to the contextual help for the screen.
     add_old_compat_help — Sets the old string-based contextual help for the screen for backward compatibility.
     add_option — Adds an option for the screen.
@@ -88,7 +86,7 @@ $args
 
 
 
-apply_filters( "current_theme_supports-{$feature}", bool , array $args, string $feature )
+`apply_filters( "current_theme_supports-{$feature}", bool , array $args, string $feature )`
 
 Filters whether the current theme supports a specific feature.
 

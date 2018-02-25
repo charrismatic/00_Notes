@@ -1,50 +1,49 @@
 # WORDPRESS THEME SCRIPTS
 
 
-ENQUEUE SCRIPT
+## ENQUEUE SCRIPT
 
 
-## WP_ENQUEUE_SCRIPT() FUNCTION
+### WP_ENQUEUE_SCRIPT() 
 
-Registers the script if $src provided (does NOT overwrite), and enqueues it
+*Registers the script if $src provided (does NOT overwrite), and enqueues it*
 
 ```php
 wp_enqueue_script(
-	  string $handle,
-    string $src = '',
-		array $deps = array(),
-		string|bool|null $ver = false,
-		bool $in_footer = false
+    string $handle,
+    string $src 			= '',
+    array $deps 			= array(),
+    string|bool|null $ver 	= false,
+    bool $in_footer 		= false
 )
 ```
 
 __$handle__
-
 - (string) (Required)
 - Name of the script. Should be unique.
 
-__$src__
-
-- (string) (Optional) Default value: ''
+__$src (Optional)__
+- (string) 
+- Default value: ""
 - Full URL of the script, or path of the script relative to the WordPress root directory.  
 
-__$deps__
+__$deps  (Optional)__
+- (array)
+- An array of registered script handles this script depends on.
+- Default value: array()
 
-- (array) (Optional)
-- An array of registered script handles this script depends on. Default value: array()
-
-__$ver__
-
-- (string|bool|null) (Optional) Default value: false
+__$ver (Optional)__
+- (string|bool|null) 
+- Default value: false
 - String specifying version
-- added to the URL as a query string for cache busting purposes.
-- If version is set to false, a version number is automatically added equal to current installed WordPress version.
-- If set to null, no version is added.
+- Added to the URL as a query string for cache busting purposes.
+- If false, current WordPress version number is automatically added.
+- If null, no version is added
 
-__$in_footer__
-
-- (bool) (Optional) Default 'false'
-- Enqueue script before </body> instead of <head>
+__$in_footer (Optional)__
+- (bool)  
+- Default 'false'
+- Enqueue script before `</body>` instead of `<head>`
 
 
 

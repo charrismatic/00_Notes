@@ -24,11 +24,8 @@ This Hook is called when each page is loaded after theme is initialised. This is
 
 https://developer.wordpress.org/reference/hooks/after_setup_theme/
 
+### Function: _do_activate_header()_	
 
-```
-```
-
-__do_activate_header()__
 `do_action( 'activate_wp_head' )` - Fires before the Site Activation page is loaded. Fires on the ‘wp_head’ action.
 `do_action( 'activate_header' )` - Fires before the Site Activation page is loaded.
 `do_action( 'wp_head' )` - Prints scripts or data in the head tag on the front end.
@@ -38,14 +35,13 @@ __do_activate_header()__
 function do_activate_header() {
     /**
      * Fires before the Site Activation page is loaded.
-     *
      * Fires on the {@see 'wp_head'} action.
-     *
      * @since 3.0.0
      */
     do_action( 'activate_wp_head' );
 }
 ```
+
 
 
 __wpmu_activate_stylesheet()__

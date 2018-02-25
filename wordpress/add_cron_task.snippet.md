@@ -1,8 +1,11 @@
 WordPress Cron Jobs using wp_schedule_event() function
 
 
+
+### Custom Cron Recurrences
+
+
 ```php
-// Custom Cron Recurrences
 function custom_cron_job_recurrence( $schedules ) {
 	$schedules['weekly'] = array(
 		'display' => __( 'Once Weekly', 'textdomain' ),
@@ -11,8 +14,11 @@ function custom_cron_job_recurrence( $schedules ) {
 	return $schedules;
 }
 add_filter( 'cron_schedules', 'custom_cron_job_recurrence' );
+```
 
-// Schedule Cron Job Event
+### Schedule Cron Job Event
+
+```php
 function custom_cron_job() {
 	if ( ! wp_next_scheduled( '' ) ) {
 		wp_schedule_event( , 'weekly', '' );
@@ -20,6 +26,9 @@ function custom_cron_job() {
 }
 add_action( 'wp', 'custom_cron_job' );
 ```
+
+
+
 
 
 ## REFERENCES
