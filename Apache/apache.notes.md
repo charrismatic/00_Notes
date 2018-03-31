@@ -1,6 +1,10 @@
+# APACHE2  
 
-=======
-Options:
+
+
+### Options
+
+```
   -D name            : define a name for use in <IfDefine name> directives
   -d directory       : specify an alternate initial ServerRoot
   -f file            : specify an alternate ServerConfigFile
@@ -21,15 +25,22 @@ Options:
   -t                 : run syntax check for config files
   -T                 : start without DocumentRoot(s) check
   -X                 : debug mode (only one worker, do not detach)
+```
 
-#place to set localhost root.
-/etc/apache2/sites-enabled/000-default.conf
+### Conf File Path
 
+`/etc/apache2/sites-enabled/000-default.conf`
 
-#restart apache
+### Restart apache
+
+```shell
 sudo service apache2 restart
+```
 
-# FIX: apache2.conf invalid mutex error
+### FIX: apache2.conf invalid mutex error
+
+```shell
 source /etc/apache2/envvars
 apache2 -V
 sudo service apache2 restart
+```
