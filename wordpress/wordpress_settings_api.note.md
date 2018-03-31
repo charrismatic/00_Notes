@@ -30,31 +30,27 @@ __do_settings_fields__
 - section
 
 
+```php
+ add_settings_section(
+  'themename__setting_section_main1',       // ID
+  'Example Theme Settings',                 // Title
+  array( $this, 'print_section_info' ),     // Callback
+  'theme_settings'                          // Page
+)
 
-// register_setting (
-// 'charrismatic_theme_settings',            // Option group
-// 'charrismatic_theme_settings_demo1',      // Option name
-// array( $this, 'sanitize' )                // Sanitize
+add_settings_field(
+  'id_number',                               // ID
+  'ID Number',                               // Title
+  array( $this, 'id_number_callback' ),      // Callback
+  'theme_settings',                          // Page
+  'themename__setting_section_main1'         // Section
+)
 
-// add_settings_section(
-// 'charrismatic__setting_section_main1',   // ID
-// 'M@ttHarr.is Theme Settings',             // Title
-// array( $this, 'print_section_info' ),     // Callback
-// 'theme_settings'                   // Page
-
-// add_settings_field(
-// 'id_number',                               // ID
-// 'ID Number',                               // Title
-// array( $this, 'id_number_callback' ),      // Callback
-// 'theme_settings',                   // Page
-// 'charrismatic__setting_section_main1'     // Section
-
-// add_settings_field(
-// 'title',                                    // ID
-// 'Title',                                    // Title
-// array( $this, 'title_callback' ),           // Callback
-// 'theme_settings',                    // Pagesettings_fields
-// 'charrismatic__setting_section_main1'      // Section
-
-
-// page_url =  theme_settings
+add_settings_field(
+    'title',                                 // ID
+    'Title',                                 // Title
+    array( $this, 'title_callback' ),        // Callback
+    'theme_settings',                        // Page  
+    'themename__setting_section_main1'       // Section
+)
+```
