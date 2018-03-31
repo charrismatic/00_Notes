@@ -1,4 +1,4 @@
-# FAVORITE MARKDOWN EDITOR
+# Best all around fully featured editor
 
 ##  Typora.io
 
@@ -13,12 +13,17 @@
 
 
 - Live inline preview
-- File tree view sidebar
+- File tree view sidebar, folder management 
 - Source code view
+- Document outline and table to contents view
 - Document outline sidebar
 - Directly edit files in the file system
-- Formatting Tools, Shortcut keys
-- Custom themes with CSS (Dark Theme Included)
+- Formatting Tools, Shortcut keys, Markdown table support and design tools
+- Custom themes with CSS (Dark Theme Included) 
+- Syntax highlighting
+- Live inline UML charts and diagrams ( mermaid.js )
+- Use Pandoc to render pdf, docx, png, html, tex
+- Supports inline html, yaml frontmatter headers, latex, image rendering, math notation
 
 ### INSTALL
 
@@ -34,8 +39,7 @@ sudo apt-get install typora
 
 ---
 
-
-# COMMAND LINE MARKDOWN 
+# Render Markdown from the Command Line 
 
 ## mdless: Better Markdown in Terminal
 
@@ -55,7 +59,7 @@ gem install mdless
 
 `mdless [options] path` or `cat [path] | mdless`
 
-### Options
+### OPTIONS
 
 ```SHELL
 -s, --section=TITLE              Output only a headline-based section of 
@@ -75,19 +79,17 @@ gem install mdless
 
 ---
 
-# **EVERNOTE KILLERS**
+# Cloud Based Notebbooks
 
-## **Laverna.cc**
+## Laverna.cc
 
-Laverna: Keep your notes private
+__*Laverna: Keep your notes private*__	
 
 Laverna is a JavaScript note taking application with Markdown editor and encryption support. Consider it like open source alternative to Evernote.
 
-https://laverna.cc
-
-https://github.com/Laverna/laverna
-
-**Demo**: https://laverna.cc/app OR http://laverna.github.io/static-laverna
+- https://laverna.cc
+- https://github.com/Laverna/laverna
+- **Demo**: https://laverna.cc/app OR http://laverna.github.io/static-laverna
 
 
 Tags: `#peer-to-peer`, `#note-taking`, `#markdown`, `#socket-io`, `#websocket`, `#webrtc`
@@ -145,11 +147,8 @@ The note-taking app for programmers that focusing on markdown, snippet and custo
 
 Edit your code and wikis from anywhere.
 
-
-
-https://boostnote.io/
-
-https://github.com/BoostIO/Boostnote
+- https://boostnote.io/
+- https://github.com/BoostIO/Boostnote
 
 Android, iOS, Linux, Mac, Windows
 
@@ -161,21 +160,47 @@ Big team, lots of contributors and very active on social media and communication
 
 ##### Built with Electron, React + Redux, Webpack and CSSModules.
 
-FEATURES:
+### ABOUT 
 
-- Tons of code-block, editor and UI themes
-- Custom hotkeys 
-- Cloud sync and offline mode 
-- Desktop and Mobile app for Android and iOS
 - Free Forever
-- Open Source
+- Open Source,
 - 6000+ Stars on Github
 - 2600+ Commits
 - 80+ Contributors
 
-"Your markdown notes are saved automatically as you write and various formatting options have semi-live previews so you can double check what you’re writing. Text is formatted as you type.
+### FEATURES
+- [Keyboard Shortcuts](https://github.com/BoostIO/Boostnote/wiki/Keyboard-Shortcuts) 
+- [Keymaps in Editor mode](https://github.com/BoostIO/Boostnote/wiki/Keymaps-in-Editor-mode) 
+- [Syntax Highlighting](https://github.com/BoostIO/Boostnote/wiki/Syntax-Highlighting) 
+- [Light theme and Dark theme](https://github.com/BoostIO/Boostnote/wiki/Light-theme-and-Dark-theme) 
+- [Codeblock theme](https://github.com/BoostIO/Boostnote/wiki/Codeblock-theme) 
+- [Editor theme](https://github.com/BoostIO/Boostnote/wiki/Editor-theme) 
+- [Cloud Syncing and Backup](https://github.com/BoostIO/Boostnote/wiki/Cloud-Syncing-and-Backup) 
+- [Sync Data Across Desktop and Mobile apps](https://github.com/BoostIO/Boostnote/wiki/Sync-Data-Across-Desktop-and-Mobile-apps) 
+- [Team Collaboration](https://github.com/BoostIO/Boostnote/wiki/Team-Collaboration) 
+- [Diagram support for plantuml, flowchart or Sequence](https://github.com/BoostIO/Boostnote/wiki/Diagram-support) 
+- [TeX support](https://github.com/BoostIO/Boostnote/wiki/TeX-support) 
+- [Vim mode](https://github.com/BoostIO/Boostnote/wiki/Vim-mode) 
+- [Emacs mode](https://github.com/BoostIO/Boostnote/wiki/Emacs-mode) 
+- [PDF export](https://github.com/BoostIO/Boostnote/wiki/PDF-export) 
+- [md txt import](https://github.com/BoostIO/Boostnote/wiki/md-txt-import) 
+- [Jump by a header in a note](https://github.com/BoostIO/Boostnote/wiki/Jump-by-a-header-in-a-note) 
+- [Evernote](https://github.com/BoostIO/Boostnote/wiki/Evernote) 
+- [Data format](https://github.com/BoostIO/Boostnote/wiki/Data-format) 
+- [Tests](https://github.com/BoostIO/Boostnote/wiki/Tests) 
+- [localStorage](https://github.com/BoostIO/Boostnote/wiki/localStorage) 
+- [Built files](https://github.com/BoostIO/Boostnote/wiki/Built-files) 
+- [How Boostnote is deployed](https://github.com/BoostIO/Boostnote/wiki/How-Boostnot-is-deployed) 
 
-For code snippets the app is able to highlight code syntax in more than 100 languages, including Javascript, Python, HTML and CSS and you can store multiple code snippets within the same snippet."
+
+
+
+
+*For code snippets the app is able to highlight code syntax in more than 100 languages, including Javascript, Python, HTML and CSS and you can store multiple code snippets within the same snippet."*
+
+The app features a unique snippet note type for an enhanced code sharing / note taking experience.
+
+
 
 Social:
 
@@ -204,23 +229,20 @@ Articles:
 
 ・[Boostnote Tips: How to set Vim keymap to Boostnote.](https://medium.com/boostnote/how-to-set-vim-keymap-to-boostnote-1b6ad96492ef)
 
-
-
 Its a totally awesome project, very much worth trying out. 
 
-Supports multiple storage location in the file system, multiple folders, tags, and note meta data.
-
-Export to .md, pdf, html, or print view
-
-import from .txt or .md
-
-Starred notes
-
-Split view mode or seemless editing (single window mode) 
+- Supports multiple storage location in the file system, multiple folders, tags, and note meta data.
+- Export to .md, pdf, html, or print view
+- import from .txt or .md
+- Starred notes
+- Split view mode or seemless editing (single window mode) 
+- Tags, stars, multi folder storage, multiple not types
+- Export to txt, md, html 
+- ​
 
 The only drawback is that file names are hashed and content is stored as coffeescript `.cson` so if you're looking for something to work on individual markdown files or open notes later directly in the file system this is not the right choice, but all the files are still plain text and stored directly in your home folder or folder of your choosing. As as a notebook app this one is completely awesome. 
 
-Evernote API integration
+### Evernote API integration
 
 https://github.com/BoostIO/ever2boost
 
@@ -234,7 +256,7 @@ Ever2boost has 2 commands for conversion `convert` and `import`
 ever2boost <command> | <option>
 ```
 
-#### import
+#### IMPORT FROM 
 
 Import all of notes from cloud storage at Evernote.
 

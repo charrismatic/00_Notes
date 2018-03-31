@@ -1,101 +1,93 @@
-To start, enter a temporary directory where we will
-create .bat files:
+# Netcat
+
+To start, enter a temporary directory where we will create .bat files:
+
 C:\> cd c:\temp
-Listener-to-Client Relay:
-C:\> echo nc [TargetIPaddr] [port] >
-relay.bat
+
+Listener-to-Client Relay: 
+
+C:\> echo nc [TargetIPaddr][port] > relay.bat
+
 C:\> nc –l –p [LocalPort] –e relay.bat
-Create a relay that sends packets from the local port
-[LocalPort] to a Netcat Client connected to
-[TargetIPaddr] on port [port]
+
+Create a relay that sends packets from the local port [LocalPort] to a Netcat Client connected to [TargetIPaddr] on port [port]
+
 Listener-to-Listener Relay:
-C:\> echo nc –l –p [LocalPort_2] >
-relay.bat
-C:\> nc –l –p [LocalPort_1] –e
-relay.bat
-Create a relay that will send packets from any
-connection on [LocalPort_1] to any connection
-on [LocalPort_2]
+
+C:\> echo nc –l –p [LocalPort_2] > relay.bat
+
+C:\> nc –l –p [LocalPort_1] –e relay.bat
+
+Create a relay that will send packets from any connection on [LocalPort_1] to any connection on [LocalPort_2]
+
 Client-to-Client Relay:
-C:\> echo nc [NextHopIPaddr] [port2] >
-relay.bat
-C:\> nc [PreviousHopIPaddr] [port] –e
-relay.bat
-Create a relay that will send packets from the
-connection to [PreviousHopIPaddr] on port
-[port] to a Netcat Client connected to
-[NextHopIPaddr] on port [port2]
+
+C:\> echo nc [NextHopIPaddr][port2] > relay.bat
+
+C:\> nc [PreviousHopIPaddr][port] –e relay.bat
+
+Create a relay that will send packets from the connection to [PreviousHopIPaddr] on port [port] to a Netcat Client connected to [NextHopIPaddr] on  port [port2] 
+
 Netcat Command Flags
-Netcat
+
 Cheat Sheet
-$ nc [options] [TargetIPaddr] [port(s)]
-The [TargetIPaddr] is simply the other side’s IP
-address or domain name. It is required in client mode
-of course (because we have to tell the client where to
-connect), and is optional in listen mode.
+
+$ nc [options][TargetIPaddr] [port(s)]
+
+The [TargetIPaddr] is simply the other side’s IP address or domain name. It is required in client mode of course (because we have to tell the client  where to connect), and is optional in listen mode.
+
 -l: Listen mode (default is client mode)
--L: Listen harder (supported only on Windows
-version of Netcat). This option makes Netcat a
-persistent listener which starts listening again
-after a client disconnects
+
+-L: Listen harder (supported only on Windows version of Netcat). This option makes Netcat a persistent listener which starts listening again after a client disconnects
+
 -u: UDP mode (default is TCP)
--p: Local port (In listen mode, this is port listened
-on. In client mode, this is source port for all
-packets sent)
--e: Program to execute after connection occurs,
-connecting STDIN and STDOUT to the
-program
--n: Don’t perform DNS lookups on names of
-machines on the other side
--z: Zero-I/O mode (Don’t send any data, just emit
-a packet without payload)
--wN: Timeout for connects, waits for N seconds
-after closure of STDIN. A Netcat client or
-listener with this option will wait for N seconds
-to make a connection. If the connection
-doesn’t happen in that time, Netcat stops
-running.
--v: Be verbose, printing out messages on
-Standard Error, such as when a connection
-occurs
--vv: Be very verbose, printing even more details
-on Standard Error
+-p: Local port (In listen mode, this is port listened on. In client mode, this is source port for all packets sent)
+-e: Program to execute after connection occurs, connecting STDIN and STDOUT to the program
+-n: Don’t perform DNS lookups on names of machines on the other side
+-z: Zero-I/O mode (Don’t send any data, just emit a packet without payload)
+-wN: Timeout for connects, waits for N seconds after closure of STDIN. A Netcat client or listener with this option will wait for N seconds to make a connection. If the connection doesn’t happen in that time, Netcat stops running.
+-v: Be verbose, printing out messages on Standard Error, such as when a connection occurs
+-vv: Be very verbose, printing even more details on Standard Error
+
+
+
 By Ed Skoudis
 POCKET REFERENCE GUIDE
 http://www.sans.org
 
-
 File Transfer
+
 Push a file from client to listener:
 $ nc –l -p [LocalPort] > [outfile]
+
 Listen on [LocalPort], store results in [outfile]
-$ nc –w3 [TargetIPaddr] [port] <
-[infile]
+$ nc –w3 [TargetIPaddr][port] < [infile]
+
 Push [infile] to [TargetIPaddr] on [port]
+
 Pull file from listener back to client:
 $ nc –l -p [LocalPort] < [infile]
+
 Listen on [LocalPort], prep to push [infile]
-$ nc –w3 [TargetIPaddr] [port] >
-[outfile]
-Connect to [TargetIPaddr] on [port] and
-retrieve [outfile]
+
+$ nc –w3 [TargetIPaddr][port] > [outfile]
+
+Connect to [TargetIPaddr] on [port] and retrieve [outfile]
+
 TCP Port Scanner
+
 Port scan an IP Address:
-$ nc –v –n –z –w1 [TargetIPaddr]
-[start_port]-[end_port]
-Attempt to connect to each port in a range from
-[end_port] to [start_port] on IP Address
-[TargetIPaddr] running verbosely (-v on Linux, -
-vv on Windows), not resolving names (-n), without
-sending any data (-z), and waiting no more than 1
-second for a connection to occur (-w1)
-The randomize ports (-r) switch can be used to
-choose port numbers randomly in the range
+`$ nc –v –n –z –w1 [TargetIPaddr][start_port]-[end_port]`
+
+Attempt to connect to each port in a range from [end_port] to [start_port] on IP Address [TargetIPaddr] running verbosely (-v on Linux, - vv on Windows), not resolving names (-n), without sending any data (-z), and waiting no more than 1 second for a connection to occur (-w1) The randomize ports (-r) switch can be used to choose port numbers randomly in the range
+
 TCP Banner Grabber
+
 Grab the banner of any TCP service running on an IP
+
 Address from Linux:
-$ echo "" | nc –v –n –w1 [TargetIPaddr]
-[start_port]-[end_port]
+`$ echo "" | nc –v –n –w1 [TargetIPaddr][start_port]-[end_port]`
+
 Attempt to connect to each port in a range from
 [end_port] to [start_port] on IP Address
 [TargetIPaddr] running verbosely (-v), not

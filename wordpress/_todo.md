@@ -5,12 +5,7 @@
 TODO: ADD THIS IN FUNCTIONS.PHP OR IN PLUGIN
 `add_filter('widget_text','do_shortcode');`
 
-# 
-
-
-
-
-
+#
 
 // // AUTOMATICALLY SELECCT PARENT TOPICS IN HIERARCHICAL TAXONOMY
 // function super_category_toggler() {

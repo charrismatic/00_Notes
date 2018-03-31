@@ -1,0 +1,477 @@
+
+# Annotations
+--------------------------------------
+
+| Annotation  |  Description  |  Aliases  |
+| ----------- | ------------  | --------- |
+| __@comment-range__  | Comment range                                                   |                          |
+| __@description__    | Description of the documented item                              |                          |
+| __@access__         | Access of the documented item                                   |                          |
+| __@alias__          | Whether the documented item is an alias of another item         |                          |
+| __@author__         | Author of the documented item                                   |                          |
+| __@content__        | Whether the documented mixin uses the `@content` directive      |                          |
+| __@deprecated__     | Whether the documented item is deprecated                       |                          |
+| __@example__        | Example for the documented item                                 |                          |
+| __@group__          | Group the documented item belongs to                            |                          |
+| __@ignore__         | Ignored content                                                 |                          |
+| __@link__           | Link related to the documented item  @source                    |                          |
+| __@name__           | Name of the documented item                                     |                          |
+| __@output__         | Output from the documented mixin                                |                          |
+| __@parameter__      | Parameters from the documented mixin or function                | @param, @arg, @argument  |
+| __@property__       | Property of the documented map                                  | @prop                    |
+| __@require__        | Requirements from the documented item                           | @requires                |
+| __@return__         | Return from the documented function                             | @returns                 |
+| __@see__            | Resource related to the documented item                         |                          |         
+| __@since__          | Changelog for the documented item                               |                          |         
+| __@throw__          | Exceptions raised by the documented item                        | @throws, @exception      |
+| __@todo__           | Things to do related to the documented item                     |                          |         
+| __@type__           | Describes the type of a variable                                |                          |        
+
+[TOC]
+
+**Note:** remember that you can define annotations at a file level rather than on specific items,  
+which can happen to be very useful when all items from a file share some traits (author, group, and so on...).  
+To do so, please refer to [File-level Annotations](/file-level-annotations/).
+
+# @comment-range
+--------------------------------
+
+Each annotated comment will include a `commentRange` object like so:
+
+    { start: 1,  end: 3,}
+
+… representing the start and end of the comment.
+
+# @description
+----------------------------
+
+Describes the documented item.
+
+__Example__
+
+    /// Here is the description
+    /// On several lines if you will
+
+__Extra notes__
+
+ -  Parsed as Markdown.
+ -  Comes on top of a comment, before any annotation.
+
+# @access
+-------------------
+
+| Attribute | Value   |
+| --------- | ------- |
+| Description |  Defines the access of the documented item  |
+| Multiple    |  false                  |
+| Default     |  `public`   |
+| Aliases     |  |
+| Autofilled  |  false  |
+| Allowed on  |   functions, mixins, placeholders, variables|  
+| Extra notes | `public` or `private`.  |
+
+__Example__
+
+     /// @access private
+     /// @access public
+
+# @alias
+-----------------
+
+|  Attribute  Value  
+
+|  Description  Defines if the documented item is an alias of another item  
+|  Multiple  false  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, variables  
+
+Extra notes
+  The other item will automatically have a key named `aliased` containing the name of aliases.  
+
+__Example__
+
+    /// @alias other-item
+
+# @author
+-------------------
+
+|  Attribute  Value  
+
+|  Description  Describes the author of the documented item  
+|  Multiple  true  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Parsed as Markdown.*  
+
+__Example__
+
+    /// @author Author's name
+
+# @content
+---------------------
+
+|  Attribute  Value  
+
+|  Description  Describes the usage of `@content` Sass directive in the documented mixin  
+|  Multiple  false  
+|  Default  
+|  Aliases  
+|  Autofilled  true  
+|  Allowed on  mixins  
+
+Extra notes
+  Parsed as Markdown.*  
+
+__Example__
+
+    /// @content [Description]
+
+# @deprecated
+---------------------------
+
+|  Attribute  Value  
+
+|  Description  Defines if the documented item is deprecated  
+|  Multiple  false  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Parsed as Markdown.*  Message is optional.  
+
+__Example__
+
+    /// @deprecated
+    /// @deprecated Deprecation related message
+
+# @example
+---------------------
+
+|  Attribute  Value  
+
+|  Description  Describes a use case for the documented item, with a given language and description if specified  
+|  Multiple  true  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Lines starting with `@` need to be indented to work correctly.  First word on the same line as `@example` is the language for syntax highlighting.  Currently supported languages: `css`, `scss`, `markup`, `javascript`. New languages on demand.  Everything but the first word on the same line as `@example` is the description.  Hyphen before description is optional.  Description is parsed as Markdown.*  
+
+__Example__
+
+    /// @example
+    ///  4 + 2 = 6
+    ///  4 / 2 = 2
+    ///
+    /// @example scss - Clamp function
+    ///  clamp(42, $min: 13, $max: 37)
+    ///  // 37
+
+**Tip!** In order to prevent any issue with lines starting with `@`, it is highly recommended — yet not mandatory — to always indent the content of an `@example` annotation.
+
+# @group
+-----------------
+
+|  Attribute  Value  
+
+|  Description  Defines to which group (if any) the documented item belongs  
+|  Multiple  false  
+|  Default  `undefined`  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Groups define the way items are displayed in SassDoc’s default theme.  Groups can be aliased for friendly names from the configuration ([more infos](/configuration/#groups)).  
+
+__Example__
+
+    /// @group helpers
+
+# @ignore
+-------------------
+
+|  Attribute  Value  
+
+|  Description  Defines a line which won’t be documented  
+|  Multiple  true  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+
+
+__Example__
+
+    /// @ignore Message
+
+# @link
+---------------
+
+|  Attribute  Value  
+
+|  Description  Describes a link  
+|  Multiple  true  
+|  Default  
+|  Aliases  `@source`  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Caption is optional.  
+
+__Example__
+
+    /// @link http://some.url/// @link http://some.url Optional caption
+
+# @name
+---------------
+
+|  Attribute  Value  
+
+|  Description  Provide a custom name for the documented item  
+|  Multiple  false  
+|  Default  `item.context.name`  
+|  Aliases  
+|  Autofilled  true  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Only useful when wanting to override the self parsed name.  
+
+__Example__
+
+    /// @name message-[error|warning|success|info]
+
+# @output
+-------------------
+
+|  Attribute  Value  
+
+|  Description  Provide a description of what’s being printed by the mixin  
+|  Multiple  false  
+|  Default  
+|  Aliases  `@outputs`  
+|  Autofilled  false  
+|  Allowed on  mixins  
+
+Extra notes
+  Parsed as Markdown.*  
+
+__Example__
+
+    /// @output Description
+
+# @parameter
+-------------------------
+
+|  Attribute  Value  
+
+|  Description  Describes a parameter of the documented item  
+|  Multiple  true  
+|  Default  
+|  Aliases  `@arg`, `@argument`, `@param`  
+|  Autofilled  false  
+|  Allowed on  functions, mixins  
+
+Extra notes
+  Default value is optional.  Description is optional. Hyphen before description is optional.  Description is parsed as Markdown.*  Multiple types should be separated by pipes (`|`).  
+
+__Example__
+
+    /// @param {type} $name
+    /// @param {type | othertype} $name
+    /// @param {type} $name - description
+    /// @param {type} $name [default value] - description
+
+# @property
+-----------------------
+
+|  Attribute  Value  
+
+|  Description  Document maps properties, use the dot notation to signify nesting  
+|  Multiple  true  
+|  Default  
+|  Aliases  `@prop`  
+|  Autofilled  false  
+|  Allowed on  variables  
+
+Extra notes
+  Description is parsed as Markdown.*  If `{Type}` is omitted, it will default to `Map` to make it more convenient for nested maps.  
+
+__Example__
+
+    /// @prop {Type} base.default [default] - description
+
+# @require
+---------------------
+
+|  Attribute  Value  
+
+|  Description  Defines if the documented item requires any other item  
+|  Multiple  true  
+|  Default  
+|  Aliases  `@requires`  
+|  Autofilled  true  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Type is optional;
+                default type is `function`. Can be either `function`, `mixin`, `variable` or `placeholder`.  If `{type}` is `variable`, then the `$` sign before the variable name is optional. Alongside if there is a `$` sign before the item name, then the `{variable}` type is optional.  If `{type}` is `placeholder`, then the `%` sign before the placeholder name is optional. Alongside if there is a `%` sign before the item name, then the `{placeholder}` type is optional.  Description is optional. Hyphen before description is optional.  Description is parsed as Markdown.*  Link is optional.  Item name can contain `::`, `:`, `.` and/or `/` when item is from an external resource.  Link is used as a link if present, else it tries to link to an inner item, else it doesn’t have a link.  The other item will automatically have a key named `usedBy` containing the name of function requiring it.  
+
+__Example__
+
+    /// @require item
+    /// @require {type} item
+    /// @require {type} item - description
+    /// @require {type} item description
+    /// @require {type} item <link>
+    /// @require {type} item description <link>
+
+# @return
+-------------------
+
+|  Attribute  Value  
+
+|  Description  Describes the return statement of the documented function  
+|  Multiple  false  
+|  Default  
+|  Aliases  `@returns`  
+|  Autofilled  false  
+|  Allowed on  functions  
+
+Extra notes
+  Description is optional.
+   Hyphen before description is optional.  
+   Description is parsed as Markdown.*  
+   Multiple types must be separated by pipes (`|`).  
+
+__Example__
+
+    /// @return {type}
+    /// @return {type | othertype}
+    /// @return {type} description
+
+# @see
+-------------
+
+|  Attribute  Value  
+
+|  Description  Describes an item that is somehow related to the documented item (to describe a dependency, authors should use `@require` instead)  
+|  Multiple  true  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+- Type is __*optional*__
+- default type is `function`.
+- Can be either `function`, `mixin`, `variable` or `placeholder`.
+- If `{type}` is `variable`, then the `$` sign before the variable name is optional.
+- Alongside if there is a `$` sign before the item name, then the `{variable}` type is optional.
+- If `{type}` is `placeholder`, then the `%` sign before the placeholder name is optional.
+- Alongside if there is a `%` sign before the item name, then the `{placeholder}` type is optional.
+
+
+__Example__
+
+    /// @see other-item
+    /// @see {mixin} other-item
+    /// @see $other-item
+    /// @see %other-item
+
+# @since
+-----------------
+
+|  Attribute  Value  
+
+|  Description  Describes the version at which the documented item has been implemented or updated  
+|  Multiple  true  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Description is optional. Hyphen before description is optional.  Description is parsed as Markdown.*  
+
+__Example__
+
+    /// @since version
+    /// @since version description
+
+# @throw
+-----------------
+
+|  Attribute  Value  
+
+|  Description  Describes an error thrown by the documented item  
+|  Multiple  true  
+|  Default  
+|  Aliases  `@throws`, `@exception`  
+|  Autofilled  true  
+|  Allowed on  functions, mixins, placeholders  
+
+Extra notes
+  Parsed as Markdown.*  
+
+__Example__
+
+    /// @throw Error related message
+
+# @todo
+---------------
+
+|  Attribute  Value  
+
+|  Description  Defines any task to do regarding the documented item  
+|  Multiple  true  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  functions, mixins, placeholders, variables  
+
+Extra notes
+  Parsed as Markdown.*  
+
+__Example__
+
+    /// @todo Task to be done
+
+
+# @type
+---------------
+
+|  Attribute  Value  
+
+|  Description  Describes the type of the documented variable  
+|  Multiple  false  
+|  Default  
+|  Aliases  
+|  Autofilled  false  
+|  Allowed on  variables  
+
+Extra notes
+  Multiple types should be separated with pipes (`|`).  
+
+__Example__
+
+    /// @type Bool
+    /// @type Bool | String
+
+
+
+*The Markdown parsing is effective in compliant themes, by using the Markdown filter from [sassdoc-extras](/extra-tools/#markdown).*

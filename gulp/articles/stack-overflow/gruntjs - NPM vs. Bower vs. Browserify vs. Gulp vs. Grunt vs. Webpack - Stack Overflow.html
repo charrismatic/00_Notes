@@ -1,0 +1,2857 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+
+<head>
+
+<title>gruntjs - NPM vs. Bower vs. Browserify vs. Gulp vs. Grunt vs. Webpack - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta property="og:type" content="website"/>
+    <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:domain" content="stackoverflow.com"/>
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="NPM vs. Bower vs. Browserify vs. Gulp vs. Grunt vs. Webpack" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I&#39;m trying to summarize my knowledge about the most popular JavaScript package managers, bundlers, and task runners. Please correct me if I&#39;m wrong:
+npm &amp;amp; bower are package managers. They just " />
+    <meta property="og:url" content="https://stackoverflow.com/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack"/>
+    <link rel="canonical" href="https://stackoverflow.com/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack" />
+
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.sstatic.net/Js/stub.en.js?v=9917eff1b01c"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/all.css?v=9df52c12ea50">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;NPM vs. Bower vs. Browserify vs. Gulp vs. Grunt vs. Webpack&#39;" href="/feeds/question/35062852">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:13,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:35062852});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '35062852');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', true); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1501309948,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"childUrl":"https://meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"3922a125252eea57fed82a818f4ceeef","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"canSeeNewHeaderDesign":true,"ab":{"inline_signup_hero":{"v":"b","g":1}}},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableImgurHttps":true,"forceHttpsImages":true},"comments":{},"userProfile":{"openGraphAPIKey":"58740831ad23540e00c58987"},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"e5db791d9306","js/moderator.en.js":"fa5aac63c4be","js/full-anon.en.js":"9ea98b3490e7","js/full.en.js":"8d49e88f4078","js/wmd.en.js":"14d10f426939","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"cbcc2882179e","js/help.en.js":"118cb359bcc6","js/tageditor.en.js":"09862381cd28","js/tageditornew.en.js":"f7924e23790a","js/inline-tag-editing.en.js":"7581a98341e4","js/revisions.en.js":"47de10a8358f","js/review.en.js":"8d52739abf64","js/tagsuggestions.en.js":"1b1fef557065","js/post-validation.en.js":"d80ed29d17e1","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"e287aab873c0","js/keyboard-shortcuts.en.js":"672b95bef808","js/external-editor.en.js":"3e5baf662544","js/adops.en.js":"9a6a7812a212","js/external-editor.en.js":"3e5baf662544","js/snippet-javascript.en.js":"4adbf892dd3e","js/snippet-javascript-codemirror.en.js":"2ffd9cbdb9b7"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    <noscript id="noscript-css"><style type="text/css">body,.so-header{margin-top:1.9em}</style></noscript>
+</head>
+<body class="question-page new-topbar">
+            <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        <iframe id="adzerk-user-match" width="0" height="0" frameborder="0" scrolling="no" onload="window.AUMIframeDone=true"
+                src="https://ssum-sec.casalemedia.com/usermatch?s=183712&amp;cb=https%3A%2F%2Fengine.adzerk.net%2Fudb%2F22%2Fsync%2Fi.gif%3FpartnerId%3D1%26userId%3D"
+                style="display: none;" marginheight="0" marginwidth="0"></iframe>
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+<header class="so-header js-so-header _fixed">
+    <div class="-container">
+        <div class="-main">            
+            <a href="https://stackoverflow.com" class="-logo js-gps-track "
+               data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+
+                <span class="-img">Stack Overflow</span>
+            </a>
+
+            <nav class="navigation" role="navigation" aria-label="site navigation">
+                <ol class="-list">
+                        <li class="-item _current">
+        <a id="nav-questions" href="/questions" class="-link js-gps-track" 
+            data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">Questions</a>
+    </li>
+
+    <li class="-item">
+        <a id="nav-jobs" href="/jobs?med=site-ui&amp;ref=jobs-tab" class="-link js-gps-track" 
+            data-gps-track="top_nav.click({is_current:false, location:2, destination:6})">Developer Jobs</a>
+    </li>
+                        <li class="-item">
+        <a id="nav-docs" href="/documentation" class="-link js-gps-track" 
+            data-gps-track="top_nav.click({is_current:false, location:2, destination:7})">Documentation <small class='beta-badge'>beta</small></a>
+    </li>
+                        <li class="-item">
+        <a id="nav-tags" href="/tags" class="-link js-gps-track" 
+            data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">Tags</a>
+    </li>
+
+                        <li class="-item">
+        <a id="nav-users" href="/users" class="-link js-gps-track" 
+            data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">Users</a>
+    </li>
+
+                </ol>
+            </nav>
+
+                <form id="search" action="/search" method="get" class="searchbar" autocomplete="off" role="search">
+                    <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"/></svg>
+                    <input name="q" type="text" placeholder="Search..." value="" tabindex="1" autocomplete="off" maxlength="240" class="f-input js-search-field" />
+                    <button type="submit" class="btn js-search-submit">
+                        <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"/></svg>
+                    </button>
+                </form>
+
+        </div>
+        
+
+
+    
+
+<div class="-actions">
+    <nav class="secondary-nav">
+        <div class="-dialog-container js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="https://stackoverflow.com">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+            <a href="https://stackoverflow.com/help" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:14 })"
+>help</a>
+                    <a href="https://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+            </div>
+
+    <a href="https://stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+    <a href="https://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f35062852%2fnpm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="https://stackoverflow.blog" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+                <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="https://meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+
+        </div>
+        <ol class="-list">
+
+
+    <li class="-item"><a href="#" class="-link js-help-button" title="Help Center and other resources">
+        <svg role="icon" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16.001A8 8 0 0 0 9 1zm.812 12.126c-.02.716-.55 1.157-1.238 1.137-.659-.02-1.177-.49-1.157-1.209.02-.715.566-1.17 1.225-1.15.691.021 1.194.507 1.17 1.222zm1.956-5.114c-.168.237-.546.542-1.02.912l-.527.361c-.257.197-.417.43-.502.695-.044.141-.076.507-.084.752-.004.048-.032.156-.181.156H7.883c-.165 0-.185-.096-.18-.144.023-.667.12-1.218.397-1.66.374-.594 1.426-1.221 1.426-1.221.161-.12.286-.25.382-.39.177-.24.321-.51.321-.8 0-.333-.08-.65-.293-.915-.249-.31-.518-.458-1.036-.458-.51 0-.808.257-1.021.594-.213.338-.177.735-.177 1.097H5.746c0-1.366.357-2.238 1.112-2.752.51-.35 1.162-.502 1.921-.502.996 0 1.788.184 2.487.715.647.49.988 1.181.988 2.113 0 .575-.2 1.057-.486 1.447z"/></svg>
+    </a></li>
+                <li class="-item">
+        <a href="https://stackexchange.com" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 170 Stack Exchange sites">
+            <svg role="icon" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M1 13a2 2 0 0 0 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2zM15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2zM1 6h16v4H1V6z"/></svg>
+        </a>
+    </li>
+
+
+        </ol>
+    </nav>
+        <div class="-ctas">
+                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f35062852%2fnpm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack" class="login-link btn-clear" rel="nofollow">Log In</a>
+                    <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=%2fusers%2fstory%2fcurrent&amp;utm_source=stackoverflow.com&amp;utm_medium=dev-story&amp;utm_campaign=signup-redirect" class="login-link btn" rel="nofollow">Sign Up</a>
+
+        </div>
+</div>
+    </div>
+</header>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init(); });
+            StackExchange.scrollPadding.setPaddingTop(60, 10);     </script>
+
+    <div class="container  ">
+        
+
+
+        <div id="content" class="snippet-hidden">
+
+
+
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+
+<div id="herobox" class="alternate hero-container">
+    <div class="test"></div>
+        <div id="close">
+            <a title="click to minimize"><span>x</span> Dismiss</a>
+        </div>
+    <div class="content">
+        <b>Join the Stack Overflow Community</b>
+        <div class="separator"></div>
+        <div class="blurb">
+            Stack Overflow is a community of 7.5 million programmers, just like you, helping each other.
+                <br/>
+Join them; it only takes a minute:                <br/>
+        </div>
+        <a href="/users/signup?ssrc=hero&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" id="tell-me-more" class="button">Sign up</a>
+    </div>
+</div>
+<script>
+    StackExchange.ready(function () {
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;
+        }
+        
+        $('#tell-me-more').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+        
+        $('.hero-container #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+            });
+            
+            $.cookie("hero", "mini", { path: "/", expires: 365 });
+            $.ajax({
+                url: "/hero-mini",
+                success: function (data) {
+                    $(".hero-container").fadeOut("fast", function () {
+                        $(".hero-container").replaceWith(data);
+                        $("#herobox-mini").fadeIn("fast");
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>    <div class="inner-content">
+		<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack" class="question-hyperlink">NPM vs. Bower vs. Browserify vs. Gulp vs. Grunt vs. Webpack</a></h1>
+
+            
+<div class="aside-cta" role="navigation" aria-label="ask new question">
+    <a href="/questions/ask" class="btn-outlined">Ask Question</a>
+</div>
+		</div>
+			<div id="mainbar" role="main" aria-label="question and answers">
+
+			
+
+<div class="question" data-questionid="35062852"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk501569955",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk501569955"></div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="35062852">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post high-scored-post">1000</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#">favorite</a>
+        <div class="favoritecount"><b>726</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I'm trying to summarize my knowledge about the most popular JavaScript package managers, bundlers, and task runners. Please correct me if I'm wrong:</p>
+
+<ul>
+<li><code>npm</code> &amp; <code>bower</code> are package managers. They just download the dependencies and don't know how to build projects on their own. What they know is to call <code>webpack</code>/<code>gulp</code>/<code>grunt</code> after fetching all the dependencies.</li>
+<li><code>bower</code> is like <code>npm</code>, but builds flattened dependencies trees (unlike <code>npm</code> which do it recursively). Meaning <code>npm</code> fetches the dependencies for each dependency (may fetch the same a few times), while <code>bower</code> expects you to manually include sub-dependencies. Sometimes <code>bower</code> and <code>npm</code> are used together for front-end and back-end respectively (since each megabyte might matter on front-end).</li>
+<li><code>grunt</code> and <code>gulp</code> are task runners to automate everything that can be automated (i.e. compile CSS/Sass, optimize images, make a bundle and minify/transpile it).</li>
+<li><code>grunt</code> vs. <code>gulp</code> (is like <code>maven</code> vs. <code>gradle</code> or configuration vs. code). Grunt is based on configuring separate independent tasks, each task opens/handles/closes file. Gulp requires less amount of code and is based on Node streams, which allows it to build pipe chains (w/o reopening the same file) and makes it faster. </li>
+<li><code>webpack</code> (<code>webpack-dev-server</code>) - for me it's a task runner with hot reloading of changes which allows you to forget about all JS/CSS watchers. </li>
+<li><code>npm</code>/<code>bower</code> + plugins may replace task runners. Their abilities often intersect so there are different implications if you need to use <code>gulp</code>/<code>grunt</code> over <code>npm</code> + plugins. But task runners are definitely better for complex tasks (e.g. "on each build create bundle, transpile from ES6 to ES5, run it at all browsers emulators, make screenshots and deploy to dropbox through ftp").</li>
+<li><code>browserify</code> allows packaging node modules for browsers. <code>browserify</code> vs <code>node</code>'s <code>require</code> is actually <a href="https://addyosmani.com/writing-modular-js/" rel="noreferrer">AMD vs CommonJS</a>.</li>
+</ul>
+
+<p><strong><em>Questions:</em></strong></p>
+
+<ol>
+<li><em>What is <code>webpack</code> &amp; <code>webpack-dev-server</code>?</em> Official documentation says it's a module bundler but for me it's just a task runner. <em>What's the difference?</em></li>
+<li><em>Where would you use <code>browserify</code>? Can't we do the same with node/ES6 imports?</em> </li>
+<li><em>When would you use <code>gulp</code>/<code>grunt</code> over <code>npm</code> + plugins?</em></li>
+<li><em>Please provide examples when you need to use a combination</em></li>
+</ol>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/gruntjs" class="post-tag" title="show questions tagged &#39;gruntjs&#39;" rel="tag">gruntjs</a> <a href="/questions/tagged/npm" class="post-tag" title="show questions tagged &#39;npm&#39;" rel="tag">npm</a> <a href="/questions/tagged/gulp" class="post-tag" title="show questions tagged &#39;gulp&#39;" rel="tag">gulp</a> <a href="/questions/tagged/bower" class="post-tag" title="show questions tagged &#39;bower&#39;" rel="tag">bower</a> <a href="/questions/tagged/webpack" class="post-tag" title="show questions tagged &#39;webpack&#39;" rel="tag">webpack</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/35062852" title="short permalink to this question" class="short-link" id="link-post-35062852">share</a><span class="lsep">|</span><a href="/posts/35062852/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/35062852/revisions" title="show all edits to this post">edited <span title="2017-03-08 16:46:59Z" class="relativetime">Mar 8 at 16:46</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1315694/rhinowalrus"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/be204b3a238efc29f6813999fd75ef92?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1315694/rhinowalrus">RhinoWalrus</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,169</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="18 silver badges"><span class="badge2"></span><span class="badgecount">18</span></span><span title="36 bronze badges"><span class="badge3"></span><span class="badgecount">36</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2016-01-28 13:28:39Z" class="relativetime">Jan 28 '16 at 13:28</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2761509/volodymyr-bakhmatiuk"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/W1qMz.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2761509/volodymyr-bakhmatiuk">Volodymyr Bakhmatiuk</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 12,809" dir="ltr">12.8k</span><span title="17 gold badges"><span class="badge1"></span><span class="badgecount">17</span></span><span title="60 silver badges"><span class="badge2"></span><span class="badgecount">60</span></span><span title="121 bronze badges"><span class="badge3"></span><span class="badgecount">121</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-35062852" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="8"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-65628502" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">15</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">time to add in <a href="http://rollupjs.org/" rel="nofollow noreferrer">rollup</a>? 😝</span>
+                    &ndash;&nbsp;<a href="/users/128511/gman"
+                       title="33,106 reputation"
+                       class="comment-user">gman</a>
+                <span class="comment-date" dir="ltr"><span title="2016-08-25 09:57:02Z" class="relativetime-clean">Aug 25 '16 at 9:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-66180090" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="supernova">76</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">this is a very reasonable question. pseudo web-devs like me stumble over all the packages that are implemented in a weekly fashion..</span>
+                    &ndash;&nbsp;<a href="/users/1972382/simon-dirmeier"
+                       title="439 reputation"
+                       class="comment-user">Simon Dirmeier</a>
+                <span class="comment-date" dir="ltr"><span title="2016-09-10 16:44:31Z" class="relativetime-clean">Sep 10 '16 at 16:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-67433107" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="supernova">57</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f" rel="nofollow noreferrer">hackernoon.com/&hellip;</a></span>
+                    &ndash;&nbsp;<a href="/users/1520701/fisherman"
+                       title="2,230 reputation"
+                       class="comment-user">Fisherman</a>
+                <span class="comment-date" dir="ltr"><span title="2016-10-17 06:53:59Z" class="relativetime-clean">Oct 17 '16 at 6:53</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-67442118" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">13</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Fisherman I&#39;m totally new to this, and it seems completely nuts...</span>
+                    &ndash;&nbsp;<a href="/users/2341409/david-stosik"
+                       title="447 reputation"
+                       class="comment-user">David Stosik</a>
+                <span class="comment-date" dir="ltr"><span title="2016-10-17 11:09:08Z" class="relativetime-clean">Oct 17 '16 at 11:09</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-67443416" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Fisherman The &quot;recommended&quot; comment I just read was even worse! D: I just want to build a fricking static page that uses a couple of CSS/JS libs, and would benefit from having a tool that can compile that together... Throw in some templating engine to give some rest to my Ctrl-C/Ctrl-V fingers, and that&#39;d be perfect... And yet, hours into it, still trying to find a way to go...</span>
+                    &ndash;&nbsp;<a href="/users/2341409/david-stosik"
+                       title="447 reputation"
+                       class="comment-user">David Stosik</a>
+                <span class="comment-date" dir="ltr"><span title="2016-10-17 11:45:00Z" class="relativetime-clean">Oct 17 '16 at 11:45</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-35062852" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>8</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								8 Answers
+                                <span style="display:none;" itemprop="answerCount">8</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a class="youarehere" href="/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a href="/questions/35062852/npm-vs-bower-vs-browserify-vs-gulp-vs-grunt-vs-webpack?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="35064297"></a>
+<div id="answer-35064297" class="answer accepted-answer" data-answerid="35064297"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="35064297">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">558</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+<div class="bounty-award-container"><span class="bounty-award" title="This answer has been awarded bounties worth 50 reputation by Asim K T">+50</span></div>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Webpack and Browserify do pretty much the same job, which is bundling your modules to be used in a browser environment (though you can target other environments, like bundling your server-side ES6 code for Node). For example the Node module is a feature, which doesn't exist in the browser, and ES 6 modules are not implemented in any browser yet, which is why things need to be bundled. However, they differ in many ways, Webpack offers many tools by default (e.g. code splitting), while Browserify can do this only after downloading plugins, but using both leads to very similar results. It comes down to personal preference (I am used to Webpack). Webpack is not a task runner, it is just processor of your files (it processes them by so called loaders) run directly from CLI or by a task runner.</p>
+
+<p><code>webpack-dev-server</code> provides something like Browsersync - a server, where you can deploy your app and verify your FE developing progress immediately by dev-server automatically refreshing the browser or even propagating changes without it with hot deploy (e.g. React components).</p>
+
+<p>I've been using Gulp for its conciseness and easy task writing, but have later found out I need neither Gulp nor Grunt at all. Everything I have ever needed could have been done using npm scripts to run 3rd-party tools through their API. Choosing between Gulp, Grunt or npm scripts depends on your taste, JS experience and experience of developers working with you.</p>
+
+<p>While tasks in Gulp (or Grunt maybe) are easy to read even for people not so familiar with JS, it is yet another tool to require and learn, and I personally prefer to narrow my dependencies and make things simple. On the other hand, replacing these tasks with combination of npm scripts and run files (where configuration and execution function of tools like Webpack lies) is more challenging. But in the majority of cases, those three are equal in terms of results.</p>
+
+<p>As for the examples, I suggest you have a look at this <a href="https://github.com/kriasoft/react-starter-kit" rel="noreferrer">React starter project</a>, which shows you nice combination of npm scripts, Webpack and Browsersync. You can find those npm scripts in package.json in the root folder, in a property named <code>scripts</code>. There you will mostly encounter commands like <code>babel-node tools/run start</code>. Babel-node is a CLI tool (not ment for production use), which at first compiles ES6 file <code>tools/run</code> (run.js file located in <a href="https://github.com/kriasoft/react-starter-kit/tree/master/tools" rel="noreferrer">tools</a>) - basically a runner utility. This runner takes a function as an argument and runs it, which in this case is <code>start</code> - another utility (start.js) responsible for bundling source files (both client and server), starting node-express server and subsequently Browsersync, which serves as a proxy for propagating development changes to browser.</p>
+
+<p>Speaking more precisely, start.js imports Webpack config for client, manipulates it to add hot module replacement capabilities, then creates both client and server side bundles, starts node server through yet another utility named runServer.js and after successful start inits Browsersync, which looks something like this.</p>
+
+<pre><code>const bs = Browsersync.create();  
+bs.init({
+      ...(DEBUG ? {} : { notify: false, ui: false }),
+
+      proxy: {
+        target: host,
+        middleware: [wpMiddleware, ...hotMiddlewares],
+      },
+
+      // no need to watch '*.js' here, webpack will take care of it for us,
+      // including full page reloads if HMR won't work
+      files: ['build/content/**/*.*'],
+}, resolve)
+</code></pre>
+
+<p>The important part is <code>proxy.target</code>, where you set server address you want to proxy, which could be <a href="http://localhost:3000" rel="noreferrer">http://localhost:3000</a>, and Browsersync starts a server listening on <a href="http://localhost:3001" rel="noreferrer">http://localhost:3001</a>, where the same app is deployed, but with hot module replacement, so you can experience propagation of source file changes to browser immediately with or even without reloading. As you can see, there is another configuration property <code>files</code> with individual files or patterns Browsersync watches for changes and reloads browser, if some occur, but as the comment says, Webpack takes care of watching js sources by itself with HMR, so they cooperate there.</p>
+
+<p>Now I don't have any equivalent example of such Grunt or Gulp configuration, but with Gulp (and somewhat similarly with Grunt) you would write individual tasks in gulpfile.js like</p>
+
+<pre><code>gulp.task('bundle', function() {
+  // bundling source files with some gulp plugins like gulp-webpack maybe
+});
+
+gulp.task('start', function() {
+  // starting server and stuff
+});
+</code></pre>
+
+<p>where you would be doing essentially pretty much the same things as in the starter-kit, this time with task runner, which solves some problems for you, but presents its own issues and some difficulties during learning the usage, and as I say, the more dependencies you have, the more can go wrong. And that is the reason I like to get rid of such tools.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/35064297" title="short permalink to this answer" class="short-link" id="link-post-35064297">share</a><span class="lsep">|</span><a href="/posts/35064297/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/35064297/revisions" title="show all edits to this post">edited <span title="2016-10-12 12:32:51Z" class="relativetime">Oct 12 '16 at 12:32</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-01-28 14:34:48Z" class="relativetime">Jan 28 '16 at 14:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/4256274/dan-sko%c4%8ddopole"><div class="gravatar-wrapper-32"><img src="https://graph.facebook.com/100000606686057/picture?type=large" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/4256274/dan-sko%c4%8ddopole">Dan Skočdopole</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">5,831</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="9 bronze badges"><span class="badge3"></span><span class="badgecount">9</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-35064297" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-57851518" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">great answer! May you describe pls in which way webpack/browserify manage reuse node modules at browser please?</span>
+                    &ndash;&nbsp;<a href="/users/2761509/volodymyr-bakhmatiuk"
+                       title="12,809 reputation"
+                       class="comment-user owner">Volodymyr Bakhmatiuk</a>
+                <span class="comment-date" dir="ltr"><span title="2016-01-28 14:39:10Z" class="relativetime-clean">Jan 28 '16 at 14:39</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-57857149" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Webpack assembles dependencies (exported module values) into object (installedModules). Each module is therefore property of that object and name of such property represents its id (eg. 1, 2, 3 ... etc.). Everytime you require such module in your source, webpack transforms the value into function call with module id in argument (eg. __webpack_require__(1)), which returns the right dependency based on search in installedModules by module id. I&#39;m not sure, how Browserify handles it.</span>
+                    &ndash;&nbsp;<a href="/users/4256274/dan-sko%c4%8ddopole"
+                       title="5,831 reputation"
+                       class="comment-user">Dan Skočdopole</a>
+                <span class="comment-date" dir="ltr"><span title="2016-01-28 16:36:58Z" class="relativetime-clean">Jan 28 '16 at 16:36</span></span>
+                        <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-66170530" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Dan Skočdopole Can you elaborate more?</span>
+                    &ndash;&nbsp;<a href="/users/4015856/asim-k-t"
+                       title="3,308 reputation"
+                       class="comment-user">Asim K T</a>
+                <span class="comment-date" dir="ltr"><span title="2016-09-10 06:03:00Z" class="relativetime-clean">Sep 10 '16 at 6:03</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-66175373" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I don&#180;t agree with presenting basic usage of gulp or grunt, these two are easy to compare using google, webpack-dev-server requires to understand webpack first, and that is out of scope of this question / answer, but I have presented some Browsersync config. You are right with the starter-kit, and I elaborated on it more.</span>
+                    &ndash;&nbsp;<a href="/users/4256274/dan-sko%c4%8ddopole"
+                       title="5,831 reputation"
+                       class="comment-user">Dan Skočdopole</a>
+                <span class="comment-date" dir="ltr"><span title="2016-09-10 11:43:53Z" class="relativetime-clean">Sep 10 '16 at 11:43</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-70938611" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">+1 for reducing dependencies to keep things simple rather than following the (more) popular opinion that every new package must be used!</span>
+                    &ndash;&nbsp;<a href="/users/3507333/madannes"
+                       title="123 reputation"
+                       class="comment-user">madannes</a>
+                <span class="comment-date" dir="ltr"><span title="2017-01-26 16:29:14Z" class="relativetime-clean">Jan 26 at 16:29</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-35064297" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk2116347003",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk2116347003"></div>
+  
+<a name="44092960"></a>
+<div id="answer-44092960" class="answer" data-answerid="44092960"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="44092960">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>OK, they all have some similarities, they do the same thing for you in different and similar ways, I divide them in <strong>3 main groups</strong> as below:
+<hr>
+<strong>1) Module bundlers</strong> </p>
+
+<p>webpack and browserify as popular ones, work like task runners but with more flexibility, aslo it will bundle everything together as your setting, so you can point to the result as bundle.js for example in one single file including the CSS and Javascript, for more details of each, look at the details below:</p>
+
+<p><strong>webpack</strong></p>
+
+<blockquote>
+  <p>webpack is a module bundler for modern JavaScript applications. When
+  webpack processes your application, it recursively builds a dependency
+  graph that includes every module your application needs, then packages
+  all of those modules into a small number of bundles - often only one -
+  to be loaded by the browser.</p>
+  
+  <p>It is incredibly configurable, but to get started you only need to
+  understand Four Core Concepts: entry, output, loaders, and plugins.</p>
+  
+  <p>This document is intended to give a high-level overview of these
+  concepts, while providing links to detailed concept specific
+  use-cases.</p>
+</blockquote>
+
+<p>more <a href="https://webpack.js.org/concepts/" rel="nofollow noreferrer">here</a></p>
+
+<p><strong>browserify</strong></p>
+
+<blockquote>
+  <p>Browserify is a development tool that allows us to write node.js-style
+  modules that compile for use in the browser. Just like node, we write
+  our modules in separate files, exporting external methods and
+  properties using the module.exports and exports variables. We can even
+  require other modules using the require function, and if we omit the
+  relative path it’ll resolve to the module in the node_modules
+  directory.</p>
+</blockquote>
+
+<p>more <a href="http://blakeembrey.com/articles/2013/09/introduction-to-browserify/" rel="nofollow noreferrer">here</a></p>
+
+<hr>
+
+<p><strong>2) Task runners</strong> </p>
+
+<p>gulp and grunt are task runners, basically what they do, creating tasks and run them whenever you want, for example you install a plugin to minify your CSS and then run it each time to do minifying, more details about each: </p>
+
+<p><strong>gulp</strong></p>
+
+<blockquote>
+  <p>gulp.js is an open-source JavaScript toolkit by Fractal Innovations
+  and the open source community at GitHub, used as a streaming build
+  system in front-end web development. It is a task runner built on
+  Node.js and Node Package Manager (npm), used for automation of
+  time-consuming and repetitive tasks involved in web development like
+  minification, concatenation, cache busting, unit testing, linting,
+  optimization etc. gulp uses a code-over-configuration approach to
+  define its tasks and relies on its small, single-purposed plugins to
+  carry them out. gulp ecosystem has 1000+ such plugins made available
+  to choose from.</p>
+</blockquote>
+
+<p>more <a href="https://en.wikipedia.org/wiki/Gulp.js" rel="nofollow noreferrer">here</a></p>
+
+<p><strong>grunt</strong></p>
+
+<blockquote>
+  <p>Grunt is a JavaScript task runner, a tool used to automatically
+  perform frequently used tasks such as minification, compilation, unit
+  testing, linting, etc. It uses a command-line interface to run custom
+  tasks defined in a file (known as a Gruntfile). Grunt was created by
+  Ben Alman and is written in Node.js. It is distributed via npm.
+  Presently, there are more than five thousand plugins available in the
+  Grunt ecosystem.</p>
+</blockquote>
+
+<p>more <a href="https://en.wikipedia.org/wiki/Grunt_(software)" rel="nofollow noreferrer">here</a></p>
+
+<hr>
+
+<p><strong>3) Package managers</strong> </p>
+
+<p>package managers, what they do is managing plugins you need in your application and install them for you through github etc using package.json, very handy to update you modules, install them and sharing your app across, more details for each:</p>
+
+<p><strong>npm</strong></p>
+
+<blockquote>
+  <p>npm is a package manager for the JavaScript programming language. It
+  is the default package manager for the JavaScript runtime environment
+  Node.js. It consists of a command line client, also called npm, and an
+  online database of public packages, called the npm registry. The
+  registry is accessed via the client, and the available packages can be
+  browsed and searched via the npm website.</p>
+</blockquote>
+
+<p>more <a href="https://www.npmjs.com/" rel="nofollow noreferrer">here</a></p>
+
+<p><strong>bower</strong></p>
+
+<blockquote>
+  <p>Bower can manage components that contain HTML, CSS, JavaScript, fonts
+  or even image files. Bower doesn’t concatenate or minify code or do
+  anything else - it just installs the right versions of the packages
+  you need and their dependencies.
+  To get started, Bower works by fetching and installing packages from
+  all over, taking care of hunting, finding, downloading, and saving the
+  stuff you’re looking for. Bower keeps track of these packages in a
+  manifest file, bower.json.</p>
+</blockquote>
+
+<p>more <a href="https://bower.io/" rel="nofollow noreferrer">here</a></p>
+
+<p>and the most recent package manager that shouldn't be missed, it's young and fast in real work environment compare to npm which I was mostly using before, for reinstalling modules, it do double checks the node_modules folder to check the existence of the module, also seems installing the modules takes less time:</p>
+
+<p><strong>yarn</strong></p>
+
+<blockquote>
+  <p>Yarn is a package manager for your code. It allows you to use and
+  share code with other developers from around the world. Yarn does this
+  quickly, securely, and reliably so you don’t ever have to worry.</p>
+  
+  <p>Yarn allows you to use other developers’ solutions to different
+  problems, making it easier for you to develop your software. If you
+  have problems, you can report issues or contribute back, and when the
+  problem is fixed, you can use Yarn to keep it all up to date.</p>
+  
+  <p>Code is shared through something called a package (sometimes referred
+  to as a module). A package contains all the code being shared as well
+  as a package.json file which describes the package.</p>
+</blockquote>
+
+<p>more <a href="https://yarnpkg.com/lang/en/docs/getting-started/" rel="nofollow noreferrer">here</a></p>
+
+<hr>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/44092960" title="short permalink to this answer" class="short-link" id="link-post-44092960">share</a><span class="lsep">|</span><a href="/posts/44092960/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/44092960/revisions" title="show all edits to this post">edited <span title="2017-06-30 08:26:52Z" class="relativetime">Jun 30 at 8:26</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2017-05-21 03:43:46Z" class="relativetime">May 21 at 3:43</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/5423108/alireza"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/WtfBG.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/5423108/alireza">Alireza</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,524</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="40 silver badges"><span class="badge2"></span><span class="badgecount">40</span></span><span title="42 bronze badges"><span class="badge3"></span><span class="badgecount">42</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-44092960" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-44092960" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="39825582"></a>
+<div id="answer-39825582" class="answer" data-answerid="39825582"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="39825582">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">346</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I am also searching for this quite sometimes since there are a lot of tools out there and each of them benefits us in a different aspect. The community is divided across tools like <code>Browserify, Webpack, jspm, Grunt and Gulp</code>. You might also hear about <code>Yeoman or Slush</code>. That’s not really a problem, it’s just confusing for everyone trying to understand a clear path forward.</p>
+
+<p>Anyway, I would like to contribute something.</p>
+
+<p><strong>1. Package Manager</strong> </p>
+
+<p>Package managers simplify installing and updating project dependencies, which are libraries such as: <code>jQuery, Bootstrap</code>, etc - everything that is used on your site and isn't written by you.</p>
+
+<p>Browsing all the library websites, downloading and unpacking the archives, copying files into the projects — all of this is replaced with a few commands in the terminal.</p>
+
+<ul>
+<li><p><a href="https://www.npmjs.com/" rel="noreferrer"><code>NPM</code></a> stands for: <code>Node JS package manager</code> helps you to manage all the libraries your software relays on. You would define your needs in a file called <code>package.json</code> and run <code>npm install</code> in the command line...then BANG your packages are downloaded and are ready to use. Could be used both for <code>front-end and back-end</code> libraries.</p></li>
+<li><p><a href="https://bower.io/" rel="noreferrer"><code>Bower</code></a>: for front-end package manager, the concept is same with NPM. All your libraries are stored in a file named <code>bower.json</code> and then run <code>bower install</code> in the command line. </p></li>
+</ul>
+
+<blockquote>
+  <p>The biggest different of <code>Bower</code> and <code>NPM</code> is that NPM does nested
+  dependency tree while Bower requires a flat dependency tree as below.</p>
+  
+  <p>Quoting from <a href="https://stackoverflow.com/questions/18641899/what-is-the-difference-between-bower-and-npm">What is the difference between Bower and npm?</a></p>
+</blockquote>
+
+<p><strong><a href="https://www.npmjs.com/" rel="noreferrer">NPM</a></strong></p>
+
+<pre><code>project root
+[node_modules] // default directory for dependencies
+ -&gt; dependency A
+ -&gt; dependency B
+    [node_modules]
+    -&gt; dependency A
+
+ -&gt; dependency C
+    [node_modules]
+    -&gt; dependency B
+      [node_modules]
+       -&gt; dependency A 
+    -&gt; dependency D
+</code></pre>
+
+<p><strong><a href="https://bower.io/" rel="noreferrer">Bower</a></strong></p>
+
+<pre><code>project root
+[bower_components] // default directory for dependencies
+ -&gt; dependency A
+ -&gt; dependency B // needs A
+ -&gt; dependency C // needs B and D
+ -&gt; dependency D
+</code></pre>
+
+<blockquote>
+  <p>There are some updates on <a href="https://docs.npmjs.com/how-npm-works/npm3-dupe" rel="noreferrer"><code>npm 3 Duplication and Deduplication</code></a>,
+  please open the doc for more detail.</p>
+</blockquote>
+
+<ul>
+<li><p><a href="https://yarnpkg.com/" rel="noreferrer"><code>Yarn</code></a>: A new package manager for <code>JavaScript</code> <a href="https://code.facebook.com/posts/1840075619545360" rel="noreferrer">published</a> by <code>Facebook</code> recently with some more advantages in comparing with <code>NPM</code>. And with Yarn, you still can use both <a href="https://www.npmjs.com/" rel="noreferrer"><code>NPM</code></a>and <a href="https://bower.io/" rel="noreferrer"><code>Bower</code></a>registry to fetch the package. If you've installed a package before, <code>yarn</code> creates a cached copy which facilitates <code>offline package installs</code>.</p></li>
+<li><p><a href="http://jspm.io/" rel="noreferrer"><code>jspm</code></a>: is a package manager for the <code>SystemJS</code> universal module loader, built on top of the dynamic <code>ES6</code> module loader. It is not an entirely new package manager with its own set of rules, rather it works on top of existing package sources. Out of the box, it works with <code>GitHub</code> and <code>npm</code>. As most of the <code>Bower</code> based packages are based on <code>GitHub</code>, we can install the those packages using <code>jspm</code> as well. It has a registry that lists most of the commonly used front-end packages for easier installation.</p></li>
+</ul>
+
+<blockquote>
+  <p>See the different between <a href="https://bower.io/" rel="noreferrer"><code>Bower</code></a> and <code>jspm</code>:
+  <a href="https://stackoverflow.com/questions/25416813/package-manager-bower-vs-jspm">Package Manager: Bower vs jspm</a></p>
+</blockquote>
+
+<hr>
+
+<p><strong>2. Module Loader/Bundling</strong></p>
+
+<p>Most projects of any scale will have their code split between a number of files. And while you could just include each file with an individual <code>&lt;script&gt;</code> tag. However, <code>&lt;script&gt;</code> establishes a new http connection, and for small files – which is a goal of modularity – the time to set up the connection can take significantly longer than transferring the data. While the scripts are downloading, no content can be changed on the page.</p>
+
+<ul>
+<li>The problem of download time can largely be solved by concatenating a group of simple modules into a single file, and minifying it.</li>
+</ul>
+
+<p>E.g</p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;Wagon&lt;/title&gt;
+    &lt;script src=“build/wagon-bundle.js”&gt;&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+
+<ul>
+<li>The performance comes at the expense of the flexibility though. If your modules have inter-dependency, this lack of flexibility may be a showstopper.</li>
+</ul>
+
+<p>E.g</p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;Skateboard&lt;/title&gt;
+    &lt;script src=“connectors/axle.js”&gt;&lt;/script&gt;
+    &lt;script src=“frames/board.js”&gt;&lt;/script&gt;
+    &lt;!-- skateboard-wheel and ball-bearing both depend on abstract-rolling-thing --&gt;
+    &lt;script src=“rolling-things/abstract-rolling-thing.js”&gt;&lt;/script&gt;
+    &lt;script src=“rolling-things/wheels/skateboard-wheel.js”&gt;&lt;/script&gt;
+    &lt;!-- but if skateboard-wheel also depends on ball-bearing --&gt;
+    &lt;!-- then having this script tag here could cause a problem --&gt;
+    &lt;script src=“rolling-things/ball-bearing.js”&gt;&lt;/script&gt;
+    &lt;!-- connect wheels to axle and axle to frame --&gt;
+    &lt;script src=“vehicles/skateboard/our-sk8bd-init.js”&gt;&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p>Computers can do that better than you can, and that is why you should use a tool to automatically bundle everything into a single file.</p>
+
+<p><strong>Then we heard about <code>RequireJS</code>, <code>Browserify</code>, <code>Webpack</code> and <code>SystemJS</code></strong></p>
+
+<ul>
+<li><a href="http://requirejs.org/" rel="noreferrer"><code>RequireJS</code></a>: is a <code>JavaScript</code> file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments, like <code>Node</code>.</li>
+</ul>
+
+<p>E.g: <strong>myModule.js</strong></p>
+
+<pre><code>// package/lib is a dependency we require
+define(["package/lib"], function (lib) {
+
+    // behavior for our module
+    function foo() {
+        lib.log( "hello world!" );
+    }
+
+    // export (expose) foo to other modules as foobar
+    return {
+        foobar: foo
+    }
+});
+</code></pre>
+
+<p>In <code>main.js</code>, we can import <code>myModule.js</code> as dependency and use it.</p>
+
+<pre><code>require(["package/myModule"], function(myModule) {
+    myModule.foobar();
+});
+</code></pre>
+
+<p>And then in our <code>HTML</code>, we can refer to use with <code>RequireJS</code>.</p>
+
+<pre><code>&lt;script src=“app/require.js” data-main=“main.js” &gt;&lt;/script&gt;
+</code></pre>
+
+<blockquote>
+  <p>Read more about <code>CommonJS</code> and <code>AMD</code> to get understanding easily.
+  <a href="https://stackoverflow.com/questions/16521471/relation-between-commonjs-amd-and-requirejs">Relation between CommonJS, AMD and RequireJS?</a></p>
+</blockquote>
+
+<ul>
+<li><a href="http://browserify.org/" rel="noreferrer"><code>Browserify</code></a>: set out to allow use of <code>CommonJS</code> formatted modules in the browser. Consequently, <code>Browserify</code> isn’t as much a module loader as a module bundler: <code>Browserify</code> is entirely a build-time tool, producing a bundle of code which can then be loaded client-side.</li>
+</ul>
+
+<p>Start with a build machine that has node &amp; npm installed, and get the package:</p>
+
+<pre><code>npm install -g –save-dev browserify
+</code></pre>
+
+<p>Write your modules in <code>CommonJS</code> format</p>
+
+<pre><code>//entry-point.js
+var foo = require('../foo.js');
+console.log(foo(4));
+</code></pre>
+
+<p>And when happy, issue the command to bundle:</p>
+
+<pre><code>browserify entry-point.js -o bundle-name.js
+</code></pre>
+
+<p>Browserify recursively finds all dependencies of entry-point and assembles them into a single file:</p>
+
+<pre><code>&lt;script src=”bundle-name.js”&gt;&lt;/script&gt;
+</code></pre>
+
+<ul>
+<li><a href="https://webpack.github.io/" rel="noreferrer"><code>Webpack</code></a>: It bundles all of your static assets, including <code>JavaScript</code>, images, CSS and more, into a single file. It also enables you to process the files through different types of loaders. You could write your <code>JavaScript</code> with <code>CommonJS</code> or <code>AMD</code> modules syntax. It attacks the build problem in a fundamentally more integrated and opinionated manner. In <code>Browserify</code> you use <code>Gulp/Grunt</code> and a long list of transforms and plugins to get the job done. <code>Webpack</code> offers enough power out of the box that you typically don’t need <code>Grunt</code> or <code>Gulp</code> at all.</li>
+</ul>
+
+<p>Basic usage is beyond simple. Install Webpack like Browserify:</p>
+
+<pre><code>npm install -g –save-dev webpack
+</code></pre>
+
+<p>And pass the command an entry point and an output file:</p>
+
+<pre><code>webpack ./entry-point.js bundle-name.js
+</code></pre>
+
+<ul>
+<li><a href="https://github.com/systemjs/systemjs" rel="noreferrer"><code>SystemJS</code></a>: is a module loader that <strong>can import modules at run time in any of the popular formats</strong> used today (<code>CommonJS, UMD, AMD, ES6</code>). It is built on top of the <code>ES6</code> module loader polyfill and is smart enough to detect the format being used and handle it appropriately. <code>SystemJS</code> can also transpile ES6 code (with <code>Babel</code> or <code>Traceur</code>) or other languages such as <code>TypeScript</code> and <code>CoffeeScript</code> using plugins. </li>
+</ul>
+
+<blockquote>
+  <p>Want to know what is the <code>node module</code> and why it is not well adapted to in-browser.</p>
+  
+  <p>More useful article: </p>
+  
+  <ul>
+  <li><a href="https://medium.com/@housecor/browserify-vs-webpack-b3d7ca08a0a9#.c1q7ao3h4" rel="noreferrer">https://medium.com/@housecor/browserify-vs-webpack-b3d7ca08a0a9#.c1q7ao3h4</a></li>
+  <li><a href="http://jamesknelson.com/which-build-system-should-i-use-for-my-javascript-app/" rel="noreferrer">http://jamesknelson.com/which-build-system-should-i-use-for-my-javascript-app/</a></li>
+  <li><a href="https://appendto.com/2016/06/the-short-history-of-javascript-module-loaders/" rel="noreferrer">https://appendto.com/2016/06/the-short-history-of-javascript-module-loaders/</a></li>
+  </ul>
+</blockquote>
+
+<hr>
+
+<blockquote>
+  <p>Why <code>jspm</code> and <code>SystemJS</code>?</p>
+  
+  <p>One of the main goals of <code>ES6</code> modularity is to make it really simple
+  to install and use any Javascript library from anywhere on the
+  Internet (<code>Github</code>, <code>npm</code>, etc.). Only two things are needed:</p>
+  
+  <ul>
+  <li>A single command to install the library</li>
+  <li>One single line of code to import the library and use it</li>
+  </ul>
+  
+  <p>So with <code>jspm</code>, you can do it.</p>
+  
+  <ol>
+  <li>Install the library with a command: <code>jspm install jquery</code></li>
+  <li>Import the library with a single line of code, no need to external reference inside you HTML file. </li>
+  </ol>
+  
+  <p><strong>display.js</strong></p>
+
+<pre><code>var $ = require('jquery'); 
+
+$('body').append("I've imported jQuery!");
+</code></pre>
+  
+  <ol start="3">
+  <li><p>Then you configure these things within <code>System.config({ ... })</code> before
+  importing your module. Normally when run <code>jspm init</code>, there will be a file 
+  named <code>config.js</code> for this purpose.</p></li>
+  <li><p>To make these scripts run, we need to load <code>system.js</code> and <code>config.js</code> on the HTML page. After that we will load the <code>display.js</code> file using
+  the <code>SystemJS</code> module loader. </p></li>
+  </ol>
+  
+  <p><strong>index.html</strong></p>
+
+<pre><code>&lt;script src="jspm_packages/system.js"&gt;&lt;/script&gt;
+&lt;script src="config.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  System.import("scripts/display.js");
+&lt;/script&gt;
+</code></pre>
+  
+  <p>Noted: You can also use <code>npm</code> with <code>Webpack</code> as Angular 2 has applied it. Since <code>jspm</code> was developed to integrate with <code>SystemJS</code> and it works on top of existing <code>npm</code> source, so your answer is up to you.</p>
+</blockquote>
+
+<hr>
+
+<p><strong>3. Task runner</strong></p>
+
+<p>Task runners and build tools are primarily command-line tools. Why we need to use them: In one word: <strong>automation</strong>. The less work you have to do when performing repetitive tasks like <strong>minification, compilation, unit testing, linting</strong> which previously cost us a lot of times to do with command line or even manually.</p>
+
+<ul>
+<li><a href="http://gruntjs.com/" rel="noreferrer"><code>Grunt</code></a>: You can create automation for your development environment to pre-process codes or create build scripts with a config file and it seems very difficult to handle a complex task. Popular in last few years. </li>
+</ul>
+
+<p>Every task in <code>Grunt</code> is an array of different plugin configurations, that simply get executed one after another, in a strictly independent, and sequential fashion.</p>
+
+<pre><code>grunt.initConfig({
+  clean: {
+    src: ['build/app.js', 'build/vendor.js']
+  },
+
+  copy: {
+    files: [{
+      src: 'build/app.js',
+      dest: 'build/dist/app.js'
+    }]
+  }
+
+  concat: {
+    'build/app.js': ['build/vendors.js', 'build/app.js']
+  }
+
+  // ... other task configurations ...
+
+});
+
+grunt.registerTask('build', ['clean', 'bower', 'browserify', 'concat', 'copy']);
+</code></pre>
+
+<ul>
+<li><a href="http://gulpjs.com/" rel="noreferrer"><code>Gulp</code></a>: Automation just like <code>Grunt</code> but instead of configurations, you can write <code>JavaScript</code> with streams like it's a node application. Prefer these days.</li>
+</ul>
+
+<p>This is a <code>Gulp</code> sample task declaration.</p>
+
+<pre><code>//import the necessary gulp plugins
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var minifyCss = require('gulp-minify-css');
+var rename = require('gulp-rename');
+
+//declare the task
+gulp.task('sass', function(done) {
+  gulp.src('./scss/ionic.app.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('./www/css/'))
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(rename({ extname: '.min.css' }))
+    .pipe(gulp.dest('./www/css/'))
+    .on('end', done);
+});
+</code></pre>
+
+<blockquote>
+  <p>See more: <a href="https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4#.fte0nahri" rel="noreferrer">https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4#.fte0nahri</a></p>
+</blockquote>
+
+<hr>
+
+<p><strong>4. Scaffolding tools</strong></p>
+
+<ul>
+<li><code>Slush and Yeoman</code>: You can create starter projects with them. For example, you are planning to build a prototype with HTML and SCSS, then instead of manually create some folder like scss, css, img, fonts. You can just install <code>yeoman</code> and run a simple script. Then everything here for you. </li>
+</ul>
+
+<p>Find more <a href="http://yeoman.io/" rel="noreferrer">here</a>. </p>
+
+<pre><code>npm install -g yo
+npm install --global generator-h5bp
+yo h5bp
+</code></pre>
+
+<blockquote>
+  <p>See more: <a href="https://www.quora.com/What-are-the-differences-between-NPM-Bower-Grunt-Gulp-Webpack-Browserify-Slush-Yeoman-and-Express" rel="noreferrer">https://www.quora.com/What-are-the-differences-between-NPM-Bower-Grunt-Gulp-Webpack-Browserify-Slush-Yeoman-and-Express</a></p>
+</blockquote>
+
+<hr>
+
+<p>My answer is not really matched with the content of the question but when I'm searching for these knowledge on Google, I always see the question on topso I decided to answer it in summary as well as why we need to use those tool. </p>
+
+<p>Recently I found a really comprehensive guide from Grab team about how to approach front-end development in 2017. You can check it out as below.</p>
+
+<p><a href="https://github.com/grab/front-end-guide" rel="noreferrer">https://github.com/grab/front-end-guide</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/39825582" title="short permalink to this answer" class="short-link" id="link-post-39825582">share</a><span class="lsep">|</span><a href="/posts/39825582/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/39825582/revisions" title="show all edits to this post">edited <span title="2017-06-30 08:09:57Z" class="relativetime">Jun 30 at 8:09</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2016-10-03 06:23:44Z" class="relativetime">Oct 3 '16 at 6:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3375906/trungk18"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/iem4X.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3375906/trungk18">trungk18</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">7,510</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="17 silver badges"><span class="badge2"></span><span class="badgecount">17</span></span><span title="43 bronze badges"><span class="badge3"></span><span class="badgecount">43</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-39825582" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-76599867" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">super helpful! thanks!</span>
+                    &ndash;&nbsp;<a href="/users/464253/bobo"
+                       title="2,620 reputation"
+                       class="comment-user">Bobo</a>
+                <span class="comment-date" dir="ltr"><span title="2017-06-28 18:14:07Z" class="relativetime-clean">Jun 28 at 18:14</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-76621188" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Man, this should be the accepted answer. Very concise (taking into account how many topics you actually covered) and clear. Thx.</span>
+                    &ndash;&nbsp;<a href="/users/5788429/anton"
+                       title="1,361 reputation"
+                       class="comment-user">Anton</a>
+                <span class="comment-date" dir="ltr"><span title="2017-06-29 08:57:32Z" class="relativetime-clean">Jun 29 at 8:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-39825582" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="44265109"></a>
+<div id="answer-44265109" class="answer" data-answerid="44265109"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="44265109">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>StackShare provides a side-by-side (or <strong>stack up</strong>) of three tools at one time. </p>
+
+<p>Here it is for <a href="https://stackshare.io/stackups/bower-vs-browserify-vs-npm" rel="nofollow noreferrer">npm vs. Bower vs. Browserify</a> and for <a href="https://stackshare.io/stackups/grunt-vs-gulp-vs-webpack" rel="nofollow noreferrer">gulp vs. Webpack vs. Grunt</a></p>
+
+<p>On these comparison pages you can find the following:</p>
+
+<ul>
+<li>number of votes each has received from the StackShare community</li>
+<li>which companies use them in their tech stack</li>
+<li>interest level for each over time</li>
+<li>pros for each tool</li>
+</ul>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/44265109" title="short permalink to this answer" class="short-link" id="link-post-44265109">share</a><span class="lsep">|</span><a href="/posts/44265109/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2017-05-30 14:31:23Z" class="relativetime">May 30 at 14:31</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/5928017/rob"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/zTz1T.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/5928017/rob">Rob</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-44265109" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-44265109" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="40732339"></a>
+<div id="answer-40732339" class="answer" data-answerid="40732339"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="40732339">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>What is webpack &amp; webpack-dev-server? Official documentation says it's a module bundler but for me it's just a task runner. What's the difference?</p>
+</blockquote>
+
+<p><a href="https://github.com/webpack/webpack-dev-server" rel="nofollow noreferrer">webpack-dev-server</a> is a live reloading web server that <em>Webpack</em> developers use to get immediate feedback what they do. It should only be used during development.</p>
+
+<p>This project is heavily inspired by the <a href="https://github.com/peerigon/nof5" rel="nofollow noreferrer">nof5</a> unit test tool. </p>
+
+<p><em>Webpack</em> as the name implies will create a <em>SINGLE</em> <strong>pack</strong>age for the <strong>web</strong>. The package will be minimized, and combined into a single file (we still live in HTTP 1.1 age). <em>Webpack</em> does the magic of combining the resources (JavaScript, CSS, images) and injecting them like this: <code>&lt;script src="assets/bundle.js"&gt;&lt;/script&gt;</code>.</p>
+
+<p>It can also be called <em>module bundler</em> because it must understand module dependencies, and how to grab the dependencies and to bundle them together.</p>
+
+<blockquote>
+  <p>Where would you use browserify? Can't we do the same with node/ES6 imports?</p>
+</blockquote>
+
+<p>You could use <em>Browserify</em> on the exact same tasks where you would use <em>Webpack</em>. – <em>Webpack</em> is more compact, though.</p>
+
+<p>Note that the <a href="https://gist.github.com/sokra/27b24881210b56bbaff7" rel="nofollow noreferrer">ES6 module loader features</a> in <em>Webpack2</em> are using <em>System.import</em>, which not a single browser supports natively.</p>
+
+<blockquote>
+  <p>When would you use gulp/grunt over npm + plugins?</p>
+</blockquote>
+
+<p>You can <a href="https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/" rel="nofollow noreferrer">forget</a> <em>Gulp, Grunt, Brokoli, Brunch and Bower</em>. Directly use npm command line scripts instead and you can eliminate extra packages like these here for <em>Gulp</em>:</p>
+
+<pre><code>var gulp        = require('gulp'),
+  minifyCSS     = require('gulp-minify-css'),
+  sass          = require('gulp-sass'),
+  browserify    = require('gulp-browserify'),
+  uglify        = require('gulp-uglify'),
+  rename        = require('gulp-rename'),
+  jshint        = require('gulp-jshint'),
+  jshintStyle   = require('jshint-stylish'),
+  replace       = require('gulp-replace'),
+  notify        = require('gulp-notify'),
+</code></pre>
+
+<p>You can probably use <em>Gulp</em> and <em>Grunt</em> config file generators when creating config files for your project. This way you don't need to install <em>Yeoman</em> or similar tools.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/40732339" title="short permalink to this answer" class="short-link" id="link-post-40732339">share</a><span class="lsep">|</span><a href="/posts/40732339/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/40732339/revisions" title="show all edits to this post">edited <span title="2017-03-17 15:14:45Z" class="relativetime">Mar 17 at 15:14</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/825924/robert-siemer"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/01ba1d34ce5f61cb54f224f3c1df16e4?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/825924/robert-siemer">Robert Siemer</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 10,991" dir="ltr">11k</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="41 silver badges"><span class="badge2"></span><span class="badgecount">41</span></span><span title="62 bronze badges"><span class="badge3"></span><span class="badgecount">62</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-11-22 01:23:29Z" class="relativetime">Nov 22 '16 at 1:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/5884955/prosti"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/J55wI.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/5884955/prosti">prosti</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,113</span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="25 bronze badges"><span class="badge3"></span><span class="badgecount">25</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-40732339" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-40732339" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="40047448"></a>
+<div id="answer-40047448" class="answer" data-answerid="40047448"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="40047448">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Yarn is a recent package manager that probably deserves to be mentioned. So, there : <a href="https://yarnpkg.com/" rel="nofollow">https://yarnpkg.com/</a></p>
+
+<p>Afaik, it can fetch both npm and bower dependencies and has other appreciated features.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/40047448" title="short permalink to this answer" class="short-link" id="link-post-40047448">share</a><span class="lsep">|</span><a href="/posts/40047448/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/40047448/revisions" title="show all edits to this post">edited <span title="2016-10-17 14:18:43Z" class="relativetime">Oct 17 '16 at 14:18</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-10-14 15:58:44Z" class="relativetime">Oct 14 '16 at 15:58</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/4734200/ellone"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/JSfRf.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/4734200/ellone">Ellone</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">863</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="29 bronze badges"><span class="badge3"></span><span class="badgecount">29</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-40047448" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-40047448" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="36964916"></a>
+<div id="answer-36964916" class="answer" data-answerid="36964916"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="36964916">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">31</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You can find some technical comparison on <a href="https://npmcompare.com" rel="noreferrer">npmcompare</a></p>
+
+<p><a href="https://npmcompare.com/compare/browserify,grunt,gulp,webpack" rel="noreferrer">Comparing browserify vs. grunt vs. gulp vs. webpack</a></p>
+
+<p>As you can see webpack is very well maintained with a new version coming out every 4 days on average.
+But Gulp seems to have the biggest community of them all (with over 20K stars on Github)
+Grunt seems a bit neglected (compared to the others)</p>
+
+<p>So if need to choose one over the other i would go with Gulp</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/36964916" title="short permalink to this answer" class="short-link" id="link-post-36964916">share</a><span class="lsep">|</span><a href="/posts/36964916/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-05-01 09:04:26Z" class="relativetime">May 1 '16 at 9:04</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1952477/dcohenb"><div class="gravatar-wrapper-32"><img src="https://i.stack.imgur.com/lZGJD.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1952477/dcohenb">dcohenb</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,263</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="25 bronze badges"><span class="badge3"></span><span class="badgecount">25</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-36964916" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-65800759" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks! I&#39;ve been researching about all this tools for a while and at the end this page shortened my research by a long shot. Popularity and easiness of use smarted out everything else, at least in my case.</span>
+                    &ndash;&nbsp;<a href="/users/5690355/amy-pellegrini"
+                       title="527 reputation"
+                       class="comment-user">Amy Pellegrini</a>
+                <span class="comment-date" dir="ltr"><span title="2016-08-30 15:44:01Z" class="relativetime-clean">Aug 30 '16 at 15:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-73248040" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">webpack is now 26k starts on Github and gulp with 25.7k. Can&#39;t use the popularity factor to decide anymore ...</span>
+                    &ndash;&nbsp;<a href="/users/2522759/rlaaa"
+                       title="496 reputation"
+                       class="comment-user">RLaaa</a>
+                <span class="comment-date" dir="ltr"><span title="2017-03-29 01:18:41Z" class="relativetime-clean">Mar 29 at 1:18</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-36964916" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="36628118"></a>
+<div id="answer-36628118" class="answer" data-answerid="36628118"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="36628118">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">33</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>A small note about npm: npm3 tries install dependencies in a flat way</p>
+
+<p><a href="https://docs.npmjs.com/how-npm-works/npm3#npm-v3-dependency-resolution">https://docs.npmjs.com/how-npm-works/npm3#npm-v3-dependency-resolution</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/36628118" title="short permalink to this answer" class="short-link" id="link-post-36628118">share</a><span class="lsep">|</span><a href="/posts/36628118/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-04-14 15:53:01Z" class="relativetime">Apr 14 '16 at 15:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2466276/deadworoz"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ec783234bfb40a8e66fa8507a7e449da?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2466276/deadworoz">DeadWoroz</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">618</span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-36628118" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-67248742" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">npm2 offers <code>dedupe</code> option to do the same thing</span>
+                    &ndash;&nbsp;<a href="/users/1680375/matej-svajger"
+                       title="113 reputation"
+                       class="comment-user">Matej Svajger</a>
+                <span class="comment-date" dir="ltr"><span title="2016-10-11 19:18:05Z" class="relativetime-clean">Oct 11 '16 at 19:18</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-36628118" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+				    <div class="question-status">
+        <h2>                    <b>protected</b> by <a href="/users/1668533/satpal">Satpal</a> <span dir="ltr"><span title="2017-06-22 12:22:58Z" class="relativetime">Jun 22 at 12:22</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality or spam answers that had to be removed, posting an answer now requires 10 <a href="/help/whats-reputation">reputation</a> on this site (the <a href="/help/privileges/new-user">association bonus does not count</a>).
+<br /><br />
+Would you like to answer one of these <a href="/unanswered?fromProtectedNotice=true">unanswered questions</a> instead?
+</p>
+    </div>
+
+
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/gruntjs" class="post-tag" title="show questions tagged &#39;gruntjs&#39;" rel="tag">gruntjs</a> <a href="/questions/tagged/npm" class="post-tag" title="show questions tagged &#39;npm&#39;" rel="tag">npm</a> <a href="/questions/tagged/gulp" class="post-tag" title="show questions tagged &#39;gulp&#39;" rel="tag">gulp</a> <a href="/questions/tagged/bower" class="post-tag" title="show questions tagged &#39;bower&#39;" rel="tag">bower</a> <a href="/questions/tagged/webpack" class="post-tag" title="show questions tagged &#39;webpack&#39;" rel="tag">webpack</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2016-01-28 13:28:39Z"><b>1 year, 6 months ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+                                    <b>159,433 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2017-06-30 08:26:52Z">28 days ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer bulletin-item-important">
+        
+    <div class="bulletin-item-type"><a href="http://stackoverflow.com/election" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://stackoverflow.com/election" class="question-hyperlink">2017 Community Moderator Election</a>
+        <div>ends <span title="2017-08-01 20:00:00Z" class="relativetime">in 4 days</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk574514460",[5,17,2221,1129,43]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk574514460"></div>
+        <div id="hireme"></div>
+        <script>
+window.clc_request = 'Av1XdpVL1tQIAAAAAEQEFwICAAAAAgAAAAAgAAAAfGdydW50anN8bnBtfGd1bHB8Ym93ZXJ8d2VicGFja3wAQLCVR5YoG1j8Ow';;!function i(n){try{if("function"!=typeof[].indexOf)return;if(!window.addEventListener)return;if(!n.allowed)return;if(!RegExp(n.allowed).test(location.hostname))return;var t=window,e=t.document,c=n.wv;if(e.hidden&&c)return void e.addEventListener("visibilitychange",function t(){e.hidden||(i(n),e.removeEventListener("visibilitychange",t))});if(t.clc=t.clc||{},t.clc.init=t.clc.init||[],n.autoload&&t.clc.init.push(function(i){return i.load()}),t.clc.options){for(var o in t.clc.options)n[o]=t.clc.options[o];t.clc.options=n}else t.clc.options=n;var r=e.createElement("script");r.async=!0,r.src=n.lib,e.body.appendChild(r)}catch(i){}}.call(null, {"lib":"https://cdn.sstatic.net/clc/clc.min.js?v=e180f3b5c596","u":"https://clc.stackoverflow.com/markup.js","azw":true,"kt":2000,"tto":true,"h":"clc.stackoverflow.com","autoload":true,"allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$","wv":true,"tsb":true});        </script>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="/q/42017120" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/42017120/what-is-babel-webpack-and-browserify?noredirect=1" class="question-hyperlink">What is Babel, Webpack and Browserify?</a>
+</div>
+<div class="spacer">
+	<a href="/q/18641899" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted extra-large">1419</div>
+	</a>
+	<a href="/questions/18641899/what-is-the-difference-between-bower-and-npm?noredirect=1" class="question-hyperlink">What is the difference between Bower and npm?</a>
+</div>
+<div class="spacer">
+	<a href="/q/16521471" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted large">623</div>
+	</a>
+	<a href="/questions/16521471/relation-between-commonjs-amd-and-requirejs?noredirect=1" class="question-hyperlink">Relation between CommonJS, AMD and RequireJS?</a>
+</div>
+<div class="spacer">
+	<a href="/q/25416813" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">72</div>
+	</a>
+	<a href="/questions/25416813/package-manager-bower-vs-jspm?noredirect=1" class="question-hyperlink">Package Manager: Bower vs jspm</a>
+</div>
+<div class="spacer">
+	<a href="/q/40623568" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/40623568/webpack-vs-gulp-for-a-react-app?noredirect=1" class="question-hyperlink">Webpack vs Gulp for a React App</a>
+</div>
+<div class="spacer">
+	<a href="/q/38697399" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">4</div>
+	</a>
+	<a href="/questions/38697399/efficiently-bundling-dependencies-with-electron-app-for-distribution?noredirect=1" class="question-hyperlink">Efficiently Bundling Dependencies with Electron App for Distribution</a>
+</div>
+<div class="spacer">
+	<a href="/q/43562645" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="/questions/43562645/can-yarn-be-considered-a-viable-option-as-a-replacement-for-bower-and-npm?noredirect=1" class="question-hyperlink">Can yarn be considered a viable option as a replacement for bower and npm?</a>
+</div>
+<div class="spacer">
+	<a href="/q/41267442" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">-2</div>
+	</a>
+	<a href="/questions/41267442/cant-load-angular-clipboard-using-webpack?noredirect=1" class="question-hyperlink">Can&#39;t load angular-clipboard using Webpack</a>
+</div>
+<div class="spacer">
+	<a href="/q/44893654" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/44893654/how-do-i-get-typescript-to-bundle-a-3rd-party-lib-from-node-modules?noredirect=1" class="question-hyperlink">How do I get TypeScript to bundle a 3rd party lib from node_modules?</a>
+</div>
+<div class="spacer">
+	<a href="/q/40832546" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/40832546/bundling-javascript-that-uses-revealing-module-pattern?noredirect=1" class="question-hyperlink">Bundling javascript that uses &ldquo;revealing module pattern&rdquo;</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/35062852">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer"><a href="/q/14166591" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">61</div></a><a href="/questions/14166591/automate-npm-and-bower-install-with-grunt" class="question-hyperlink">Automate npm and bower install with grunt</a></div><div class="spacer"><a href="/q/18641899" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">1419</div></a><a href="/questions/18641899/what-is-the-difference-between-bower-and-npm" class="question-hyperlink">What is the difference between Bower and npm?</a></div><div class="spacer"><a href="/q/21198977" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">508</div></a><a href="/questions/21198977/difference-between-grunt-npm-and-bower-package-json-vs-bower-json" class="question-hyperlink">Difference between Grunt, NPM and Bower ( package.json vs bower.json )</a></div><div class="spacer"><a href="/q/24687766" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="/questions/24687766/bower-over-browserify-and-npm-grunt-build" class="question-hyperlink">Bower over browserify and NPM? (Grunt build)</a></div><div class="spacer"><a href="/q/27987475" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">4</div></a><a href="/questions/27987475/can-should-grunt-be-used-with-bower-without-npm" class="question-hyperlink">Can/should Grunt be used with Bower without Npm?</a></div><div class="spacer"><a href="/q/30766900" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">22</div></a><a href="/questions/30766900/difference-between-bower-browserify-requirejs-webpack" class="question-hyperlink">Difference between bower, browserify, requirejs, webpack?</a></div><div class="spacer"><a href="/q/33561272" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">74</div></a><a href="/questions/33561272/task-runners-gulp-grunt-etc-and-bundlers-webpack-browserify-why-use-toge" class="question-hyperlink">Task Runners (Gulp, Grunt, etc) and Bundlers (Webpack, Browserify). Why use together?</a></div><div class="spacer"><a href="/q/34868496" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">2</div></a><a href="/questions/34868496/webpack-library-version-conflicts-npm-vs-bower" class="question-hyperlink">(webpack) library version conflicts, npm vs bower</a></div><div class="spacer"><a href="/q/36788748" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">14</div></a><a href="/questions/36788748/what-are-npm-bower-gulp-yeoman-and-grunt-good-for" class="question-hyperlink">What are npm, bower, gulp, Yeoman, and grunt good for?</a></div><div class="spacer"><a href="/q/39441725" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="/questions/39441725/visual-studio-2015-is-integrated-with-npm-bower-grunt-and-gulp-do-i-need-to" class="question-hyperlink">Visual Studio 2015 is integrated with npm, Bower, Grunt, and Gulp, do I need to install these separately?</a></div>
+                    </div>
+				</div>
+            
+
+<div id="hot-network-questions" class="module tex2jax_ignore">
+    <h4>
+        <a href="https://stackexchange.com/questions?tab=hot"
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-interpersonal" title="Interpersonal Skills Stack Exchange"></div><a href="https://interpersonal.stackexchange.com/questions/951/how-to-ask-my-father-in-law-to-stop-entering-our-house-unannounced" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:680 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to ask my father in law to stop entering our house unannounced?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/87229/would-pyrokinesis-be-an-effective-defense" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Would pyrokinesis be an effective defense?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="https://movies.stackexchange.com/questions/78017/how-come-maesters-have-not-yet-figured-out-what-cured-shireen" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How come Maesters have not yet figured out what cured Shireen?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="https://money.stackexchange.com/questions/83193/do-rental-car-agencies-sell-their-cars-at-a-time-when-it-is-risky-for-the-purcha" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do rental car agencies sell their cars at a time when it is risky for the purchaser?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/95896/completely-burnt-out-at-work-but-not-sure-how-to-continue" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Completely burnt out at work but not sure how to continue
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="https://academia.stackexchange.com/questions/93775/professor-to-whom-i-broke-my-promise-is-now-a-collaborator-what-to-say" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Professor to whom I broke my promise is now a collaborator. What to say?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/87196/how-long-could-an-eternal-fire-last" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How Long Could an &quot;Eternal&quot; Fire Last?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="https://tex.stackexchange.com/questions/383697/how-to-write-a-character-symbol-similar-to-ka-for-the-character-l" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to write a character/symbol similar to \k{A} for the character L?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/136349/float-754-to-hamming" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Float 754 to Hamming
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/96009/my-manager-asked-me-to-hide-project-costs-is-it-unethical-for-me-to-comply" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    My manager asked me to hide project costs. Is it unethical for me to comply?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a href="https://space.stackexchange.com/questions/22440/spacex-and-propulsive-landing-on-mars-what-just-happened-and-why" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    SpaceX and propulsive landing on Mars -- what just happened? (and why?)
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="https://math.stackexchange.com/questions/2375356/can-proofs-be-arbitrarily-long" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can proofs be arbitrarily long?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/95990/how-to-handle-senior-developer-shirking-his-work-and-giving-it-to-interns-instea" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to handle senior developer shirking his work and giving it to interns instead of doing it?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="https://travel.stackexchange.com/questions/98919/what-happens-if-you-have-a-medical-emergency-after-deplaning-but-before-passing" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What happens if you have a medical emergency after deplaning but before passing passport control?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/104375/does-improved-pact-weapon-only-count-as-a-focus-for-warlock-spells" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does Improved Pact Weapon only count as a focus for warlock spells?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="https://diy.stackexchange.com/questions/120335/what-is-the-name-of-this-metal-bar-with-holes-at-the-ends" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the name of this metal bar with holes at the ends?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/87336/would-super-sized-humans-be-super-intelligent" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Would super-sized humans be super-intelligent?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="https://scifi.stackexchange.com/questions/165897/girl-goes-over-to-the-other-site-of-her-house-and-encounters-her-button-eyed-ot" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Girl goes over to the other site of her house and encounters her button-eyed &quot;other parents&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/403222/equivalent-of-collocate-but-for-time-rather-than-space" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Equivalent of “collocate” but for time rather than space
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="https://tex.stackexchange.com/questions/383656/printing-a-table-as-png" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Printing a table as PNG?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-softwareengineering" title="Software Engineering Stack Exchange"></div><a href="https://softwareengineering.stackexchange.com/questions/354384/when-do-you-write-the-real-code-in-tdd" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    When do you write the &quot;real&quot; code in TDD?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-apple" title="Ask Different"></div><a href="https://apple.stackexchange.com/questions/293329/do-safari-private-tabs-stay-open-after-iphone-shutdown" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:118 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do Safari private tabs stay open after iPhone shutdown?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-interpersonal" title="Interpersonal Skills Stack Exchange"></div><a href="https://interpersonal.stackexchange.com/questions/993/dealing-with-people-who-always-try-to-prove-you-wrong-in-a-conversation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:680 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Dealing with people who always try to prove you wrong in a conversation
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="https://travel.stackexchange.com/questions/98984/why-is-uk-passport-control-so-much-stricter-than-in-the-schengen-area" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is UK passport control so much stricter than in the Schengen area?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/35062852" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>    </div>
+<script>
+StackExchange.ready(function(){$.get('/posts/35062852/ivc/3583');});
+</script>
+<noscript>
+    <div><img src="/posts/35062852/ivc/3583" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-js</div></div>
+
+
+        </div>
+    </div>
+
+        <footer id="footer" class="s-footer js-footer _short" role="contentinfo">
+            <div class="-container">
+                <div class="g-row js-sp-between">
+                    <div class="-logo">
+                        <a href="https://stackoverflow.com"><svg role="icon" class="svg-icon iconLogo" width="150" height="30" viewBox="0 0 150 30"><g><path d="M33.9 18.6l-1.7-.2c-1.3-.1-1.9-.6-1.9-1.6 0-1.1.8-1.8 2.4-1.8 1.1 0 2.1.3 2.8.8l1-1c-1-.8-2.3-1.1-3.8-1.1-2.3 0-3.9 1.2-3.9 3.1 0 1.8 1.1 2.7 3.2 2.9l1.8.2c1.2.1 1.8.6 1.8 1.6 0 1.3-1.1 1.9-2.8 1.9-1.3 0-2.5-.3-3.3-1.2l-1 1c1.2 1.1 2.6 1.5 4.4 1.5 2.6 0 4.3-1.2 4.3-3.2-.2-2-1.5-2.7-3.3-2.9zm13.3-4.8c-1.7 0-2.8.3-3.7 1.5l1 1c.6-.9 1.3-1.2 2.7-1.2 1.9 0 2.7.8 2.7 2.3v1h-3.2c-2.4 0-3.7 1.2-3.7 3.1 0 .8.3 1.6.8 2.2.7.7 1.5 1 3 1 1.4 0 2.2-.3 3.1-1.1v1h1.6v-7.2c-.1-2.4-1.5-3.6-4.3-3.6zm2.7 7c0 .9-.2 1.5-.5 1.8-.7.6-1.5.7-2.4.7-1.7 0-2.4-.6-2.4-1.8 0-1.2.8-1.9 2.4-1.9h3l-.1 1.2zm7.6-5.6c1 0 1.6.3 2.4 1.2l1-1c-1.1-1.2-2-1.6-3.5-1.6-2.7 0-4.7 1.8-4.7 5.5 0 3.6 2 5.5 4.7 5.5 1.5 0 2.4-.4 3.5-1.6l-1.1-1c-.8.9-1.4 1.2-2.4 1.2s-1.9-.4-2.5-1.2c-.5-.7-.7-1.5-.7-2.9 0-1.3.2-2.2.7-2.9.7-.8 1.6-1.2 2.6-1.2zm13.4-1.3H69l-4.8 4.7V9.1h-1.6v15.4h1.6v-3.9l1.9-1.9 3.6 5.8h1.9l-4.4-6.9 3.7-3.7zm7.3-.5c-1.6 0-2.7.6-3.4 1.4-1 1-1.3 2.3-1.3 4.3s.3 3.3 1.3 4.3c.7.7 1.8 1.4 3.4 1.4 1.6 0 2.8-.6 3.4-1.4 1-1 1.3-2.3 1.3-4.3s-.3-3.3-1.3-4.3c-.6-.8-1.7-1.4-3.4-1.4zm1.3 8.3c-.3.3-.7.5-1.3.5-.6 0-1-.2-1.3-.5-.6-.6-.6-1.6-.6-2.7 0-1.2.1-2.1.6-2.7.3-.3.7-.5 1.3-.5.6 0 1 .2 1.3.5.6.6.6 1.5.6 2.7.1 1.2 0 2.2-.6 2.7zm10.8-8.2l-2.2 6.9-2.3-6.9h-2.9L87 24.6h2.2l4.1-11.1h-3zm7.6-.1c-2.9 0-4.8 2-4.8 5.7 0 4.5 2.5 5.7 5.1 5.7 2 0 3.1-.6 4.2-1.7l-1.7-1.6c-.7.7-1.3 1-2.5 1-1.6 0-2.4-1-2.4-2.5h6.9v-1.2c0-3.2-1.7-5.4-4.8-5.4zM95.8 18c0-.5.1-.8.3-1.2.3-.7.9-1.2 1.9-1.2.9 0 1.6.5 1.9 1.2.2.4.2.7.3 1.2h-4.4zm11-3.4v-1.1h-2.7v11.1h2.8v-6.7c0-1.4.9-2 1.8-2 .7 0 1 .2 1.5.7l2.1-2.1c-.8-.8-1.5-1-2.6-1-1.3-.1-2.3.4-2.9 1.1zm6.3-2.3v12.3h2.8v-8.8h2v-2.1h-2v-1.2c0-.6.3-1 1-1h1.1V9.2h-1.6c-2.3 0-3.3 1.6-3.3 3.1zm16.2 1.1c-1.6 0-2.7.6-3.4 1.4-1 1-1.3 2.3-1.3 4.3s.3 3.3 1.3 4.3c.7.7 1.8 1.4 3.4 1.4 1.6 0 2.8-.6 3.4-1.4 1-1 1.3-2.3 1.3-4.3s-.3-3.3-1.3-4.3c-.6-.8-1.8-1.4-3.4-1.4zm1.3 8.3c-.3.3-.7.5-1.3.5-.6 0-1-.2-1.3-.5-.6-.6-.6-1.6-.6-2.7 0-1.2.1-2.1.6-2.7.3-.3.7-.5 1.3-.5.6 0 1 .2 1.3.5.6.6.6 1.5.6 2.7 0 1.2 0 2.2-.6 2.7zm16.5-8.2l-1.8 6.9-2.3-6.9h-2l-2.3 6.9-1.8-6.9H134l3.4 11.1h2.3l2.3-7 2.3 7h2.3l3.4-11.1h-2.9zM122 21.2V9.1h-2.8v12.3c0 1.6 1 3.2 3.2 3.2h1.6v-2.3h-1c-.7 0-1-.4-1-1.1zm-80.7-5.6l1.4-1.4h-3v-3.5h-1.6v11.1c0 1.6.9 2.9 2.7 2.9h1.1v-1.3h-.8c-1 0-1.5-.6-1.5-1.6v-6.1h1.7v-.1z" fill="#222426"/><path fill="#BCBBBB" d="M21 27v-8h3v11H0V19h3v8z"/><path d="M5.402 19.101l13.561 1.96.164-2.38-13.256-2.547-.469 2.967zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm3.4-5.9l10.2 8.5 1.7-2-10.2-8.5-1.7 2zM17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zM5 25h14v-3H5v3z" fill="#F48024"/></g></svg></a>
+                    </div>
+
+                    <nav class="-nav js-category _visible" data-name="default">
+                        <h5 class="-title"><a href="https://stackoverflow.com" class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 15})">Stack Overflow</a></h5>
+                        <ul class="-list">
+                            <li class="-item"><a href="/questions" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 16})">Questions</a></li>
+                                <li class="-item"><a href="/jobs" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 17})">Jobs</a></li>
+                                <li class="-item"><a href="https://stackoverflow.com/jobs/directory/developer-jobs" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 11})">Developer Jobs Directory</a></li>
+                                                            <li class="-item"><a href="/documentation" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 18})">Documentation</a></li>
+                            <li class="-item"><a href="/help" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 3 })">Help</a></li>
+                            <li class="-item"><a onclick='StackExchange.switchMobile("on")' class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 12 })">Mobile</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="-nav js-category _visible" data-name="default">
+                        <h5 class="-title"><a href="https://www.stackoverflowbusiness.com/?utm_source=so-footer&utm_medium=referral&utm_campaign=brand-activation" class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 19 })">Stack Overflow<br /> Business</a></h5>
+                        <ul class="-list">
+                            <li class="-item"><a href="https://www.stackoverflowbusiness.com/talent?utm_source=so-footer&utm_medium=referral&utm_campaign=brand-activation" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 20 })">Talent</a></li>
+                            <li class="-item"><a href="https://www.stackoverflowbusiness.com/advertise?utm_source=so-footer&utm_medium=referral&utm_campaign=brand-activation" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 21 })">Ads</a></li>
+                            <li class="-item"><a href="https://www.stackoverflowbusiness.com/enterprise?utm_source=so-footer&utm_medium=referral&utm_campaign=brand-activation" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 22 })">Enterprise</a></li>
+                            <li class="-item"><a href="https://www.stackoverflowbusiness.com/insights?utm_source=so-footer&utm_medium=referral&utm_campaign=brand-activation" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 23 })">Insights</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="-nav js-category _visible" data-name="default">
+                        <h5 class="-title"><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.com/company/about">Company</a></h5>
+                        <ul class="-list">
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.com/company/about">About</a></li>
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 27 })" href="https://stackoverflow.com/company/press">Press</a></li>
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 9 })" href="https://stackoverflow.com/company/work-here">Work Here</a></li>
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 7 })" href="https://stackexchange.com/legal">Legal</a></li>
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 8 })" href="https://stackexchange.com/legal/privacy-policy">Privacy Policy</a></li>
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 13 })" href="https://stackoverflow.com/company/contact">Contact Us</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="-network g-row">
+                        <a href="#" class="-back-trigger js-back"><svg role="icon" class="svg-icon iconArrowLeftAlt" width="18" height="18" viewBox="0 0 18 18"><path d="M10.582 16l1.41-1.41L6.402 9l5.59-5.59L10.582 2l-7 7z"/></svg></a>
+                        <div>
+                            <h5 class="-title"><a href="https://stackexchange.com">Stack Exchange<br> Network</a></h5>
+                            <ul class="-list">
+                                <li class="-item"><a href="#" class="-link _expandable js-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Technology">Technology</a></li>
+                                <li class="-item"><a href="#" class="-link _expandable js-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Life / Arts">Life / Arts</a></li>
+                                <li class="-item"><a href="#" class="-link _expandable js-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Culture / Recreation">Culture / Recreation</a></li>
+                                <li class="-item"><a href="#" class="-link _expandable js-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Science">Science</a></li>
+                                <li class="-item"><a href="#" class="-link _expandable js-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Other">Other</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <nav class="-nav js-category" data-name="Technology">
+        <ul class="-list">
+                <li class="-item"><a href="//stackoverflow.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                <li class="-item"><a href="//serverfault.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="system and network administrators">Server Fault</a></li>
+                <li class="-item"><a href="//superuser.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="computer enthusiasts and power users">Super User</a></li>
+                <li class="-item"><a href="//webapps.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="power users of web applications">Web Applications</a></li>
+                <li class="-item"><a href="//askubuntu.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                <li class="-item"><a href="//webmasters.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="pro webmasters">Webmasters</a></li>
+                <li class="-item"><a href="//gamedev.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="professional and independent game developers">Game Development</a></li>
+                    </ul></nav><nav class="-nav js-category" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="//tex.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                <li class="-item"><a href="//softwareengineering.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="professionals, academics, and students working within the systems development life cycle">Software Engineering</a></li>
+                <li class="-item"><a href="//unix.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                <li class="-item"><a href="//apple.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                <li class="-item"><a href="//wordpress.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="WordPress developers and administrators">WordPress Development</a></li>
+                <li class="-item"><a href="//gis.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                <li class="-item"><a href="//electronics.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                    </ul></nav><nav class="-nav js-category" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="//android.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                <li class="-item"><a href="//security.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="information security professionals">Information Security</a></li>
+                <li class="-item"><a href="//dba.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                <li class="-item"><a href="//drupal.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="Drupal developers and administrators">Drupal Answers</a></li>
+                <li class="-item"><a href="//sharepoint.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="SharePoint enthusiasts">SharePoint</a></li>
+                <li class="-item"><a href="//ux.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="user experience researchers and experts">User Experience</a></li>
+                <li class="-item"><a href="//mathematica.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="users of Wolfram Mathematica">Mathematica</a></li>
+                    </ul></nav><nav class="-nav js-category" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="//salesforce.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                <li class="-item"><a href="//expressionengine.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                <li class="-item"><a href="//blender.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="people who use Blender to create 3D graphics, animations, or games">Blender</a></li>
+                <li class="-item"><a href="//networkengineering.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="network engineers">Network Engineering</a></li>
+                <li class="-item"><a href="//crypto.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                <li class="-item"><a href="//codereview.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="peer programmer code reviews">Code Review</a></li>
+                <li class="-item"><a href="//magento.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="users of the Magento e-Commerce platform">Magento</a></li>
+                    </ul></nav><nav class="-nav js-category" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="//softwarerecs.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="people seeking specific software recommendations">Software Recommendations</a></li>
+                <li class="-item"><a href="//dsp.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                <li class="-item"><a href="//emacs.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="those using, extending or developing Emacs">Emacs</a></li>
+                <li class="-item"><a href="//raspberrypi.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                <li class="-item"><a href="//codegolf.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                <li class="-item"><a href="//ethereum.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="users of Ethereum, the decentralized application platform and smart contract enabled blockchain">Ethereum</a></li>
+                <li class="-item"><a href="//datascience.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="Data science professionals, Machine Learning specialists, and those interested in learning more about the field">Data Science</a></li>
+                    </ul></nav><nav class="-nav js-category" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="//arduino.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="developers of open-source hardware and software that is compatible with Arduino">Arduino</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#technology" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 26 })">
+                        <strong>
+                            more (26)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </nav>
+    <nav class="-nav js-category" data-name="Life / Arts">
+        <ul class="-list">
+                <li class="-item"><a href="//photo.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                <li class="-item"><a href="//scifi.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                <li class="-item"><a href="//graphicdesign.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                <li class="-item"><a href="//movies.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                <li class="-item"><a href="//music.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                <li class="-item"><a href="//worldbuilding.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="writers/artists using science, geography and culture to construct imaginary worlds and settings">Worldbuilding</a></li>
+                <li class="-item"><a href="//cooking.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                    </ul></nav><nav class="-nav js-category" data-name="Life / Arts"><ul class="-list">
+                <li class="-item"><a href="//diy.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="contractors and serious DIYers">Home Improvement</a></li>
+                <li class="-item"><a href="//money.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                <li class="-item"><a href="//academia.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="academics and those enrolled in higher education">Academia</a></li>
+                <li class="-item"><a href="//law.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="legal professionals, students, and others with experience or interest in law">Law</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#lifearts" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 26 })">
+                        <strong>
+                            more (17)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </nav>
+    <nav class="-nav js-category" data-name="Culture / Recreation">
+        <ul class="-list">
+                <li class="-item"><a href="//english.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                <li class="-item"><a href="//skeptics.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="scientific skepticism">Skeptics</a></li>
+                <li class="-item"><a href="//judaism.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                <li class="-item"><a href="//travel.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="road warriors and seasoned travelers">Travel</a></li>
+                <li class="-item"><a href="//christianity.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                <li class="-item"><a href="//ell.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="speakers of other languages learning English">English Language Learners</a></li>
+                <li class="-item"><a href="//japanese.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                    </ul></nav><nav class="-nav js-category" data-name="Culture / Recreation"><ul class="-list">
+                <li class="-item"><a href="//gaming.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                <li class="-item"><a href="//bicycles.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                <li class="-item"><a href="//rpg.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                <li class="-item"><a href="//anime.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="anime and manga fans">Anime &amp; Manga</a></li>
+                <li class="-item"><a href="//puzzling.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="those who create, solve, and study puzzles">Puzzling</a></li>
+                <li class="-item"><a href="//mechanics.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#culturerecreation" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 26 })">
+                        <strong>
+                            more (32)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </nav>
+    <nav class="-nav js-category" data-name="Science">
+        <ul class="-list">
+                <li class="-item"><a href="//mathoverflow.net" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="professional mathematicians">MathOverflow</a></li>
+                <li class="-item"><a href="//math.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                <li class="-item"><a href="//stats.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                <li class="-item"><a href="//cstheory.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                <li class="-item"><a href="//physics.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="active researchers, academics and students of physics">Physics</a></li>
+                <li class="-item"><a href="//chemistry.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="scientists, academics, teachers and students">Chemistry</a></li>
+                <li class="-item"><a href="//biology.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="biology researchers, academics, and students">Biology</a></li>
+                    </ul></nav><nav class="-nav js-category" data-name="Science"><ul class="-list">
+                <li class="-item"><a href="//cs.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                <li class="-item"><a href="//philosophy.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#science" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 26 })">
+                        <strong>
+                            more (10)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </nav>
+    <nav class="-nav js-category" data-name="Other">
+        <ul class="-list">
+                <li class="-item"><a href="//meta.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                <li class="-item"><a href="//stackapps.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                <li class="-item"><a href="https://api.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="programmatic interaction with Stack Exchange sites">API</a></li>
+                <li class="-item"><a href="https://data.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="querying Stack Exchange data using SQL">Data</a></li>
+                <li class="-item"><a href="//area51.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 29, link: 25 })" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                    </ul>
+    </nav>
+                    <div class="-copyright text-right">
+                        <div class="g-column jc-sp-between">
+                            <ul class="-list">
+                                <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link:4 })" href="https://stackoverflow.blog?blb=1">Blog</a></li>
+                                <li class="-item"><a href="https://www.facebook.com/officialstackoverflow/" class="-link">Facebook</a></li>
+                                <li class="-item"><a href="https://twitter.com/stackoverflow" class="-link">Twitter</a></li>
+                                <li class="-item"><a href="https://linkedin.com/company/stack-overflow" class="-link">LinkedIn</a></li>
+                            </ul>
+
+                            <div>
+                                <p>
+                                    site design / logo &#169; 2017 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a>
+                                    with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/" rel="license">attribution required</a>.
+                                    <span id="svnrev">rev 2017.7.28.26639</span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                            </div>
+        </footer>
+
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled
+            <img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno">
+        </div>
+    </noscript>
+<script>var z=document.createElement("script");z.type="text/javascript",z.async=!0,z.src="https://static.adzerk.net/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
+<script>
+var ados = ados || {};
+ados.run = ados.run || [];
+
+
+ados.run.push(function () {
+    setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+    ados_setKeywords('gruntjs,npm,gulp,bower,webpack');; ados_load();
+});   
+
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-5620270-1');
+                ga('create', 'UA-5620270-59', {name: 'pageData', sampleRate: 5 });
+                ga('set', 'dimension2', '|gruntjs|npm|gulp|bower|webpack|');
+                ga('pageData.set', 'dimension2', '|gruntjs|npm|gulp|bower|webpack|');
+                ga('send', 'pageview');
+                ga('pageData.send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    </body>
+</html>

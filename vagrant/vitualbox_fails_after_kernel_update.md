@@ -1,14 +1,35 @@
 # Virtualbox
 
-1. Reinstall virtualbox packages
+## 1. TRY: Rebuild modules and symlinks
 
 ```shell
-sudo dpkg-reconfigure virtualbox-dkms && sudo dpkg-reconfigure virtualbox && sudo modprobe vboxdrvvboxconfig
+sudo /sbin/vboxconfig
+```
+
+```
+dpkg-reconfigure virtualbox-dkms
+modprobe vboxdrv
 ```
 
 
 
-2. Rebuild modules and symlinks
+## 2. FALLBACK: Reinstall virtualbox packages
 
-```sudo /sbin/vboxconfig```
+```shell
+sudo dpkg-reconfigure virtualbox-dkms && sudo dpkg-reconfigure virtualbox && sudo modprobe vboxdrv
+```
+
+source: https://askubuntu.com/questions/819939/virtualbox-fails-after-kernel-update
+
+
+
+## 3. START OVER: UNINSTALL COMPLETELY 
+
+```shell
+sudo dpkg --purge virtualbox virtualbox-5.2 virtualbox-dkms virtualbox-qt	
+```
+
+
+
+Goto https://download.virtualbox.org/virtualbox/debian/pool/contrib/v/virtualbox-5.2/ and download again
 

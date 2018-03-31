@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://travismaynard.com/writing/getting-started-with-gulp -->
+<html lang="en" class="dark-theme-everywhere-specificity-helper dark-theme-everywhere-off" id="dark-theme-everywhere-specificity-helper"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="description" content="Travis Maynard is a front-end web developer that focuses on minimalism and simplicity.">
+        <meta name="keywords" content="travis maynard,travis,maynard,software engineer,front-end,frontend,user experience,web development,web,developer,minimalism,minimalist,wvu,west virginia university,morgantown,jazz,resumator,pittsburgh, gulp,gulpjs,grunt,node,npm,javascript,terminal,bash,command prompt,command-line,tutorial">
+        <meta name="robots" content="index, follow">
+        <meta name="theme-color" content="#272932">
+        <title>Getting Started with Gulp | Travis Maynard</title>
+
+        <link href="./Getting-Started-with-Gulp_Travis-Maynard_files/css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="https://travismaynard.com/assets/dist/img/favicon.png">
+        <link rel="stylesheet" href="./Getting-Started-with-Gulp_Travis-Maynard_files/all.css">
+
+        <script async="" src="./Getting-Started-with-Gulp_Travis-Maynard_files/analytics.js"></script><script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-15189280-1', 'auto');
+    ga('send', 'pageview');
+</script>
+    <script src="./Getting-Started-with-Gulp_Travis-Maynard_files/embed.js" data-timestamp="1501308657083"></script><link rel="preload" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.eceee602870fc4ed49dc5f89e270689e.css"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.30c6b83b25e15ac64816c512ae56d158.js"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.aafec1a2f3fa1e486216be04908b0e3a.js"><link rel="preload" as="script" href="https://disqus.com/next/config.js"></head>
+    <body class="dark-theme-everywhere-specificity-helper">
+        <svg style="display:none;" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <symbol id="icon-clock" viewBox="0 0 24 24">
+            <title>clock</title>
+            <path class="path1" d="M12 1q2.242 0 4.277 0.871t3.508 2.344 2.344 3.508 0.871 4.277-0.871 4.277-2.344 3.508-3.508 2.344-4.277 0.871-4.277-0.871-3.508-2.344-2.344-3.508-0.871-4.277 0.871-4.277 2.344-3.508 3.508-2.344 4.277-0.871zM12 3q-1.828 0-3.496 0.715t-2.871 1.918-1.918 2.871-0.715 3.496 0.715 3.496 1.918 2.871 2.871 1.918 3.496 0.715 3.496-0.715 2.871-1.918 1.918-2.871 0.715-3.496-0.715-3.496-1.918-2.871-2.871-1.918-3.496-0.715zM12 5q0.414 0 0.707 0.293t0.293 0.707v5.586l2.711 2.703q0.289 0.289 0.289 0.711t-0.289 0.711-0.711 0.289-0.711-0.289l-3-3q-0.289-0.289-0.289-0.711v-6q0-0.414 0.293-0.707t0.707-0.293z"></path>
+        </symbol>
+    </defs>
+</svg>
+
+<header id="header">
+    <div id="header-content">
+        <div id="header-title">
+            <div class="logotype">
+                <a href="https://travismaynard.com/" class=" ani ani-fi">
+                    Travis Maynard
+                </a>
+            </div>
+        </div>
+
+        <div id="header-nav">
+            <nav>
+
+    <ul class="nav" role="menu">
+                    <li class="ani ani-fil">
+                <a href="https://travismaynard.com/projects" role="menuitem">
+                    Projects                </a>
+            </li>
+                    <li class="ani ani-fil">
+                <a href="https://travismaynard.com/writing" role="menuitem" class="selected">
+                    Writing                </a>
+            </li>
+                <li class="ani ani-fil">
+            <a href="https://travismaynard.com/labs">Labs</a>
+        </li>
+    </ul>
+
+</nav>
+        </div>
+    </div>
+</header>
+
+<main id="article">
+    
+<div class="article">
+    <div class="article-info">
+        December, 17th 2013
+        <span class="separator">·</span>
+
+        <span class="is-text-accent">
+            tooling        </span>
+    </div>
+
+    <h1 class="article-title">
+        <a href="https://travismaynard.com/writing/getting-started-with-gulp">
+            Getting Started with Gulp        </a>
+    </h1>
+
+            <p class="article-lead">
+            This article will make the assumption that you have never used a build tool or command-line interface before and will walk through every step required to get up and running with gulp.        </p>
+
+        <p>The good news is that it is actually pretty simple! I have created five basic steps that walk you through all of the intimidating stuff and introduce you to the core ideas that you will need to know to start using gulp. Let's get started!</p>
+<h2>Step One - Install Node</h2>
+<p>First - we need our most important requirement, Node. To install Node - simply visit <a href="http://nodejs.org/" title="node.js Official Website"></a><a href="http://nodejs.org/">http://nodejs.org</a> and then click that big green “Install” button. Once your download completes, run that application and you should be all ready to go. The Node installer also includes npm, which we will come back to a little later.</p>
+<h2>Step Two - Get To Know Your Command Line</h2>
+<p>Now, you may not be very familiar with your command-line interface (Terminal for OSX, Command Prompt for Windows) but you should be! It may seem intimidating at first, but once you get the hang of it you will have the ability to run many different command line applications such as <a href="http://sass-lang.com/" title="Sass Website">Sass</a>, <a href="http://yeoman.io/" title="Yeoman Website">Yeoman</a> and <a href="http://git-scm.com/" title="Git Website">Git</a>. All of which are very useful tools that your workflow could benefit from!</p>
+<p class="note">
+    If you <em>are</em> familiar with your command-line interface, then feel free to skip to step four.
+</p>
+<p>As a quick example, open up your command line and we will throw a couple commands at it to ensure that Node is properly installed.</p>
+<pre><code class="language-bash hljs">node -v</code></pre>
+<p>Type that and then hit enter and you should get a response on the next line with the version number of Node that you have installed. Now, let’s do the same for npm.</p>
+<pre><code class="language-bash hljs">npm -v</code></pre>
+<p>Again, this should return the version number on the next line.</p>
+<p>If you didn’t get a response, then it may mean that Node didn’t install correctly or you may need to restart your command line application. If this still isn’t working after restarting, then simply jump back up the top and try the first step again.</p>
+<h2>Step Three - Navigate To Your Project Directory</h2>
+<p>Now that we have met our command-line interface and know how to communicate with it, our next step will be navigating it. Luckily, it only takes two commands to change directories and take a look at what is inside them. These commands are <strong>ls</strong> (or <strong>dir</strong>, for Windows) to list what is in a directory and <strong>cd</strong> to change directories.</p>
+<p class="note">
+    I suggest that you spend some time playing with these commands. Get used to your file system and be aware of where everything is located. Don’t rush through this - it will save you a lot of headache later!
+</p>
+<p>Once you are comfortable with the <strong>ls</strong> and <strong>cd</strong> commands, we need to navigate to our project folder. This will likely be different for each person, but as an example this is what I would type to navigate to my local project:</p>
+<pre><code class="language-bash hljs"><span class="hljs-built_in">cd</span> /Applications/XAMPP/xamppfiles/htdocs/my-project</code></pre>
+<p class="note">
+    It is important to note that I am working on OS X. The file system on Windows is much different so, while this example may be similar, it wont translate directly to Windows.
+</p>
+<p>Once you have made it to your project directory - let's run a quick npm command to initialize our <code>package.json</code> file.</p>
+<pre><code class="language-bash hljs">npm init</code></pre>
+<p>This will prompt us to answer a few questions about our project. Once completed, it will create a file in the root directory of the project called <code>package.json</code> which will provide information about the project and its dependencies. Now, we’re ready to install gulp.</p>
+<h2>Step Four - Installing gulp</h2>
+<p>You’ve met your command-line and you know how to talk to it - you even know your way around your file system. Now, let’s meet npm and install gulp!</p>
+<p><code>npm</code> is a package manager for Node that will enable you to install additional modules for use in your projects from the command line. To learn more about npm, take a moment and visit the <a href="http://npmjs.org/" title="npm Website">npm website</a> to browse and search through all of the available packages. As a small exercise, search for gulp and take a look around.</p>
+<p>When you're ready to install gulp, jump back to your command-line application and type:</p>
+<pre><code class="language-bash hljs">npm install -g gulp</code></pre>
+<p>Let’s take a moment to break this down.</p>
+<ol>
+<li><strong>npm</strong> is the application we are using to install our package.</li>
+<li>We are running the <strong>install</strong> command on that application.</li>
+<li>The <strong>-g</strong> is an <em>optional</em> flag used to signify that we want to install this package globally so that any project can use it.</li>
+<li>And finally, <strong>gulp</strong> is the name of the package we would like to install.</li>
+</ol>
+<p class="note">
+    If you are getting <code>EACCES</code> errors when installing modules you don't have permission to write to the directory that npm is using to store them. You can prepend those commands with <strong>sudo</strong>, but it is not advised as it can lead to more problematic issues later.
+    For more information on how to resolve this, check out <a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">Fixing npm Permissions</a>.
+</p>
+<p>Once that has completed check your command-line to ensure that there are no error messages. If there are none to be seen, then congratulations! You just installed gulp! Just to double check, let’s refer back to our versioning commands we used above for Node and npm.</p>
+<pre><code class="language-bash hljs">gulp -v</code></pre>
+<p>Like before, this should return the version number on the next line of your command-line.</p>
+<p>Next, we also need to install gulp locally.</p>
+<pre><code class="language-bash hljs">npm install --save-dev gulp</code></pre>
+<p>The only thing different here is we used the <strong>--save-dev</strong> flag which instructs npm to add the dependency to our <strong>devDependencies</strong> list in our <strong>package.json</strong> file that we created earlier.</p>
+<p>Dependencies help us organize which packages are needed in our development and production environments as others contribute to or use our project.  If you would like to read more about dependencies be sure to check out the <a href="https://docs.npmjs.com/files/package.json#dependencies" title="npm package.json Documentation">package.json documentation</a>.</p>
+<p>Now that gulp is installed, the next step is setting up our gulpfile. We’re almost done!</p>
+<h2>Step Five - Setting Up Our Gulpfile &amp; Running Gulp</h2>
+<p>Once gulp is installed we have to give it some instruction so it knows what tasks for perform for us. But, first, we need to figure out exactly what tasks we need to run in our project. Time for... <strong>a SCENARIO</strong>.</p>
+<p>In our <em>Exciting Non-Generic Real World Scenario®</em>, our boss has assigned us with the following tasks:</p>
+<ul>
+<li>Lint our JavaScript. (Seriously. Do it.)</li>
+<li>Compile our Sass files. (Browsers can’t read that stuff...)</li>
+<li>Concatenate our JavaScript. (Reduce HTTP Requests!)</li>
+<li>Minify and rename concatenated files. (Every little bit counts!)</li>
+</ul>
+<p>I’m imagining our supervisor as the impatient, somewhat frightening type who eats interns when they don't do what the boss wants. So, let’s get right to it before our lunch companion gets eaten.</p>
+<h3>Install Required Plugins</h3>
+<pre><code class="language-bash hljs">npm install jshint gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-rename --save-dev</code></pre>
+<p>This will install all of the plugins we will need and add them to our devDependencies in our <strong>package.json</strong> file like we did when we installed gulp. It is worth noting that in addition to gulp plugins, we are also installing the <strong>jshint</strong> package. We are only installing this because it is a required dependency for the <strong>gulp-jshint</strong> plugin.</p>
+<p class="note">
+    If you are getting permissions errors installing these plugins you may have some issues with the permissions in your local project directory. You can prepend those commands with <strong>sudo</strong>, but it is **not advised** as it can lead to more problematic issues later. The best course of action is to ensure the permissions of your directories are setup properly.
+</p>
+<h3>Create Our gulpfile</h3>
+<p>Now that our plugins are available for us to use, we can start writing our gulpfile and instructing gulp to perform the tasks our boss assigned to us.</p>
+<p>Before we get right into the code I think it’s very important to mention that gulp only has <strong>5 methods</strong>. These methods are as follows: <strong>task</strong>, <strong>run</strong>, <strong>watch</strong>, <strong>src</strong>, and <strong>dest</strong>. These are all you will need to write your tasks.</p>
+<p>In the root directory of your project create a new file and name it <code>gulpfile.js</code> and paste the following code inside.</p>
+<h4>gulpfile.js</h4>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">// Include gulp</span>
+<span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
+
+<span class="hljs-comment">// Include Our Plugins</span>
+<span class="hljs-keyword">var</span> jshint = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-jshint'</span>);
+<span class="hljs-keyword">var</span> sass = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-sass'</span>);
+<span class="hljs-keyword">var</span> concat = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-concat'</span>);
+<span class="hljs-keyword">var</span> uglify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-uglify'</span>);
+<span class="hljs-keyword">var</span> rename = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-rename'</span>);
+
+<span class="hljs-comment">// Lint Task</span>
+gulp.task(<span class="hljs-string">'lint'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">'js/*.js'</span>)
+        .pipe(jshint())
+        .pipe(jshint.reporter(<span class="hljs-string">'default'</span>));
+});
+
+<span class="hljs-comment">// Compile Our Sass</span>
+gulp.task(<span class="hljs-string">'sass'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">'scss/*.scss'</span>)
+        .pipe(sass())
+        .pipe(gulp.dest(<span class="hljs-string">'dist/css'</span>));
+});
+
+<span class="hljs-comment">// Concatenate &amp; Minify JS</span>
+gulp.task(<span class="hljs-string">'scripts'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">'js/*.js'</span>)
+        .pipe(concat(<span class="hljs-string">'all.js'</span>))
+        .pipe(gulp.dest(<span class="hljs-string">'dist'</span>))
+        .pipe(rename(<span class="hljs-string">'all.min.js'</span>))
+        .pipe(uglify())
+        .pipe(gulp.dest(<span class="hljs-string">'dist/js'</span>));
+});
+
+<span class="hljs-comment">// Watch Files For Changes</span>
+gulp.task(<span class="hljs-string">'watch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    gulp.watch(<span class="hljs-string">'js/*.js'</span>, [<span class="hljs-string">'lint'</span>, <span class="hljs-string">'scripts'</span>]);
+    gulp.watch(<span class="hljs-string">'scss/*.scss'</span>, [<span class="hljs-string">'sass'</span>]);
+});
+
+<span class="hljs-comment">// Default Task</span>
+gulp.task(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'lint'</span>, <span class="hljs-string">'sass'</span>, <span class="hljs-string">'scripts'</span>, <span class="hljs-string">'watch'</span>]);</code></pre>
+<p>Now, let’s break this down and review what each part does.</p>
+<h4>Core &amp; Plugins</h4>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">// Include gulp</span>
+<span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
+
+<span class="hljs-comment">// Include Our Plugins</span>
+<span class="hljs-keyword">var</span> jshint = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-jshint'</span>);
+<span class="hljs-keyword">var</span> sass = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-sass'</span>);
+<span class="hljs-keyword">var</span> concat = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-concat'</span>);
+<span class="hljs-keyword">var</span> uglify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-uglify'</span>);
+<span class="hljs-keyword">var</span> rename = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-rename'</span>);</code></pre>
+<p>This includes the gulp core and plugins associated with the tasks that we will be performing. Next, we setup each of our separate tasks. These tasks are <strong>lint</strong>, <strong>sass</strong>, <strong>scripts</strong> and <strong>default</strong>.</p>
+<h4>Lint Task</h4>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">// Lint Task</span>
+gulp.task(<span class="hljs-string">'lint'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">'js/*.js'</span>)
+        .pipe(jshint())
+        .pipe(jshint.reporter(<span class="hljs-string">'default'</span>));
+});</code></pre>
+<p>Our <strong>lint</strong> task checks any JavaScript file in our <code>js/</code> directory and makes sure there are no errors in our code.</p>
+<h4>Sass Task</h4>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">// Compile Our Sass</span>
+gulp.task(<span class="hljs-string">'sass'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">'scss/*.scss'</span>)
+        .pipe(sass())
+        .pipe(gulp.dest(<span class="hljs-string">'dist/css'</span>));
+});</code></pre>
+<p>The <strong>sass</strong> task compiles any of our Sass files in our <code>scss/</code> directory into CSS and saves the compiled CSS file in our <code>dist/css</code> directory.</p>
+<h4>Scripts Task</h4>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">// Concatenate &amp; Minify JS</span>
+gulp.task(<span class="hljs-string">'scripts'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">'js/*.js'</span>)
+        .pipe(concat(<span class="hljs-string">'all.js'</span>))
+        .pipe(gulp.dest(<span class="hljs-string">'dist/js'</span>))
+        .pipe(rename(<span class="hljs-string">'all.min.js'</span>))
+        .pipe(uglify())
+        .pipe(gulp.dest(<span class="hljs-string">'dist/js'</span>));
+});</code></pre>
+<p>The <strong>scripts</strong> task concatenates all JavaScript files in our <code>js/</code> directory and saves the ouput to our <code>dist/js</code> directory.  Then gulp takes that concatenated file, minifies it, renames it and saves it to the <code>dist/js</code> directory alongside the concatenated file.</p>
+<h4>Watch Task</h4>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">// Watch Files For Changes</span>
+gulp.task(<span class="hljs-string">'watch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    gulp.watch(<span class="hljs-string">'js/*.js'</span>, [<span class="hljs-string">'lint'</span>, <span class="hljs-string">'scripts'</span>]);
+    gulp.watch(<span class="hljs-string">'scss/*.scss'</span>, [<span class="hljs-string">'sass'</span>]);
+});</code></pre>
+<p>The <strong>watch</strong> task is used to run tasks as we make changes to our files. As you write code and modify your files, the <code>gulp.watch()</code> method will listen for changes and automatically run our tasks again so we don't have to continuously jump back to our command-line and run the gulp command each time.</p>
+<h4>Default Task</h4>
+<pre><code class="language-javascript hljs"><span class="hljs-comment">// Default Task</span>
+gulp.task(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'lint'</span>, <span class="hljs-string">'sass'</span>, <span class="hljs-string">'scripts'</span>, <span class="hljs-string">'watch'</span>]);</code></pre>
+<p>Finally, we have our <strong>default</strong> task which is used as a grouped reference to our other tasks. This will be the task that is ran upon entering <strong>gulp</strong> into the command line without any additional parameters.</p>
+<p>Now, all we have left to do is run gulp. Switch back over to your command-line and type:</p>
+<pre><code class="language-bash hljs">gulp</code></pre>
+<p>This will call gulp and run everything we have defined in our <strong>default</strong> task. So, in other words It’s the same thing as running:</p>
+<pre><code class="language-bash hljs">gulp default</code></pre>
+<p>Additionally, we don’t have to run the default task. We could run any of the tasks we defined at any time. Simply call gulp and then specify the task you would like to run directly afterward. For example, we can run our <strong>sass</strong> task manually at any time like so:</p>
+<pre><code class="language-bash hljs">gulp sass</code></pre>
+<p>Pretty cool, eh?</p>
+<h2>Wrapping Up</h2>
+<p>Well, we’ve made it. We have survived our tempermental, intern-eating boss and we have heroically saved our lunch buddy. Take a moment to pat yourself on the back. As a quick recap, let’s review what we have learned.</p>
+<ol>
+<li>We learned how to install Node and npm.</li>
+<li>We learned about the command-line and how to use it.</li>
+<li>We learned how to use npm to install gulp and various plugins.</li>
+<li>We learned how to write a gulpfile and run tasks.</li>
+</ol>
+<p>It is my hope that this introduction has made understanding build tools much easier and that you can see the real value that gulp adds to your project and your development workflow. If you have any further questions be sure to post them in the comments!</p>
+<h2>Additional Reading</h2>
+<p>As always, it is great to have some additional resources, especially on the stuff that we couldn’t cover in detail with this article. So, here are some resources to take you beyond the scope of this article should you choose to go there.</p>
+<ul>
+<li><a href="https://gulpjs.com/" title="gulp on gulp">Gulp on the Web</a></li>
+<li><a href="http://gulpjs.com/plugins/" title=" Gulp Plugin Search">Gulp Plugin Search</a></li>
+<li><a href="https://github.com/wearefractal/gulp" title="gulp on GitHub">Gulp on GitHub</a></li>
+<li><a href="https://docs.npmjs.com/files/package.json#dependencies" title="npm package.json Documentation">npm package.json Documentation</a></li>
+<li><a href="http://www.amazon.com/Getting-Started-Gulp-Travis-Maynard/dp/1784395765/" title="Getting Started with Gulp on Amazon">Getting Started with Gulp on Amazon</a></li>
+</ul>
+<p>Many thanks to <a href="https://twitter.com/contrahacks" title="Eric Schoffstall on Twitter">@contrahacks</a> and <a href="https://twitter.com/BlaineBublitz" title="Blaine Bublitz on Twitter">@BlaineBublitz</a> for reviewing this article and making sure the code examples didn't explode.</p>
+        <div id="disqus_thread" class="disqus"><iframe id="dsq-app5732" name="dsq-app5732" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Getting-Started-with-Gulp_Travis-Maynard_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 7657px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+<script>
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//travismaynard.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+    &lt;a href="https://disqus.com/?ref_noscript" rel="nofollow"&gt;
+        comments powered by Disqus.
+    &lt;/a&gt;
+</noscript>
+    </div>
+</main>
+
+
+<footer id="footer">
+    <div id="footer-content">
+        <div id="footer-quote">
+            <p>
+                "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away."<br>
+                - <strong>Antoine de Saint-Exupery</strong>
+            </p>
+        </div>
+
+        <div id="footer-copy">
+            <p>© 2005 - 2017</p>        </div>
+    </div>
+</footer>
+
+    <script src="./Getting-Started-with-Gulp_Travis-Maynard_files/all.js"></script>
+
+
+<iframe style="display: none;" src="./Getting-Started-with-Gulp_Travis-Maynard_files/saved_resource(1).html"></iframe></body></html>

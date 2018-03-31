@@ -1,0 +1,142 @@
+https://gulpjs.com/plugins/ | gulp.js plugin registry
+https://www.npmjs.com/package/gulp-markdown-to-json/ | gulp-markdown-to-json
+https://www.npmjs.com/package/gulp-apidoc-to-markdown/ | gulp-apidoc-to-markdown
+https://www.npmjs.com/package/gulp-ui-doc/ | gulp-ui-doc
+https://www.npmjs.com/package/gulp-task-doc/ | gulp-task-doc
+https://www.npmjs.com/package/gulp-load-subtasks/ | gulp-load-subtasks
+https://www.npmjs.com/package/gulp-sequence/ | gulp-sequence
+https://www.npmjs.com/package/gulp-tasktree/ | gulp-tasktree
+https://www.npmjs.com/package/gulp-taskify/ | gulp-taskify
+https://www.npmjs.com/package/gulp-task-loader-recursive/ | gulp-task-loader-recursive
+https://www.npmjs.com/package/gulp-all-tasks/ | gulp-all-tasks
+https://www.npmjs.com/package/gulp-pattern/ | gulp-pattern
+https://www.npmjs.com/package/gulp-task-graph-visualizer/ | gulp-task-graph-visualizer
+https://www.npmjs.com/package/gulp-graphviz-deps/ | gulp-graphviz-deps
+https://www.npmjs.com/package/gulp-display-help/ | gulp-display-help
+https://www.npmjs.com/package/gulp-verb/ | gulp-verb
+https://www.npmjs.com/package/gulp-styleguidejs/ | gulp-styleguidejs
+https://www.npmjs.com/package/gulp-sassdoc/ | gulp-sassdoc
+https://www.npmjs.com/package/gulp-jsdoc3/ | gulp-jsdoc3
+https://www.npmjs.com/package/gulp-jsdoc-to-markdown-cdn/ | gulp-jsdoc-to-markdown-cdn
+https://www.npmjs.com/package/gulp-jsdoc-to-markdown/ | gulp-jsdoc-to-markdown
+https://www.npmjs.com/package/gulp-jsdoc/ | gulp-jsdoc
+https://www.npmjs.com/package/gulp-documentation/ | gulp-documentation
+https://www.npmjs.com/package/gulp-apidocjs/ | gulp-apidocjs
+
+
+
+
+https://github.com/elmccd/gulp-uncache | elmccd/gulp-uncache: Append hash to source files to remove clients cache
+https://www.npmjs.com/package/gulp-date-rev | gulp-date-rev
+https://www.npmjs.com/package/gulp-build-date | gulp-build-date
+
+
+https://github.com/osscafe/gulp-cheatsheet | osscafe/gulp-cheatsheet: A cheatsheet for gulp.js
+https://github.com/google/web-starter-kit/blob/master/gulpfile.babel.js | web-starter-kit/gulpfile.babel.js at master · google/web-starter-kit
+
+https://www.webstoemp.com/blog/gulp-setup/ | My default Gulp setup for build automation - Webstoemp
+http://david.nowinsky.net/gulp-book/example/versioning.html | Versioning your files | Gulp: the modern frontend factory
+http://geekswithblogs.net/shaunxu/archive/2015/02/17/10-awesome-gulp-plugins-working-with-angularjs-and-bower.aspx | 10 Awesome Gulp Plugins Working with AngularJS and Bower
+
+
+
+
+
+https://stackoverflow.com/questions/33119490/add-javascript-date-to-gulp-rev-task | npm - Add javascript date to gulp-rev task - Stack Overflow
+https://jeremenichelli.github.io/2016/05/a-gulp-recipe-for-timestamps/ | A Gulp recipe for timestamps
+https://knpuniversity.com/screencast/gulp/version-cache-busting | Versioning to Bust Cache > Gulp! Refreshment for Your Frontend Assets | KnpUniversity
+https://www.npmjs.com/package/gulp-rev-timestamp | gulp-rev-timestamp
+https://stackoverflow.com/questions/28377325/using-gulp-to-add-a-timestamp-to-filename?answertab=active#tab-top | javascript - Using Gulp to add a timestamp to filename - Stack Overflow
+https://github.com/sindresorhus/gulp-rev | sindresorhus/gulp-rev: Static asset revisioning by appending content hash to filenames: unicorn.css → unicorn-d41d8cd98f.css
+https://www.npmjs.com/package/gulp-rev-mtime | gulp-rev-mtime
+https://www.npmjs.com/package/gulp-header | gulp-header
+https://www.npmjs.com/package/gulp-rev | gulp-rev
+https://www.npmjs.com/package/gulp-bump | gulp-bump
+
+#style stats
+https://www.npmjs.com/package/gulp-stylestats | gulp-stylestats
+https://github.com/t32k/stylestats | t32k/stylestats: StyleStats is a library to collect CSS statistics.
+https://github.com/t32k/stylestats/blob/master/assets/default.json | stylestats/default.json at master · t32k/stylestats
+https://github.com/t32k/stylestats/wiki/Plot-with-Jenkins | Plot with Jenkins · t32k/stylestats Wiki
+
+https://github.com/mahnunchik/gulp-responsive | mahnunchik/gulp-responsive: gulp-responsive generates images at different sizes
+https://github.com/sindresorhus/gulp-vulcanize | sindresorhus/gulp-vulcanize: Concatenate a set of Web Components into one file
+https://github.com/ben-eb/gulp-cssnano | ben-eb/gulp-cssnano: Minify CSS with cssnano.
+https://github.com/AvraamMavridis/gulp-louis#example | AvraamMavridis/gulp-louis: Gulp task to analyze website performance.
+https://github.com/pgilad/gulp-colorguard | pgilad/gulp-colorguard: Keep a watchful eye on your css colors.
+
+https://github.com/morishitter/gulp-csscss | morishitter/gulp-csscss: gulp plugin for running csscss
+https://github.com/konitter/gulp-combine-media-queries | konitter/gulp-combine-media-queries
+https://github.com/1000ch/gulp-stylestats | 1000ch/gulp-stylestats: Gulp task for StyleStats.
+
+
+
+
+
+
+https://www.npmjs.com/package/gulp-export-comments | gulp-export-comments
+https://www.npmjs.com/package/leasot | leasot
+https://www.npmjs.com/package/parse-comments | parse-comments
+https://www.npmjs.com/package/get-comments | get-comments
+https://www.npmjs.com/package/gulp-todo | gulp-todo
+https://www.npmjs.com/package/strip-html-comments | strip-html-comments
+https://www.npmjs.com/package/jsdoc | jsdoc
+https://www.npmjs.com/package/dox | dox
+https://www.npmjs.com/package/gray-matter | gray-matter
+https://www.npmjs.com/package/esdoc | esdoc
+https://www.npmjs.com/package/documentation | documentation
+https://www.npmjs.com/package/sassdoc | sassdoc
+https://www.npmjs.com/package/gulp-documentation | gulp-documentation
+https://www.npmjs.com/package/js-comments | js-comments
+https://www.npmjs.com/package/alphabet | alphabet
+https://www.npmjs.com/package/topdoc | topdoc
+https://www.npmjs.com/package/normalize.css | normalize.css
+https://www.npmjs.com/package/dss | dss
+https://www.npmjs.com/package/nucleus-styleguide | nucleus-styleguide
+
+
+
+http://blog.ostermiller.org/find-comment | Finding Comments in Source Code Using Regular Expressions - Stephen Ostermiller
+http://eslint.org/docs/user-guide/configuring | Configuring ESLint - ESLint - Pluggable JavaScript linter
+http://blog.rangle.io/angular-gulp-bestpractices/ | 6 Gulp Best Practices You Can Use Today to Radically Improve Your Development Experience
+
+https://www.npmjs.com/package/gulp-inject | gulp-inject
+https://www.npmjs.com/package/gulp-modernizr | gulp-modernizr
+https://github.com/taptapship/wiredep | taptapship/wiredep: Wire Bower dependencies to your source code.
+
+
+https://github.com/mikaelbr/gulp-notify#requirements | mikaelbr/gulp-notify: gulp plugin to send messages based on Vinyl Files or Errors to Mac OS X, Linux or Windows using the node-notifier module. Fallbacks to Growl or simply logging
+https://github.com/postcss/postcss#other | postcss/postcss: Transforming styles with JS plugins
+https://www.npmjs.com/package/gulp-clean-css | gulp-clean-css
+
+
+
+
+https://julienrenaux.fr/2014/05/25/introduction-to-gulp-js-with-practical-examples/ | Introduction to Gulp.js with practical examples | Julien Renaux Blog
+https://gist.github.com/mikaelbr/8425025 | Example gulpfile for complete set-up. · GitHub
+https://gist.github.com/torgeir/8507130 | Example gulpfile.js · GitHub
+https://gist.github.com/demisx/9512212 | My Gulp file example · GitHub
+http://codehangar.io/concatenate-and-minify-javascript-with-gulp/ | Concatenate & Minify Javascript with Gulp, Improve Site Performance
+http://gulpjs.org/recipes/mocha-test-runner-with-gulp.html | Mocha test-runner with gulp · Gulp Documentation
+https://github.com/mishoo/UglifyJS2 | mishoo/UglifyJS2: JavaScript parser / mangler / compressor / beautifier toolkit
+http://localhost/wp-starter/wp-admin/post-new.php?post_type=industrial | Add New Page ‹ wp-starter — WordPress
+https://www.npmjs.com/package/browser-sync | browser-sync
+https://browsersync.io/docs/gulp | Browsersync + Gulp.js
+https://www.npmjs.com/package/browserslist | browserslist
+https://github.com/postcss/autoprefixer | postcss/autoprefixer: Parse CSS and add vendor prefixes to rules by Can I Use
+https://www.npmjs.com/package/autoprefixer | autoprefixer
+https://www.npmjs.com/package/postcss | postcss
+
+
+
+https://www.viget.com/articles/gulp-browserify-starter-faq | Gulp + Browserify | Viget
+https://github.com/gulpjs/gulp/blob/master/docs/README.md | gulp/README.md at master · gulpjs/gulp
+https://github.com/requirejs/almond | requirejs/almond: A minimal AMD API implementation for use after optimized builds
+http://www.100percentjs.com/just-like-grunt-gulp-browserify-now/ | And just like that Grunt and RequireJS are out, it's all about Gulp and Browserify now - { 100PercentJS }
+https://github.com/vigetlabs/blendid | vigetlabs/blendid: A delicious blend of gulp tasks combined into a configurable asset pipeline and static site builder
+
+
+https://github.com/dsswg/gulp-dss | DSSWG/gulp-dss: A gulp plugin that that builds UI & UX documentation based on the DSS parser
+https://github.com/bjankord/Style-Guide-Boilerplate | bjankord/Style-Guide-Boilerplate: ⚡️ A starting point for crafting living style guides.
+
+https://www.npmjs.com/package/gulp-param | gulp-param
