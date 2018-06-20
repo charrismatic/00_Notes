@@ -41,7 +41,6 @@ $spaces
 
 (string) Regexp pattern for matching common whitespace characters.
 
-
 ---
 
 
@@ -57,7 +56,7 @@ $replace_pairs
 
     (array) (Required) In the form array('from' => 'to', ...).
 
-
+---
 ---
 
 
@@ -77,10 +76,10 @@ $pee
 $br
 
     (bool) (Optional) If set, this will convert all remaining line-breaks after paragraphing.
-
+    
     Default value: true
 
-
+---
 ---
 
 ## wp_html_split()
@@ -95,7 +94,7 @@ $inputhtml_spli
 
     (string) (Required) The text which has to be formatted.
 
-
+---
 ---
 
 
@@ -152,7 +151,6 @@ function get_html_split_regex() {
 }
 ```
 
-
 ---
 
 wp_trim_excerpt( string $text = '' )
@@ -168,10 +166,10 @@ The 55 word limit can be modified by plugins/themes using the ‘excerpt_length�
 $text
 
     (string) (Optional) The excerpt. If set to empty, an excerpt is generated.
-
+    
     Default value: ''
 
-
+apply_filters( 'wp_trim_excerpt', string $text, string $raw_excerpt )
 apply_filters( 'wp_trim_excerpt', string $text, string $raw_excerpt )
 
 Filters the trimmed excerpt string.
@@ -184,7 +182,7 @@ $raw_excerpt
 
     (string) The text prior to trimming.
 
-
+----
 ----
 
 
@@ -200,12 +198,12 @@ $text
 $force
 
     (bool) (Optional) If true, forces balancing, ignoring the value of the option.
-
+    
     Default value: false
+    
+    
 
-
-
-
+force_balance_tags( string $text )
 force_balance_tags( string $text )
 
 Balances tags of string using a modified stack.
@@ -232,7 +230,6 @@ should be changed to:
 
 by the force_balance_tags function.
 
-
 ---
 
 human_time_diff( int $from, int $to = '' )
@@ -249,12 +246,12 @@ $from
 $to
 
     (int) (Optional) Unix timestamp to end the time difference. Default becomes time() if not set.
-
+    
     Default value: ''
+    
+    
 
-
-
-
+---
 ---
 
 url_shorten( string $url, int $length = 35 )
@@ -268,11 +265,11 @@ $url
 $length
 
     (int) (Optional) Maximum length of the shortened URL. Default 35 characters.
-
+    
     Default value: 35
+    
 
-
-
+---
 ---
 
 
@@ -287,10 +284,10 @@ Returns either ”, a 3 or 6 digit hex color (with #), or nothing. For sanitizin
 $color
 
     (string) (Required)
+    
+    
 
-
-
-
+sanitize_hex_color_no_hash( string $color )
 sanitize_hex_color_no_hash( string $color )
 
 Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
@@ -304,9 +301,9 @@ Returns either ”, a 3 or 6 digit hex color (without a #), or null.
 $color
 
     (string) (Required)
+    
 
-
-
+maybe_hash_hex_color( string $color )
 maybe_hash_hex_color( string $color )
 
 Ensures that any hex color is properly hashed.
@@ -320,9 +317,9 @@ This method should only be necessary if using sanitize_hex_color_no_hash().
 $color
 
     (string) (Required)
+    
 
-
-
+---
 ---
 
 sanitize_trackback_urls( string $to_ping )
@@ -333,10 +330,10 @@ Sanitize space or carriage return separated URLs that are used to send trackback
 $to_ping
 
     (string) (Required) Space or carriage return separated URLs
+    
+    
 
-
-
-
+---
 ---
 
 links_add_target( string $content, string $target = '\_blank', array $tags = array('a') )
@@ -356,16 +353,16 @@ $content
 $target
 
     (string) (Optional) The Target to add to the links.
-
+    
     Default value: '\_blank'
 $tags
 
     (array) (Optional) An array of tags to apply to.
-
+    
     Default value: array('a')
+    
 
-
-
+---
 ---
 
 
@@ -378,9 +375,9 @@ This should be used when preparing data for core API that expects slashed data. 
 $value
 
     (string|array) (Required) String or array of strings to slash.
+    
 
-
-
+---
 ---
 
 
@@ -418,12 +415,11 @@ $right_string
 $args
 
     (string|array) (Optional) Change 'title', 'title_left', and 'title_right' defaults.
-
+    
     Default value: null
 
-
 see also: wp_parse_args(): Used to change defaults to user defined settings.
-
+see also: wp_parse_args(): Used to change defaults to user defined settings.
 
 ---
 
@@ -444,10 +440,10 @@ $string
 $remove_breaks
 
     (bool) (Optional) Whether to remove left over line breaks and white space chars
-
+    
     Default value: false
 
-
+---
 ---
 
 get_url_in_content( string $content )
@@ -459,9 +455,9 @@ Extract and return the first URL from passed content.
 $content
 
     (string) (Required) A string which might contain a URL.
+    
 
-
-
+---
 ---
 
 sanitize_text_field( string $str )
@@ -481,15 +477,14 @@ See also #See also
     sanitize_textarea_field()
     wp_check_invalid_utf8()
     wp_strip_all_tags()
-
-
-
+    
+    
+    
     $str
-
+    
         (string) (Required) String to sanitize.
 
 ---
-
 
 ---
 wp_basename( string $path, string $suffix = '' )
@@ -505,12 +500,12 @@ $path
 $suffix
 
     (string) (Optional) If the filename ends in suffix this will also be cut off.
-
+    
     Default value: ''
+    
+    
 
-
-
-
+---
 ---
 
 links_add_base_url( string $content, string $base, array $attrs = array('src', 'href') )
@@ -529,11 +524,11 @@ $base
 $attrs
 
     (array) (Optional) The attributes which should be processed.
-
+    
     Default value: array('src', 'href')
+    
 
-
-
+---
 ---
 
 
@@ -551,9 +546,9 @@ $string
 $array
 
     (array) (Required) Variables will be stored in this array.
+    
 
-
-
+----
 ----
 
 esc_textarea( string $text )
@@ -564,7 +559,6 @@ Escaping for textarea values.
 $text
 
   (string) (Required)
-
 
 ---
 
@@ -593,10 +587,10 @@ Escape an HTML tag name.
 $tag_name
 
     (string) (Required)
+    
+    
 
-
-
-
+---
 ---
 
 
@@ -612,9 +606,9 @@ Removes the http or https protocols and the domain. Keeps the path ‘/’ at th
 $link
 
     (string) (Required) Full URL path.
+    
 
-
-
+----
 ----
 
 
@@ -629,7 +623,6 @@ $text
 
 ---
 
-
 ---
 
 esc_url_raw( string $url, array $protocols = null )
@@ -642,11 +635,11 @@ $url
 $protocols
 
     (array) (Optional) An array of acceptable protocols.
-
+    
     Default value: null
+    
 
-
-
+---
 ---
 htmlentities2( string $myHTML )
 
@@ -656,9 +649,9 @@ Convert entities, while preserving already-encoded entities.
 $myHTML
 
     (string) (Required) The text to be converted.
+    
 
-
-
+---
 ---
 
 esc_js( string $text )
@@ -687,9 +680,9 @@ $safe_text
 $text
 
     (string) The text prior to being escaped.
+    
 
-
-
+---
 ---
 
 
@@ -702,10 +695,10 @@ Converts named entities into numbered entities.
 $text
 
     (string) (Required) The text within which entities will be converted.
+    
+    
 
-
-
-
+---
 ---
 
 
@@ -721,10 +714,10 @@ $date_string
 $timezone
 
     (string) (Optional) If set to GMT returns the time minus gmt_offset. Default is 'user'.
-
+    
     Default value: 'user'
 
-
+---
 ---
 
 
@@ -738,7 +731,7 @@ $email
 
     (string) (Required) Email address to filter.
 
-
+---
 ---
 
 antispambot( string $email_address, int $hex_encoding )
@@ -752,9 +745,9 @@ $email_address
 $hex_encoding
 
     (int) (Optional) Set to 1 to enable hex encoding.
+    
 
-
-
+---
 ---
 
 
@@ -771,11 +764,11 @@ $email
 $deprecated
 
     (bool) (Optional) Deprecated.
-
+    
     Default value: false
+    
 
-
-
+---
 ---
 
 
@@ -792,11 +785,11 @@ $username
 $strict
 
     (bool) (Optional) If set limits $username to specific characters.
-
+    
     Default value: false
+    
 
-
-
+---
 ---
 
 
@@ -1179,16 +1172,16 @@ $text
 $num_words
 
     (int) (Optional) Number of words.
-
+    
     Default value: 55
 $more
 
     (string) (Optional) What to append if $text needs to be trimmed. Default '…'.
-
+    
     Default value: null
+    
 
-
-
+---
 ---
 
 get_gmt_from_date( string $string, string $format = 'Y-m-d H:i:s' )
@@ -1204,11 +1197,11 @@ $string
 $format
 
     (string) (Optional) The format string for the returned date (default is Y-m-d H:i:s)
-
+    
     Default value: 'Y-m-d H:i:s'
+    
 
-
-
+---
 ---
 
 
@@ -1221,7 +1214,7 @@ $string
 
     (string) (Required) Value to which backslashes will be added.
 
-
+trailingslashit( string $string )
 trailingslashit( string $string )
 
 Appends a trailing slash.
@@ -1240,7 +1233,6 @@ $string
 
 
 
-
 ---
 
 make_clickable( string $text )
@@ -1254,7 +1246,7 @@ $text
 
     (string) (Required) Content to convert URIs.
 
-
+---
 ---
 
 get_rest_url( int $blog_id = null, string $path = '/', string $scheme = 'rest' )
@@ -1270,20 +1262,20 @@ Parameters
 $blog_id
 
     (int) (Optional) Blog ID. Default of null returns URL for current blog.
-
+    
     Default value: null
 $path
 
     (string) (Optional) REST route.
-
+    
     Default value: '/'
 $scheme
 
     (string) (Optional) Sanitization scheme.
-
+    
     Default value: 'rest'
 
-
+---
 ---
 
 
@@ -1294,7 +1286,6 @@ Returns (string) Full filesystem path to the root of the WordPress installation
 
 
 Get the absolute filesystem path to the root of the WordPress installation
-
 
 ---
 
@@ -1313,20 +1304,20 @@ The depth of the recursiveness can be controlled by the $levels param.
 $folder
 
     (string) (Optional) Full path to folder.
-
+    
     Default value: ''
 $levels
 
     (int) (Optional) Levels of folders to follow, Default 100 (PHP Loop limit).
-
+    
     Default value: 100
 $exclusions
 
     (array) (Optional) List of folders and files to skip.
-
+    
     Default value: array()
 
-
+---
 ---
 
 get_plugin_files( string $plugin )
@@ -1337,9 +1328,9 @@ Get a list of a plugin’s files.
 $plugin
 
     (string) (Required) Path to the main plugin file from plugins directory.
+    
 
-
-
+---
 ---
 
 get_plugin_data( string $plugin_file, bool $markup = true, bool $translate = true )
@@ -1384,12 +1375,12 @@ $plugin_file
 $markup
 
     (bool) (Optional) If the returned data should have HTML markup applied.
-
+    
     Default value: true
 $translate
 
     (bool) (Optional) If the returned data should be translated.
-
+    
     Default value: true
 
 Top ↑
@@ -1415,9 +1406,9 @@ Return #Return
     (string) Plugins relative directory path to .mo files.
     'Network'
     (bool) Whether the plugin can only be activated network-wide.
+    
 
-
-
+---
 ---
 
 plugin_basename( string $file )
@@ -1440,7 +1431,6 @@ get_dropins()
 Returns (array) Key is the file path and the value is an array of the plugin data.
 
 Check the wp-content directory and retrieve all drop-ins with any plugin data.
-
 
 ---
 wp_normalize_path( string $path )
@@ -1511,7 +1501,7 @@ $file
 
     (string) (Required) The filename of the plugin (__FILE__).
 
-
+---
 ---
 
 
@@ -1540,12 +1530,12 @@ Returns the ‘home’ option with the appropriate protocol. The protocol will b
 $path
 
     (string) (Optional) Path relative to the home URL.
-
+    
     Default value: ''
 $scheme
 
     (string|null) (Optional) Scheme to give the home URL context. Accepts 'http', 'https', 'relative', 'rest', or null.
-
+    
     Default value: null
 
 ---
@@ -1562,7 +1552,7 @@ The primary use of this is for paths and thus should be used for paths. It is no
 
     (string) (Required) What to remove the trailing slashes from.
 
-
+---
 ---
 
 
@@ -1580,10 +1570,10 @@ Slashes will first be removed if magic_quotes_gpc is set, see https://secure.php
 $gpc
 
     (string) (Required) The string returned from HTTP request data.
+    
+    
 
-
-
-
+---
 ---
 
 wp_rel_nofollow( string $text )
@@ -1594,10 +1584,10 @@ Adds rel nofollow string to all HTML A elements in content.
 $text
 
     (string) (Required) Content that may contain HTML A elements.
+    
+    
 
-
-
-
+---
 ---
 
 
@@ -1616,11 +1606,11 @@ $class
 $fallback
 
     (string) (Optional) The value to return if the sanitization ends up as an empty string. Defaults to an empty string.
-
+    
     Default value: ''
+    
 
-
-
+----
 ----
 
 apply_filters( 'sanitize_file_name', string $filename, string $filename_raw )
@@ -1635,9 +1625,9 @@ $filename
 $filename_raw
 
     (string) The filename prior to sanitization.
+    
 
-
-
+---
 ---
 
 
@@ -1651,10 +1641,10 @@ Keys are used as internal identifiers. Lowercase alphanumeric characters, dashes
 $key
 
     (string) (Required) String key
+    
+    
 
-
-
-
+---
 ---
 
 
@@ -1672,11 +1662,11 @@ $content
 $rich_text
 
     (bool) (Optional) Whether $content should be considered rich text, in which case it would not be passed through esc_textarea().
-
+    
     Default value: false
+    
 
-
-
+---
 ---
 
 
@@ -1694,15 +1684,15 @@ $title
 $fallback_title
 
     (string) (Optional) A title to use if $title is empty.
-
+    
     Default value: ''
 $context
 
     (string) (Optional) The operation for which the string is sanitized
-
+    
     Default value: 'save'
 
-
+apply_filters( 'sanitize_title', string $title, string $raw_title, string $context )
 apply_filters( 'sanitize_title', string $title, string $raw_title, string $context )
 
 Filters a sanitized title string.
@@ -1716,9 +1706,9 @@ $raw_title
 $context
 
     (string) The context for which the title is being sanitized.
+    
 
-
-
+---
 ---
 
 
@@ -1739,7 +1729,7 @@ $threshold
 
     (int) (Required) Digit places number needs to be to not have zeros added.
 
-
+---
 ---
 
 
@@ -1794,9 +1784,9 @@ NOTE: This function checks for 5-Byte sequences, UTF8 has Bytes Sequences with a
 $str
 
     (string) (Required) The string to be checked
+    
 
-
-
+---
 ---
 
 
@@ -1815,11 +1805,11 @@ $string
 $quote_style
 
     (string|int) (Optional) Converts double quotes if set to ENT_COMPAT, both single and double if set to ENT_QUOTES or none if set to ENT_NOQUOTES. Also compatible with old \_wp_specialchars() values; converting single quotes if set to 'single', double if set to 'double' or both if otherwise set. Default is ENT_NOQUOTES.
-
+    
     Default value: ENT_NOQUOTES
+    
 
-
-
+---
 ---
 
 
@@ -1836,11 +1826,11 @@ $string
 $strip
 
     (bool) (Optional) Whether to attempt to strip out invalid UTF8. Default is false.
-
+    
     Default value: false
+    
 
-
-
+---
 ---
 
 
@@ -1856,10 +1846,10 @@ $utf8_string
 $length
 
     (int) (Required) Max length of the string
+    
+    
 
-
-
-
+---
 ---
 
 
@@ -1871,9 +1861,9 @@ Converts invalid Unicode references range to valid range.
 $content
 
     (string) (Required) String with entities that need converting.
+    
 
-
-
+---
 ---
 
 format_for_editor( string $text, string $default_editor = null )
@@ -1891,12 +1881,12 @@ $text
 $default_editor
 
     (string) (Optional) The default editor for the current user. It is usually either 'html' or 'tinymce'.
-
+    
     Default value: null
+    
+    
 
-
-
-
+apply_filters( 'format_for_editor', string $text, string $default_editor )
 apply_filters( 'format_for_editor', string $text, string $default_editor )
 
 Filters the text after it is formatted for the editor.
@@ -1927,12 +1917,12 @@ $options
 $depth
 
     (int) (Optional) Maximum depth to walk through $data. Must be greater than 0.
-
+    
     Default value: 512
+    
+    
 
-
-
-
+---
 ---
 
 wp_enqueue_code_editor( array $args )
@@ -1942,7 +1932,7 @@ Enqueue assets needed by the code editor for the given settings.
 $args
 
     (array) (Required) Args.
-
+    
         'type'
         (string) The MIME type of the file to be edited.
         'file'
@@ -1960,7 +1950,7 @@ $args
         'htmlhint'
         (array) JSHint rule overrides.
 
-
+----
 ----
 
 
@@ -1979,7 +1969,7 @@ $settings
 $args
 
     (array) Args passed when calling wp_enqueue_code_editor().
-
+    
         'type'
         (string) The MIME type of the file to be edited.
         'file'
@@ -1996,9 +1986,9 @@ $args
         (array) JSHint rule overrides.
         'htmlhint'
         (array) JSHint rule overrides.
+    
 
-
-
+---
 ---
 
 do_action( 'wp_enqueue_code_editor', array $settings )
@@ -2009,9 +1999,9 @@ Fires when scripts and styles are enqueued for the code editor.
 $settings
 
     (array) Settings for the enqueued code editor.
+    
 
-
-
+---
 ---
 
 
@@ -2029,7 +2019,7 @@ $editor_id
 $settings
 
     (array) (Required) Array of editor arguments.
-
+    
         'wpautop'
         (bool) Whether to use wpautop(). Default true.
         'media_buttons'
@@ -2061,7 +2051,6 @@ $settings
 
 ---
 
-
 ---
 
 \_WP_Editors
@@ -2080,9 +2069,9 @@ Parameters
 $output
 
     (string) Editor's HTML markup.
+    
 
-
-
+---
 ---
 
 
@@ -2100,11 +2089,11 @@ $editor_id
 $settings
 
     (array) (Optional) See \_WP_Editors()::parse_settings() for description.
-
+    
     Default value: array()
+    
 
-
-
+---
 ---
 
 
@@ -2139,7 +2128,7 @@ $value
 
     (mixed) (Required) The array or string to be decoded.
 
-
+---
 ---
 
 stripslashes_from_strings_only( mixed $value )
@@ -2150,9 +2139,9 @@ Callback function for stripslashes_deep() which strips slashes from strings.
 $value
 
     (mixed) (Required) The array or string to be stripped.
+    
 
-
-
+---
 ---
 
 
@@ -2169,9 +2158,9 @@ Parameters
 $str
 
     (string) (Required) String to sanitize.
+    
 
-
-
+---
 ---
 
 apply_filters( 'sanitize_textarea_field', string $filtered, string $str )
@@ -2185,9 +2174,9 @@ $filtered
 $str
 
     (string) The string prior to being sanitized.
+    
 
-
-
+---
 ---
 
 
@@ -2205,16 +2194,16 @@ $url
 $protocols
 
     (array) (Optional) An array of acceptable protocols. Defaults to return value of wp_allowed_protocols()
-
+    
     Default value: null
 $\_context
 
     (string) (Optional) Private. Use esc_url_raw() for database usage.
-
+    
     Default value: 'display'
+    
 
-
-
+---
 ---
 
 apply_filters( 'wp_trim_words', string $text, int $num_words, string $more, string $original_text )
@@ -2234,9 +2223,9 @@ $more
 $original_text
 
     (string) The text before it was trimmed.
+    
 
-
-
+---
 ---
 
 
@@ -2257,9 +2246,9 @@ Parameters
 $data
 
     (string|array) (Required) Unescaped data
+    
 
-
-
+---
 ---
 
 
@@ -2300,9 +2289,9 @@ Filters the number of words in an excerpt.
 $number
 
     (int) The number of words. Default 55.
+    
 
-
-
+---
 ---
 
 apply_filters( 'sanitize_html_class', string $sanitized, string $class, string $fallback )
@@ -2318,10 +2307,10 @@ $class
 $fallback
 
     (string) The fallback string.
+    
+    
 
-
-
-
+---
 ---
 
 
@@ -2336,10 +2325,10 @@ $content
 $deprecated
 
     (string) (Optional) Not used.
-
+    
     Default value: ''
 
-
+---
 ---
 
 
@@ -2356,16 +2345,16 @@ $title
 $raw_title
 
     (string) (Optional) Not used.
-
+    
     Default value: ''
 $context
 
     (string) (Optional) The operation for which the string is sanitized.
-
+    
     Default value: 'display'
+    
 
-
-
+---
 ---
 
 
@@ -2381,11 +2370,11 @@ $special_chars
 $filename_raw
 
     (string) Filename as it was passed into sanitize_file_name().
+    
+    
+    
 
-
-
-
-
+---
 ---
 
 
@@ -2407,9 +2396,9 @@ $path
 $scheme
 
     (string) Scheme to give the URL context. Accepts 'http', 'https', 'login', 'login_post', 'admin', 'relative' or null.
+    
 
-
-
+----
 ----
 
 
@@ -2431,9 +2420,9 @@ $text
 $title
 
     (string) Shortlink's title attribute.
+    
 
-
-
+---
 ---
 
 wp_get_shortlink( int $id, string $context = 'post', bool $allow_slugs = true )
@@ -2451,12 +2440,12 @@ $id
 $context
 
     (string) (Optional) Whether the id is a 'site' id, 'post' id, or 'media' id. If 'post', the post_type of the post is consulted. If 'query', the current query is consulted to determine the id and context.
-
+    
     Default value: 'post'
 $allow_slugs
 
     (bool) (Optional) Whether to allow post slugs in the shortlink. It is up to the plugin how and whether to honor this.
-
+    
     Default value: true
 
 ---
@@ -2478,26 +2467,26 @@ Call like the_shortlink( \__( ‘Shortlinkage FTW’ ) )
 $text
 
     (string) (Optional) The link text or HTML to be displayed. Defaults to 'This is the short link.'
-
+    
     Default value: ''
 $title
 
     (string) (Optional) The tooltip for the link. Must be sanitized. Defaults to the sanitized post title.
-
+    
     Default value: ''
 $before
 
     (string) (Optional) HTML to display before the link.
-
+    
     Default value: ''
 $after
 
     (string) (Optional) HTML to display after the link.
-
+    
     Default value: ''
+    
 
-
-
+----
 ----
 
 
@@ -2517,7 +2506,7 @@ $plugin
 
     (string) The plugin file path to be relative to. Blank string if no plugin is specified.
 
-
+---
 ---
 
 apply_filters( 'site_url', string $url, string $path, string|null $scheme, int|null $blog_id )
@@ -2537,9 +2526,9 @@ $scheme
 $blog_id
 
     (int|null) Site ID, or null for the current site.
+    
 
-
-
+---
 ---
 
 
@@ -2552,17 +2541,17 @@ Retrieves the URL to the admin area for the current site.
 $path
 
     (string) (Optional) path relative to the admin URL.
-
+    
     Default value: ''
 $scheme
 
     (string) (Optional) The scheme to use. Default is 'admin', which obeys force_ssl_admin() and is_ssl(). 'http' or 'https' can be passed to force those schemes.
-
+    
     Default value: 'admin'
+    
+    
 
-
-
-
+---
 ---
 
 
@@ -2574,20 +2563,20 @@ Retrieves the URL to the admin area for a given site.
 $blog_id
 
     (int) (Optional) Site ID. Default null (current site).
-
+    
     Default value: null
 $path
 
     (string) (Optional) Path relative to the admin URL.
-
+    
     Default value: ''
 $scheme
 
     (string) (Optional) The scheme to use. Accepts 'http' or 'https', to force those schemes. Default 'admin', which obeys force_ssl_admin() and is_ssl().
-
+    
     Default value: 'admin'
 
-
+---
 ---
 
 
@@ -2600,11 +2589,11 @@ Retrieves the URL to the content directory.
 $path
 
     (string) (Optional) Path relative to the content URL.
-
+    
     Default value: ''
+    
 
-
-
+----
 ----
 
 
@@ -2619,16 +2608,16 @@ Defaults to the plugins directory URL if no arguments are supplied.
 $path
 
     (string) (Optional) Extra path appended to the end of the URL, including the relative directory if $plugin is supplied.
-
+    
     Default value: ''
 $plugin
 
     (string) (Optional) A full path to a file inside a plugin or mu-plugin. The URL will be relative to its directory. Typically this is done by passing __FILE__ as the argument.
-
+    
     Default value: ''
+    
 
-
-
+---
 ---
 
 
@@ -2646,15 +2635,15 @@ Returns the ‘site_url’ option with the appropriate protocol, ‘https’ if 
 $path
 
     (string) (Optional) Path relative to the site URL.
-
+    
     Default value: ''
 $scheme
 
     (string) (Optional) Scheme to give the site URL context. See set_url_scheme().
-
+    
     Default value: null
 
-
+---
 ---
 
 
@@ -2669,21 +2658,21 @@ Returns the ‘site_url’ option with the appropriate protocol, ‘https’ if 
 $blog_id
 
     (int) (Optional) Site ID. Default null (current site).
-
+    
     Default value: null
 $path
 
     (string) (Optional) Path relative to the site URL.
-
+    
     Default value: ''
 $scheme
 
     (string) (Optional) Scheme to give the site URL context. Accepts 'http', 'https', 'login', 'login_post', 'admin', or 'relative'.
-
+    
     Default value: null
+    
 
-
-
+---
 ---
 
 
@@ -2701,7 +2690,7 @@ $feed
 
     (string) Feed type.
 
-
+---
 ---
 
 
@@ -2716,13 +2705,12 @@ $link
 $feed
 
     (string) Feed type.
-
-
+    
 
 ---
+---
 
-
-get_search_link( string $query = '' )
+### get_search_link( string $query = '' )
 
 Retrieves the permalink for a search.
 
@@ -2731,14 +2719,13 @@ Retrieves the permalink for a search.
 $query
 
     (string) (Optional) The query string to use. If empty the current query is used.
-
+    
     Default value: ''
 
-
+---
 ---
 
-
-apply_filters( 'taxonomy_feed_link', string $link, string $feed, string $taxonomy )
+### apply_filters( 'taxonomy_feed_link', string $link, string $feed, string $taxonomy )
 
 Filters the feed link for a taxonomy other than ‘category’ or ‘post_tag’.
 
@@ -2752,13 +2739,12 @@ $feed
 $taxonomy
 
     (string) The taxonomy name.
-
-
+    
 
 ---
+---
 
-
-get_category_feed_link( int $cat_id, string $feed = '' )
+### get_category_feed_link( int $cat_id, string $feed = '' )
 
 Retrieves the feed link for a category.
 
@@ -2772,7 +2758,7 @@ $cat_id
 $feed
 
     (string) (Optional) Feed type.
-
+    
     Default value: ''
 ---
 
@@ -2782,7 +2768,7 @@ $feed
 
 ---
 
-the_feed_link( string $anchor, string $feed = '' )
+### the_feed_link( string $anchor, string $feed = '' )
 
 Displays the permalink for the feed type.
 
@@ -2794,15 +2780,14 @@ $anchor
 $feed
 
     (string) (Optional) Feed type.
-
+    
     Default value: ''
-
-
+    
 
 ---
+---
 
-
-permalink_anchor( string $mode = 'id' )
+### permalink_anchor( string $mode = 'id' )
 
 Displays the permalink anchor for the current post.
 
@@ -2813,5 +2798,5 @@ The permalink mode title will use the post title for the ‘a’ element ‘id�
 $mode
 
     (string) (Optional) Permalink mode. Accepts 'title' or 'id'.
-
+    
     Default value: 'id'

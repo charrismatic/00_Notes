@@ -1,3 +1,26 @@
+### LIST TOP PROCESS BY MEMORY/CPU USAGE 
+```
+ps aux --sort -rss  | head -n2
+```
+
+Get additional information about that process
+
+```
+sudo pmap -[x,X,XX] [pid]
+```
+
+```
+cat /proc/[pid]/*
+tree /proc/[pid]
+find /proc/[pid]/ -type f -not -name pagemap -ls
+find /proc/[pid]/ -maxdepth 1 -type f -not -name pagemap -not -name attr -exec cat  {} \; 
+cat /proc/[pid]/stat
+cat /proc/[pid]/status
+cat /proc/[pid]/smaps 
+lsof -p [pid]
+```
+
+
 PROCESS STATE CODES
        Here are the different values that the s, stat and state output specifiers (header "STAT" or "S") will display to describe the state of a process:
        D    uninterruptible sleep (usually IO)

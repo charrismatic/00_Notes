@@ -10,9 +10,13 @@ nmap -PR 10.0.1.0/24 -sn
 ## Scan a Single Host
 
 nmap 192.168.1.2
-Scan multiple IP address or subnet
+
+//84.250.229.51
+
+## Scan multiple IP address or subnet
 
 nmap 192.168.1.1 192.168.1.2 192.168.1.3
+
 Scan by Excluding a Host
 
 nmap 192.168.1.0/24 --exclude 192.168.1.10
@@ -82,13 +86,11 @@ https://www.cyberciti.biz/networking/nmap-command-examples-tutorials/
 
 # Top 32 Nmap Command Examples For Linux Sys/Network Admins
 
-in Categories[Command Line Hacks](https://www.cyberciti.biz/topics/open-source/command-line-hacks/), [Howto](https://www.cyberciti.biz/topics/howto/), [Networking](https://www.cyberciti.biz/topics/networking/), [Security](https://www.cyberciti.biz/topics/security/)
+in Categories[Command Line Hacks](https://www.cyberciti.biz/topics/open-source/command-line-hacks/), [Howto](https://www.cyberciti.biz/topics/howto/), [Networking](https://www.cyberciti.biz/topics/networking/), [Security](https://www.cyberciti.biz/topics/security/) 
 
-last updated February 3, 2018
+updated February 3, 2018
 
-Nmap is short for Network Mapper. It is an open source security tool for network exploration, security scanning and auditing. However, nmap command comes with lots of options that can make the utility more robust and difficult to follow for new users. The purpose of this post is to introduce a user to the nmap command line tool to scan a host and/or network, so to find out the possible vulnerable points in the hosts. You will also learn how to use Nmap for offensive and defensive purposes. Let us see some common nmap command examples.
-
-[![nmap in action](https://www.cyberciti.biz/media/new/cms/2012/11/welcome-nmap.png)](https://www.cyberciti.biz/networking/nmap-command-examples-tutorials/attachment/welcome-nmap/)nmap in action
+[![nmap in action](https://www.cyberciti.biz/media/new/cms/2012/11/welcome-nmap.png)](https://www.cyberciti.biz/networking/nmap-command-examples-tutorials/attachment/welcome-nmap/nmap in action
 
 ## What is Nmap and what is it used for?
 
@@ -319,7 +321,7 @@ nmap -T5 192.168.1.0/24
 
 You can [identify a remote host apps and OS using the -O option](https://www.cyberciti.biz/faq/identify-remote-host-by-unix-linux-command/):
 
-Sample outputs:
+Sample outpus:
 
 ```
 Starting Nmap 5.00 ( http://nmap.org ) at 2012-11-27 01:29 IST
@@ -409,6 +411,8 @@ nmap -PA 80,21,200-512 192.168.1.1
 nmap -PO 192.168.1.1
 ```
 
+
+
 ## #21: Scan a host using UDP ping
 
 This scan bypasses firewalls and filters that only screen TCP:
@@ -418,11 +422,17 @@ nmap -PU 192.168.1.1
 nmap -PU 2000.2001 192.168.1.1
 ```
 
+
+
 ## #22: Find out the most commonly used TCP ports using TCP SYN Scan
+
+
 
 ## #23: Scan a host for UDP services (UDP scan)
 
 Most popular services on the Internet run over the TCP protocol. DNS, SNMP, and DHCP are three of the most common UDP services. Use the following syntax to find out UDP services:
+
+*needs root *
 
 ```
 nmap -sU nas03
@@ -485,6 +495,10 @@ nmap -oN output.txt 192.168.1.1
 ## #30 Scans for web servers and pipes into Nikto for scanning
 
 `nmap -p80 192.168.1.2/24 -oG - | /path/to/nikto.pl -h -nmap -p80,443 192.168.1.2/24 -oG - | /path/to/nikto.pl -h -`
+
+
+
+
 
 ## #31 Speed up nmap
 
@@ -568,43 +582,9 @@ Nmap done: 1 IP address (1 host up) scanned in 46.02 seconds
 
 ```
 
-## #32: Not a fan of command line tools?
+---
 
-Try [zenmap the official network mapper](https://nmap.org/zenmap/) front end:
 
-> Zenmap is the official Nmap Security Scanner GUI. It is a multi-platform (Linux, Windows, Mac OS X, BSD, etc.) free and open source application which aims to make Nmap easy for beginners to use while providing advanced features for experienced Nmap users. Frequently used scans can be saved as profiles to make them easy to run repeatedly. A command creator allows interactive creation of Nmap command lines. Scan results can be saved and viewed later. Saved scan results can be compared with one another to see how they differ. The results of recent scans are stored in a searchable database.
-
-You can install zenmap using the following [apt-get command](https://www.cyberciti.biz/tips/linux-debian-package-management-cheat-sheet.html):
-`$ sudo apt-get install zenmap`
-Sample outputs:
-
-```
-[sudo] password for vivek: 
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-The following NEW packages will be installed:
-  zenmap
-0 upgraded, 1 newly installed, 0 to remove and 11 not upgraded.
-Need to get 616 kB of archives.
-After this operation, 1,827 kB of additional disk space will be used.
-Get:1 http://debian.osuosl.org/debian/ squeeze/main zenmap amd64 5.00-3 [616 kB]
-Fetched 616 kB in 3s (199 kB/s)                       
-Selecting previously deselected package zenmap.
-(Reading database ... 281105 files and directories currently installed.)
-Unpacking zenmap (from .../zenmap_5.00-3_amd64.deb) ...
-Processing triggers for desktop-file-utils ...
-Processing triggers for gnome-menus ...
-Processing triggers for man-db ...
-Setting up zenmap (5.00-3) ...
-Processing triggers for python-central ...
-```
-
-Type the following command to start zenmap:
-`$ sudo zenmap`
-Sample outputs
-
-[![Fig.02: zenmap in action](https://www.cyberciti.biz/media/new/cms/2012/11/nmap-usage-examples-output.png)](https://www.cyberciti.biz/networking/nmap-command-examples-tutorials/attachment/nmap-usage-examples-output/)Fig.02: zenmap in action
 
 ## How do I detect and block port scanning?
 
@@ -622,3 +602,27 @@ Try the following resources:
 - [The official Nmap project](https://nmap.org/) home page.
 
 *The nmap command has many more options, please go through man page or the documentation for more information. What are some of your favorite nmap command-line tricks? Share your favorite tips, tricks, and advice in the comments below.*
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## OPTIONS

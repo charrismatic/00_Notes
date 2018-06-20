@@ -10,7 +10,7 @@ find [path...] [expression]
 DESCRIPTION
 This manual page documents the GNU version of find. find searches the directory tree rooted at each given file name by evaluating the given expression from left to right, according to the rules of precedence (see section OPERATORS), until the outcome is known (the left hand side is false for and operations, true for or), at which point find moves on to the next file name.
 
-The first argument that begins with `-', `(', `)', `,', or `!' is taken to be the beginning of the expression; any arguments before it are paths to search, and any arguments after it are the rest of the expression. If no paths are given, the current directory is used. If no expression is given, the expression `-print' is used.
+The first argument that begins with `-', `(', `)', `,', or `!' is taken to be the beginning of the expression;` ` any arguments before it are paths to search, and any arguments after it are the rest of the expression. If no paths are given, the current directory is used. If no expression is given, the expression `-print' is used.
 
 find exits with status 0 if all files are processed successfully, greater than 0 if errors occur.
 

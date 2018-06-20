@@ -1,140 +1,142 @@
-&bsol;
+### Add spaces to  end of line for inline comments parsed by markdown
 
-
-### ADD SPACES TO  END OF LINE FOR INLINE COMMENTS PARSED BY MARKDOWN  
-
-```javascript
-/(\/\/\/+.*[^&bsol;s]{2})$/, "$1  "	
+```javascript  
+/(\/\/\/+.*[^\s]{2})$/, "$1  "	
 ```
 
-## REMOVE ALL LINES BETWEEN 'format:collapse-lines'  
+### Remove all lines between (collapse lines)  
 
 ```javascript
-/[&bsol;n]{1,2}[&bsol;s]*[&bsol;n]{1}/g, '&bsol;n'
+/[\n]{1,2}[\s]*[\n]{1}/g, "\n"
+/\n/g, "\n"
 ```
 
-#### REMOVES EXTRA LINES BUT LEAVE A SINGLE LINE BETWEEN 'format:squeeze-lines'  
+### Removes extra lines but leave a single line between (squeeze-lines)  
 
 ```javascript
-/^[&bsol;s]{0,}[&bsol;n]{1,}[&bsol;s]{0,}[&bsol;n]{1,}/g, '&bsol;n&bsol;n'
+/^[\s]{0,}[\n]{1,}[\s]{0,}[\n]{1,}/g, "\n\n"
 ```
 
-## REMOVE ALL WHITESPACE TO LEFT OF SYNTAX 'format:trim-left'  
+### Remove all whitespace to left of syntax  (trim-left)
 
 ```javascript
-/^[^\r&bsol;n\d&bsol;s][&bsol;s]*/g, ''
+/^[^\r\n\d\s][\s]*/g, ''
 ```
 
-## COLLAPSE LINES + TRIM LEFT 'format:collapse-all'  
+### Collapse lines + trim left 
 
 ```javascript
-/^[&bsol;s]*[^&bsol;s]/g, ''
+/^[\s]*[^\s]/g, ''
 ```
 
-## PUT BRACES INSIDE 'format:braces-out'  
+### Put braces inside (format:braces-out)
 
 ```javascript
-/[&bsol;s]{0,}[&bsol;n]{1,}[&bsol;s]{0,}[{][^&bsol;s]/g, ' {&bsol;n'
+/[\s]{0,}[\n]{1,}[\s]{0,}[{][^\s]/g, ' {\n'
 ```
 
-## PUT BRACES INSIDE 'format:braces-in'  
+### Put braces inside (format:braces-in)
 
 ```javascript
-/^([&bsol;s]*)([&bsol;s].*)[\{]|((?!.*[\}]).*)[\{]/g, '$1$2&bsol;n$1{'
+/^([\s]*)([\s].*)[\{]|((?!.*[\}]).*)[\{]/g, '$1$2\n$1{'
 ```
 
-## EXTRA LINE AFTER CLOSE 'format:open-after-close'  
+### Extra line after close (format:open-after-close)
 
 ```javascript
-/(?![}][&bsol;s]*[}])[}][&bsol;s]*[&bsol;n]{1,}/g, '}&bsol;n&bsol;n'
+/(?![}][\s]*[}])[}][\s]*[\n]{1,}/g, '}\n\n'
 ```
 
-## EVEN SPACES 'format:no-double-space'  
+### Even spaces (format:no-double-space )
 
 - spaces on left 
 
 ```javascript
-/[&bsol;s]{2,}([\w])/g, ' $1'
+/[\s]{2,}([\w])/g, ' $1'
 ```
 
 - spaces on right 
 
 ```javascript
-/([\w])[&bsol;s]{2,}/g, '$1 '
+/([\w])[\s]{2,}/g, '$1 '
 ```
 
-## CONVERT BLOCK COMMENTS TO INLINE SASSDOC
+### Convert block comments to inline sassdoc
 
 ```javascript
 /^ {0,}\/\*\*+|^ {0,}\*+\*\/|^ {0,}\*/g, '///'
 ```
 
-## DELETE EMPTY LINES IN BLOCK COMMENTS 
+### Delete empty lines in block comments 
 
 ```javascript
-/^[&bsol;s]*[\*]{1}[&bsol;s]*[&bsol;n]{1}/g, ''
+/^[\s]*[\*]{1}[\s]*[\n]{1}/g, ''
 ```
 
-## SELECTED WHOLE PHP COMMENT BLOCK 
+### Selected whole php comment block 
 
 ```javascript
-/(\/\*([^*]|[\r&bsol;n]|(\*+([^*/]|[\r&bsol;n])))*\*+\/)|(\/\/.*)/g, ''
+/(\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/)|(\/\/.*)/g, ''
 ```
 
-## GET OR SELECT ALL LINKS 'format:kill-all-anchor-links'  
+### Select all links (format:kill-all-anchor-links)
 
 ```javascript
-/<a[&bsol;s]+href[&bsol;s]{0,}[\=][\"][^\"]*\"/g, '<a href=""'
+/<a[\s]+href[\s]{0,}[\=][\"][^\"]*\"/g, '<a href=""'
 ```
 
-## KILL ALL INLINE STYLES 
+### Kill all inline styles 
 
 ```javascript
 /style=\"[^\"]+\"/g, ''
 ```
 
-## ADD LEADING ZEROS 'format:zeros-before-leading'  
+### Add leading zeros (format:zeros-before-leading)
 
 ```javascript
 /[^\d]{1}\.(\d)+/g, ' 0.$1'
 ```
 
-
-### COMMENTS 
-
-```javascript
-multiLine Comments:                     /*.*?*/, "/s"
-singleLine Comments:                    ///.*$/g m
-singleLine Perl Comments:               /#.*$/gm
-```
-
-### SINGLE DOUBLE QUOTATIONS
+### Break lines longer than x characters'  
 
 ```javascript
-doubleQuotedString:                   /"([^"n]|.)*"/g
-singleQuotedString:                   /'([^'n]|.)*'/g,
-multiLineDoubleQuotedString:          a('"([^\"]|\.)*"', "gs")
-multiLineSingleQuotedString:          a("'([^\']|\.)*'", "gs")
-xmlComments:                          a("(&lt;|<)!--f.*?--(&gt;|>)", "gs")
-url:                                  /w+://[w-./?%&=:@;#]*/g
+/([a-zA-Z0-9\,\.\`\'\"\(\)\[\]\/\\\*\<\>\#\=\:\+\_\-\? ]{100,120})/g, '$1\n'
 ```
 
-### PHP Script Tags: 
+### Comments 
 
 ```javascript
-left :                              /(&lt;|<)?(?:=|php)?/g,
-right:                              /?(&gt;|>)/g,
-eof  :                              !0
+multiLine Comments:   /*.*?*/, "/s"
+singleLine Comments:  ///.*$/g m
 ```
 
-### aspScriptTags:  
+### Single double quotations
 
 ```javascript
-left:                               /(&lt;|<)%=?/g,
-right:                              /%(&gt;|>)/g
+doubleQuotedString:          /"([^"n]|.)*"/g
+singleQuotedString:          /'([^'n]|.)*'/g,
+multiLineDoubleQuotedString: a('"([^\"]|\.)*"', "gs")
+multiLineSingleQuotedString: a("'([^\']|\.)*'", "gs")
+xmlComments:                 a("(&lt;|<)!--f.*?--(&gt;|>)", "gs")
+url:                         /w+://[w-./?%&=:@;#]*/g
 ```
 
-### JAVASCRIPT TAGS
+### PHP script tags: 
+
+```javascript
+left :    /(&lt;|<)?(?:=|php)?/g,
+right:    /?(&gt;|>)/g,
+eof  :    !0
+```
+
+### Aspscripttags:  
+
+```javascript
+left:   /(&lt;|<)%=?/g,
+right:  /%(&gt;|>)/g
+```
+
+### Javascript tags
 
 ```javascript
 left:                               /(&lt;|<)s*script.*?(&gt;|>)/gi,
@@ -143,32 +145,25 @@ spacesAtStartOfString:              /^s*/,
 removeExtraSpacesAfterEndOfWords:   /b[s]{2,}/|[w][s]{2,}|[s]{2,}[w]|,
 ```
 
-REMOVE EXTRA SPACES AFTER END OF WORDS
+### Remove extra spaces after end of words
 
 ```javascript
--- b[s]{2,} -- [w][s]{2,}|[s]{2,}[w]|
- "^[^rndS][s]*", ''
- /^n*s*/, 'n'
- /t/g, '  '
- "/^.s*", ''
- /ss/g, ' '
- /nn/g, '&bsol;n'
-(/t/g, '  ')
- /\r&bsol;n\r&bsol;n/g, '\r&bsol;n'
-(/^[&bsol;n]+/g, '&bsol;n')
-(/[\r|&bsol;n]{3,}/g, '&bsol;n&bsol;n')
-
-(WIP) note: CAN'T PARSE INSIDE BLOCK 
-/[/]{1}[*]{1,}[nrs*]{1,}[*]?[^/]*[nrs]{1,}[*]{1,}[/]{1}
-vv-- CAN'T PARSE MULTIPLE / / / (URL)
-/(/[*]{1,}[^/]{1,})/ *?([^/]{0,}[*]{1,}/)/
-/(/[*]{1,}[^/]{1,})[/]?([^/]{0,}[*]{1,}/)/
-/*([^*]|[rn]|(*+([^*/]|[rn])))**+/
-//*([^*]|[rn]|(*+([^*/]|[rn])))**+/q
+/\b[\s]{2,} 
+[\w][\s]{2,}|[\s]{2,}[\w]|
+/"^[^rndS][s]*", ''
+/^n*s*/, 'n'
+/\t/g, '  '
+/"/^.s*", ''
+/\s\s/g, ' '
+/\n\n/g, '\n'
+/(\t/g, '  ')
+/\r\n\r\n/g, '\r\n'
+/(/^[\n]+/g, '\n')
+/(/[\r|\n]{3,}/g, '\n\n')
 ```
 
- EVERYTHING BETWEEN THE BRACES
+### Capture everything between the braces
+
 ```javascript
 {([^{}]|[s])+}
 ```
-

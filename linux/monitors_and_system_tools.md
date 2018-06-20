@@ -86,6 +86,9 @@ vmstat - Report virtual memory statistics
 
 sysdig - the definitive system and process troubleshooting tool 
 
+   Note:  if  you  are  interested in an easier to use interface for the sysdig functionality, use the csysdig command
+       line utility.
+
 
 
 ## USERS 

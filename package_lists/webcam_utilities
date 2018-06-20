@@ -1,0 +1,35 @@
+ # __motion__ - V4L capture program supporting motion detection
+ __uvcdynctrl__ - Command line tool to control v4l2 devices
+ # akqml - full featured webcam capture application - qml module
+ # camorama - gnome utility to view and save images from a webcam
+ eviacam - camera based mouse emulator
+ # fswebcam - Tiny and flexible webcam program
+ gkrellkam - GKrellM plugin that displays a periodically updating image
+ gmic-zart - GREYC's Magic for Image Computing - ZArt
+ gmotionlive - Simple multipart/x-mixed-replace viewer
+ kamerka - shiny photo taking application
+ kamoso - tool to take pictures and videos from your webcam
+ libavkys-dev - full featured webcam capture application - dev
+ libavkys8 - full featured webcam capture application - library
+ libmimic-dev - A video codec for Mimic V2.x content (development files)
+ libmimic-doc - A video codec for Mimic V2.x content (documentation)
+ libmimic0 - A video codec for Mimic V2.x content
+ # libwebcam0 - Webcam Library
+ qlinguider - Astronomical autoguiding program for Linux
+ lynkeos.app - GNUstep app for processing planetary astronomical images
+ opencfu - count cell colonies (CFUs) on agar plates by processing digital pictures
+ pymissile - Control original Striker USB Missile Launcher
+ python-libmimic - A video codec for Mimic V2.x content (python bindings)
+ qtqr - Qt frontend for QR code generator and decoder
+ uvccapture - USB UVC Video Class snapshot software
+ vgrabbj - grabs an image from a camera and puts it in jpg/png format
+ vokoscreen - easy to use screencast creator
+ webcam - image grabber and uploader
+ webcamd - Capture images from video devices
+ webcamoid - full featured webcam capture application
+ webcamoid-data - icons and locale files for webcamoid
+ webcamoid-plugins - full featured webcam capture application - plugins
+ cheese - tool to take pictures and videos from your webcam
+ cheese-common - Common files for the Cheese tool to take pictures and videos
+
+

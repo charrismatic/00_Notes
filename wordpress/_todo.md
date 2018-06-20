@@ -1,3 +1,13 @@
+### clean js in post with wordpress native function
+
+https://codex.wordpress.org/Plugin_API/Filter_Reference/js_escape
+
+## js_escape
+
+attribute escape
+
+
+
 
 
 ### Enable shortcodes in text widgets

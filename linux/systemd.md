@@ -55,10 +55,6 @@ Check whether a service is already enabled or not:
 
 0 indicates that it is enabled. 1 indicates that it is disabled
 
-
-
-
-
 ## How do I change the runlevel?
 
 systemd has the concept of targets which is a more flexible replacement for runlevels in sysvinit.
@@ -627,3 +623,5 @@ Runlevel 4 : multiuser, no-graphic system.
 Runlevel 5 : multiuser, graphical system.
 Runlevel 6 : Shutdown and Reboot the machine.
 That’s all for now. Keep connected! Keep commenting. Don’t forget to provide us with your valuable feedback in the comments below. Like and share us and help us get spread.
+
+```

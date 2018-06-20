@@ -43,13 +43,17 @@ Keyboard
 
 Run the following command:
 
-$ gsettings set org.gnome.settings-daemon.peripherals.keyboard numlock-state on
+```
+   gsettings set org.gnome.settings-daemon.peripherals.keyboard numlock-state on
+```
 
 ### Hotkey alternatives
 
 A lot of hotkeys can be changed via system settings menu. For example, to re-enable the show desktop keybinding:
 
-_System settings_ \> _Keyboard_ \> _Shortcuts_ \> _Navigation_ \> _Hide all normal windows_
+```
+    _System settings_ \> _Keyboard_ \> _Shortcuts_ \> _Navigation_ \> _Hide all normal windows_
+```
 
 However, certain hotkeys cannot be changed directly via system settings. In order to change these keys, use _dconf-editor_. An example of particular note is the hotkey `Alt-` \+ `` ` `` (the key above `Tab` on US keyboard layouts). In GNOME Shell it is pre-configured to cycle through windows of an application, however it is also a hotkey often used in the [Emacs](/index.php/Emacs "Emacs") editor. It can be changed by opening _dconf-editor_ and modifying the _switch-group_ key found in `org.gnome.desktop.wm.keybindings`.
 
@@ -57,11 +61,15 @@ It is possible to manually change the keys via an application's so-called **acce
 
 The file should contain a list of possible hotkeys, each unchanged line commented out with a leading ";" that has to be removed for a change to become active. For example to replace the hotkey used by Files to move files to the trash folder, change the line:
 
-; (gtk\_accel\_path "<Actions>/DirViewActions/Trash" "<Primary>Delete")
+```
+   ; (gtk\_accel\_path "<Actions>/DirViewActions/Trash" "<Primary>Delete")
+```
 
 to this:
 
-(gtk\_accel\_path "<Actions>/DirViewActions/Trash" "Delete")
+```
+    (gtk\_accel\_path "<Actions>/DirViewActions/Trash" "Delete")
+```
 
 The file is regenerated regularly so do not comment the file. The uncommented line will stay but every comment you add will be lost.
 

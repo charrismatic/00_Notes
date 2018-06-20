@@ -1,4 +1,4 @@
-# Virtualbox
+# libvirt-daemonVirtualbox
 
 ## 1. TRY: Rebuild modules and symlinks
 
@@ -7,7 +7,7 @@ sudo /sbin/vboxconfig
 ```
 
 ```
-dpkg-reconfigure virtualbox-dkms
+sudo dpkg-reconfigure virtualbox-dkms
 modprobe vboxdrv
 ```
 
@@ -33,3 +33,13 @@ sudo dpkg --purge virtualbox virtualbox-5.2 virtualbox-dkms virtualbox-qt
 
 Goto https://download.virtualbox.org/virtualbox/debian/pool/contrib/v/virtualbox-5.2/ and download again
 
+sudo apt-get install virtualbox-5.2 virtualbox-dkms virtualbox-ext-pack virtualbox-guest-additions-iso
+
+
+
+
+
+Notes: 
+
+- https://github.com/hashicorp/vagrant
+- https://github.com/hashicorp/vagrant/releases

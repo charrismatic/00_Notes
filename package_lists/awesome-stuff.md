@@ -13,15 +13,12 @@
 
 About this section. Optional. Keep this short and focus on the list.
 
-Awesome front end - https://github.com/dypsilon/frontend-dev-bookmarks
-Awesome Self Hosted - https://github.com/Kickball/awesome-selfhosted
-
+- [Awesome Self Hosted](https://github.com/Kickball/awesome-selfhosted)
 - [Awesome-lists](https://github.com/sindresorhus/awesome) A curated list of curated lists
 - [Awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs)
 - [Awesome-atom](https://github.com/mehcode/awesome-atom)
 - [Awesome-no-login-webapps](https://github.com/aviaryan/awesome-no-login-web-apps) - tools to use online
-- [ ]()
-- [ ]()
+- [Awesome front end](https://github.com/dypsilon/frontend-dev-bookmarks)
 - [ ]()
 - [ ]()
 - [ ]()
@@ -31,27 +28,19 @@ Awesome Self Hosted - https://github.com/Kickball/awesome-selfhosted
     - [ ]()
 
 
-# NodeJS Packages
+## NodeJS Packages
 
-Master list
-https://github.com/sindresorhus/awesome-nodejs
+Master list https://github.com/sindresorhus/awesome-nodejs
 
-https://github.com/imagemin/imagemin
+- https://github.com/imagemin/imagemin
+- https://github.com/siddharthkp/cost-of-modules  - profiler
+- http://seanmonstar.github.io/intel/  -- custom logger
 
-https://github.com/siddharthkp/cost-of-modules  - profiler
-http://seanmonstar.github.io/intel/  -- custom logger
+- https://github.com/sindresorhus/load-json-file
+- https://github.com/sindresorhus/write-json-file
+- https://github.com/sindresorhus/pkg-dir
 
-
-
-https://github.com/sindresorhus/load-json-file
-
-https://github.com/sindresorhus/write-json-file
-
-https://github.com/sindresorhus/pkg-dir
-
-
-https://github.com/mafintosh/csv-parser
-
+- https://github.com/mafintosh/csv-parser
 
 
 ## Design
@@ -80,7 +69,6 @@ https://github.com/mafintosh/csv-parser
 
 https://github.com/aheckmann/gm  GraphicsMagick and ImageMagick for node
 
-
 - [List item](http://example.com)
 - [List item](http://example.com)
 
@@ -91,7 +79,7 @@ https://github.com/aheckmann/gm  GraphicsMagick and ImageMagick for node
 
 
 ## Linux
-https://github.com/aleksandar-todorovic/awesome-linux
+
 - [Awesome-linux](https://github.com/aleksandar-todorovic/awesome-linux)
 - [speed-test](https://github.com/sindresorhus/speed-test) cli speed test
 - [vtop](https://github.com/MrRio/vtop) - nodejs cli activity monitor
@@ -123,30 +111,13 @@ https://github.com/aleksandar-todorovic/awesome-linux
 
 - [Awesome Electron](https://github.com/sindresorhus/awesome-electron)
 
-KeeWeb
-https://github.com/keeweb/keeweb 
-Free cross-platform password manager compatible with KeePass https://keeweb.info
+- [KeeWeb](https://github.com/keeweb/keeweb) - Free cross-platform password manager compatible with KeePass
+- [Atom Editor](https://github.com/atom/atom) - The hackable text editor by github  http://atom.io
 
+  Kap https://github.com/wulkano/kap open-source screen recorder built with web technology https://getkap.co/
+  Koko https://github.com/KokoIRC/koko irc client
+  HawkPass https://github.com/kalpetros/hawkpass-desktop sercure password generator
 
-Atom
-The hackable text editor
-https://github.com/atom/atom
-
-Kap
-open-source screen recorder built with web technology https://getkap.co/
-https://github.com/wulkano/kap
-
-
-Koko 
-irc client
-https://github.com/KokoIRC/koko
-
-HawkPass 
-sercure password generator
-https://github.com/kalpetros/hawkpass-desktop
-
-
-  - [ ]()
 - [ ]()
 - [ ]()
 - [ ]()
@@ -155,10 +126,7 @@ https://github.com/kalpetros/hawkpass-desktop
 - [ ]()
 - [ ]()
 - [ ]()
-
-
-
-
+- [ ]()
 - [ ]()
 - [ ]()
 - [ ]()
@@ -175,11 +143,7 @@ Project Generators
 
 - [List item](http://example.com)
 
-
-Automated Testing
-https://github.com/dypsilon/frontend-dev-bookmarks/blob/master/workflow/automated-testing.md
-
-
+Automated Testing https://github.com/dypsilon/frontend-dev-bookmarks/blob/master/workflow/automated-testing.md
 
 Forms
 + **Serializers**: Libraries for collecting form data in JavaScript.
@@ -191,34 +155,22 @@ Forms
 + **Validation**: A form validation behavior checks data against a set of criteria before passing it along to the server.
     + **[Form Validation UX in HTML and CSS](https://css-tricks.com/form-validation-ux-html-css/)**: Chris Coyier describes how to implement form validation with just HTML attributes and some CSS trickery.
     
-    
 
-
-
-
-
-Code Style Conventions
-http://primercss.io/scaffolding/
-https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/
-https://github.com/necolas/idiomatic-css
-
-
-
-
-
-
-
+## Code Style Conventions
+- http://primercss.io/scaffolding/
+- htpps://make.wordpress.org/core/handbook/best-practices/coding-standards/css/
+- https://github.com/necolas/idiomatic-css
 
 
 
 ## Contribute
-
-Contributions welcome! Read the [contribution guidelines](contributing.md) first.
-
+ 
+  Contributions welcome! Read the [contribution guidelines](contributing.md) first.
 
 ## License
 
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](http://creativecommons.org/publicdomain/zero/1.0)
+- [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](http://creativecommons.org/publicdomain/zero/1.0)
 
-To the extent possible under law, Matt Harris has waived all copyright and
-related or neighboring rights to this work.
+To the extent possible under law, Matt Harris has waived all copyright and related or neighboring rights to this work.
+
+

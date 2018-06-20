@@ -1,5 +1,8 @@
-https://docs.gitlab.com/omnibus/settings/nginx.html#nginx-settings
-IMAGES DONT LOAD
+ https://docs.gitlab.com/omnibus/settings/nginx.html#nginx-settings
+
+
+## IMAGES DONT LOAD
+```
 # Warning 
 #
 # To ensure that user uploads are accessible your Nginx user (usually www-data) should be added 
@@ -7,16 +10,18 @@ IMAGES DONT LOAD
 #
 # sudo usermod -aG gitlab-www www-data
 # 
+```
 
 
-
-Templates
-
+## Templates
 
 MAIN COMMANDS:
+
+```
 sudo gitlab-ctl
-sudo gitlab-ctl reconfigure -- TO UPDATE CHANGES
+sudo gitlab-ctl reconfigure -- 
 sudo gitlab-ctl restart
+```
 
 NOTE:  CAN'T USE GIT PUSH/PULL WITH THE SAME ACCOUNT AS THE WEBSITE OWNER. -- USER DEPLOY KEY INSTEAD AND CREATE A NEW ACCOUNT
 #http://askubuntu.com/questions/762541/ubuntu-16-04-ssh-sign-and-send-pubkey-signing-failed-agent-refused-operation/762558#762558
@@ -29,7 +34,7 @@ https://bugs.launchpad.net/serverguide/+bug/1569019
 
 Note: Log into root user on the machine, create ssh-key, add to root/system ssh-add keyring
 ----> upload key to admin/owner user account on gitlab/repositories/deploy key (this is now the deploy key)
- 
+
 l
 # SOME SCRIPT TO HELP WITH THIS
 #https://github.com/dainnilsson/scripts/blob/master/base-install/gpg.sh
@@ -39,12 +44,15 @@ something is wrong with your SSH setup.
 
 **Ensure that you generated your SSH key pair correctly and added the public SSH
 key to your GitLab profile
+
 **Try manually registering your private SSH key using ssh-agent as documented 
 earlier in this document
+
 **Try to debug the connection by running ssh -Tv git@example.com
 (replacing example.com with your GitLab domain)
 
 http://localhost/gitlab/help/ssh/README
+
 note: Deploy keys
 
 Deploy keys allow read-only or read-write (if enabled) access to one or
@@ -71,46 +79,54 @@ Deploy keys can be shared between projects, you just need to add them to each
 project.
 
 
-# GITLAB SETTIGNS 
+## GITLAB SETTIGNS 
+
 SOME of GitLab's features can be customized through gitlab.yml. 
 Changing gitlab.yml and application.yml settings
 https://docs.gitlab.com/omnibus/settings/gitlab.yml.html
 
 path: 
+
 etc/gitlab/gitlab.rb
 var/opt/gitlab/gitlab-rails/etc/gitlab.yml
+
 ### https is here, http settings, host name, email config, gitlab pages enables, gravatar
 ### FILE PATHS are set here, backups, repo seettings, shell-settings
 
 Adding a new setting to gitlab.yml 
+
 Don't forget to update the following 3 files when adding a new setting:
 
-the gitlab.rb.template file to expose the setting to the end user via /etc/gitlab/gitlab.rb
-the default.rb file to provide a sane default for the new setting
-the gitlab.yml.example file to actually use the setting's value from gitlab.rb
+- the gitlab.rb.template file to expose the setting to the end user via /etc/gitlab/gitlab.rb
+- the default.rb file to provide a sane default for the new setting
+- the gitlab.yml.example file to actually use the setting's value from gitlab.rb
+
 https://gitlab.com/gitlab-org/gitlab-ce/blob/master/config/gitlab.yml.example
 
 
 # MAINTENENCE AND TASKS FOR MANAGING THE SITE
+
 https://docs.gitlab.com/ce/administration/raketasks/maintenance.html
 
 # LOGS
+
 #https://docs.gitlab.com/omnibus/settings/logs.html
 
 # CONFIG BASED ON LOGIN USER/DIRECTORY
+
 Setting up LDAP sign-in 
 https://docs.gitlab.com/omnibus/settings/ldap.html
 
 
 # CHANGE THE PORT / HTTP SETTINGS / HTTPS
+
 NGINX settings (NGINX IS THE NEW APACHE)
 https://docs.gitlab.com/omnibus/settings/nginx.html
 
 
-WHAT DO THESE DO IN GITLAB: REDIS, POSTGRE, NGINX, UNICORN, LDAP, 
-
 config - /var/www/gitlab/gitlab.rb
 
+```
 ###! **We do not recommend changing these directories.**
 # gitlab_rails['dir'] = "/var/opt/gitlab/gitlab-rails"
 # gitlab_rails['log_directory'] = "/var/log/gitlab/gitlab-rails"
@@ -224,8 +240,6 @@ POSTGRE--
 # default['gitlab']['postgresql']['archive_timeout'] = "60"
 
 
-
-
 ################################################################################
 ## GitLab Logging
 ##! Docs: https://docs.gitlab.com/omnibus/settings/logs.html
@@ -253,4 +267,4 @@ POSTGRE--
 # logrotate['enable'] = true
 
 ################################################################################
-
+```

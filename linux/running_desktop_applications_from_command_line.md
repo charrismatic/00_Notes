@@ -1,4 +1,4 @@
-Starting desktop applications from the command line
+ Starting desktop applications from the command line
 
 Tags: linux, desktop, gnome, nohub, background-process
 
@@ -7,9 +7,9 @@ This is something that comes up often and is a minor inconvenience that I usuall
 
 
     nohup <command> >/dev/null &
+    
 
-
-
+Explanation
 Explanation
 
 From Stack Overflow 

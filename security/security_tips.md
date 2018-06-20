@@ -115,6 +115,7 @@ Note you can use passwd command to lock and unlock accounts:
 
 Type the following command
 `# awk -F: '($2 == "") {print}' /etc/shadow`
+
 Lock all empty password accounts:
 `# passwd -l accountName`
 
@@ -389,7 +390,7 @@ Edit httpd.conf file and add the following:
 
 ```
 ServerTokens Prod
-ServerSignature Off
+ServerSignature OffOff
 TraceEnable Off
 Options all -Indexes
 Header always unset X-Powered-By

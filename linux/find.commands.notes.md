@@ -214,7 +214,6 @@ In the above command, most probably you will get to see only the ZERO byte files
 Find only the socket files.
 # find . -type s
 
-Find all directories
 # find . -type d
 
 Find only the normal files
@@ -328,18 +327,18 @@ Remove all *.tar file that are over 100M using the alias rm100m (Remove 100M). U
 
 							TIME BASED FIND
 
-
+Example 1: Find files whose content got updated within last 1 hour
 Example 1: Find files whose content got updated within last 1 hour
 
 To find the files based up on the content modification time, the option -mmin, and -mtime is used. Following is the definition of mmin and mtime from man page.
 
 -mmin n File’s data was last modified n minutes ago.
 -mtime n File’s data was last modified n*24 hours ago.
- 
+
 Following example will find files in the current directory and sub-directories, whose content got updated within last 1 hour (60 minutes)
 
 # find . -mmin -60
- 
+
 In the same way, following example finds all the files (under root file system /) that got updated within the last 24 hours (1 day).
 
 # find / -mtime -1
@@ -349,11 +348,11 @@ To find the files based up on the file access time, the option -amin, and -atime
 
 -amin n File was last accessed n minutes ago
 -atime n File was last accessed n*24 hours ago
- 
+
 Following example will find files in the current directory and sub-directories, which got accessed within last 1 hour (60 minutes)
 
 # find -amin -60
- 
+
 In the same way, following example finds all the files (under root file system /) that got accessed within the last 24 hours (1 day).
 
 # find / -atime -1
@@ -363,11 +362,11 @@ To find the files based up on the file inode change time, the option -cmin, and 
 
 -cmin n File’s status was last changed n minutes ago.
 -ctime n File’s status was last changed n*24 hours ago.
- 
+
 Following example will find files in the current directory and sub-directories, which changed within last 1 hour (60 minutes)
 
 # find . -cmin -60
- 
+
 In the same way, following example finds all the files (under root file system /) that got changed within the last 24 hours (1 day).
 
 # find / -ctime -1
@@ -386,7 +385,7 @@ In the same way, following example finds all the files (under root file system /
 Example 4: Restricting the find output only to files. (Display only files as find command results)
 
 The above find command’s will also show the directories because directories gets accessed when the file inside it gets accessed. But if you want only the files to be displayed then give -type f in the find command as
- 
+
 The following find command displays files that are accessed in the last 30 minutes.
 
 # find /etc/sysconfig -amin -30
@@ -447,21 +446,21 @@ Human mind can remember things better by reference such as, i want to find files
 Example 6: Find files which are modified after modification of a particular FILE
 
 Syntax: find -newer FILE
- 
+
 Following example displays all the files which are modified after the /etc/passwd files was modified. This is helpful, if you want to track all the activities you’ve done after adding a new user.
 
 # find -newer /etc/passwd
 Example 7: Find files which are accessed after modification of a specific FILE
 
 Syntax: find -anewer FILE
- 
+
 Following example displays all the files which are accessed after modifying /etc/hosts. If you remember adding an entry to the /etc/hosts and would like to see all the files that you’ve accessed since then, use the following command.
 
 # find -anewer /etc/hosts
 Example 8: Find files whose status got changed after the modification of a specific FILE.
 
 Syntax: find -cnewer FILE
- 
+
 Following example displays all the files whose status got changed after modifying the /etc/fstab. If you remember adding a mount point in the /etc/fstab and would like to know all the files who status got changed since then, use the following command.
 
 find -cnewer /etc/fstab
@@ -479,13 +478,13 @@ find -cnewer /etc/fstab
 erform Any Operation on Files Found From Find Command
 
 We have looked at many different ways of finding files using find command in this article and also in our previous article. If you are not familiar in finding files in different ways, i strongly recommend you to read the part 1.
- 
+
 This section explains about how to do different operation on the files from the find command. i.e how to manipulate the files returned by the find command output.
- 
+
 We can specify any operation on the files found from find command.
 
 find <CONDITION to Find files> -exec <OPERATION> \;
- 
+
 The OPERATION can be anything such as:
 
 rm command to remove the files found by find command.
@@ -533,15 +532,15 @@ Example 9: ls -l in find command output. Long list the files which are edited wi
 Example 10: Searching Only in the Current Filesystem
 
 System administrators would want to search in the root file system, but not in the other mounted partitions. When you have multiple partitions mounted, and if you want to search in /. You can do the following.
- 
+
 Following command will search for *.log files starting from /. i.e If you have multiple partitions mounted under / (root), the following command will search all those mounted partitions.
 
 # find / -name "*.log"
- 
+
 This will search for the file only in the current file system. Following is the xdev definition from find man page:
 
 -xdev Don’t descend directories on other filesystems.
- 
+
 Following command will search for *.log files starting from / (root) and only in the current file system. i.e If you have multiple partitions mounted under / (root), the following command will NOT search all those mounted partitions.
 
 # find / -xdev -name "*.log"
@@ -550,7 +549,7 @@ Example 11: Using more than one { } in same command
 Manual says only one instance of the {} is possible. But you can use more than one {} in the same command as shown below.
 
 # find -name "*.txt" cp {} {}.bkup \;
- 
+
 Using this {} in the same command is possible but using it in different command it is not possible, say you want to rename the files as following, which will not give the expected result.
 
 find -name "*.txt" -exec mv {} `basename {} .htm`.html \;
@@ -568,7 +567,7 @@ find -name "*.txt" -exec mv {} `basename {} .htm`.html \;
 Example 12: Using { } in more than one instance.
 You can simulate it by writing a shell script as shown below.
 # mv "$1" "`basename "$1" .htm`.html"
- 
+
 These double quotes are to handle spaces in file name. And then call that shell script from the find command as shown below.
 
 find -name "*.html" -exec ./mv.sh '{}' \;
@@ -578,10 +577,10 @@ So for any reason if you want the same file name to be used more than once then 
 
 Example 13: Redirecting errors to /dev/null
 Redirecting the errors is not a good practice. An experienced user understands the importance of getting the error printed on terminal and fix it.
- 
+
 Particularly in find command redirecting the errors is not a good practice. But if you don’t want to see the errors and would like to redirect it to null do it as shown below.
 find -name "*.txt" 2>>/dev/null
- 
+
 Sometimes this may be helpful. For example, if you are trying to find all the *.conf file under / (root) from your account, you may get lot of “Permission denied” error message as shown below.
 
 $ find / -name "*.conf"
@@ -597,7 +596,7 @@ find: /var/log/squid: Permission denied
 find: /var/log/samba: Permission denied
 find: /var/cache/alchemist/printconf.rpm/wm: Permission denied
 [Note: There are two valid *.conf files burned in the "Permission denied" messages]
- 
+
 So, if you want to just view the real output of the find command and not the “Permission denied” error message you can redirect the error message to /dev/null as shown below.
 
 $ find / -name "*.conf" 2>>/dev/null
@@ -607,7 +606,7 @@ $ find / -name "*.conf" 2>>/dev/null
 Example 14: Substitute space with underscore in the file name.
 
 Audio files you download from internet mostly come with the spaces in it. But having space in the file name is not so good for Linux kind of systems. You can use the find and rename command combination as shown below to rename the files, by substituting the space with underscore.
- 
+
 The following replaces space in all the *.mp3 files with _
 $ find . -type f -iname “*.mp3″ -exec rename “s/ /_/g” {} \;
 
@@ -621,7 +620,7 @@ $ find . -type f -iname “*.mp3″ -exec rename “s/ /_/g” {} \;
 xample 15: Executing two find commands at the same time
 
 As shown in the examples of the find command in its manual page, the following is the syntax which can be used to execute two commands in single traversal.
- 
+
 The following find command example, traverse the filesystem just once, listing setuid files and directories into /root/suid.txt and large files into /root/big.txt.
 
 # find /    \( -perm -4000 -fprintf /root/suid.txt '%#m %u %p\n' \) , \
