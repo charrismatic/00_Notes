@@ -1,42 +1,56 @@
-# FRESH START SETUP
+# DEVELOPER QUICK START - SETUP GUIDE 
+
+Written using: __UBUNTU 17.04 VERSION__
+
 ---
-# UBUNTU 17.04 VERSION 
----
-## FIRST PRIORITY PACKAGES 
+
+## HIGH PRIORITY PACKAGES 
+
+Get git, then use that to go get all of our backup scripts, bootstrappers, and dotfiles from your backup/cloud backup repository
 
 ```
 apg-get-install git 
 ```
 
-SETUP PERSONAL REPOS/DOTFILES/ENV BACKUPS
+
+In case you haven't done so yet  
+
+- [ ] TODO: SETUP PERSONAL REPOS/DOTFILES/ENV BACKUPS
 
 
 ```
-git clone https://github.com/mjharris2407/00Dev
+git clone https://github.com/charrismatic/dotfiles
 
 mkdir ~/profiles/bash
 
 cp .bashrc .profile ~/profiles/bash
 
-mkdir ~/bin
+mkdir ~/bin 
 
+https://git.myserver/chrrismatic/scripts (PRIVATE)
 
-https://gitlab.hq.sfp.net/matt/dotfiles (PRIVATE)
-
-cp ~/00Dev/env/bash/* ~/
+cp ~/dotfiles/env/bash/* ~/
 
 source .bashrc
 
 ```
 
 # GNOME PROFILE CONFIG 
+
+I do this early on because I hate looking at ugly interfaces and using clunky workflows when I have already 
+personailized, optimized, and commited all the shortcuts and commands to memory. So the faster I have all my commands 
+and interfaces/controls/dashboards setup the bestter.
+
 - Setup theme, icons, gnome config 
+
+
 ```
-cp 00Dev/env/profile ~/profiles/
+cp <scripts>/env/profile ~/profiles/
 
 sudo cp -r ~/profiles/themes/* /usr/share/themes/ ;
 sudo cp -r ~/profiles/icons/* /usr/share/icons/
 ```
+
 then extract
 
 sudo apt-get install gnome-tweak-tool unity-tweak-tool compiz-con 
@@ -45,35 +59,65 @@ sudo apt-get install gnome-tweak-tool unity-tweak-tool compiz-con
 
 # INSTALL CHROME
 
-google-chrome-stable 
-https://www.google.com/chrome/browser/desktop/index.html
+
+__google-chrome-stable__ https://www.google.com/chrome/browser/desktop/index.html
 
 ---
 
 #MUSIC
+
+Lets get some music going while we're at it, this helps focus and we can turn up the tempo a little bit and move a little faster
+
+
 INSTALL SPOTIFY
- 
+
 https://www.spotify.com/us/download/linux/
 
     ```
     # 1. Add the Spotify repository signing keys to be able to verify downloaded packages
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-
+    
     # 2. Add the Spotify repository
     echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-
+    
     # 3. Update list of available packages
     sudo apt-get update
-
+    
     # 4. Install Spotify
     sudo apt-get install spotify-client
-
+    
     ```
+
 
 ---
 
-Atom
-https://atom.io/
+## EDITOR OF CHOICE 
+
+I use several editors, notepads, and IDES over the course of a project. A lot of the time
+Im sitting inside a terminal on a remote server doing most of the editing, but when I have a chance
+and I need to do more complicated things then I use Atom by Github (and community)
+
+It can be a bit of a resources hog at times, but I've grown with it over time and I know enough about how it works to 
+jump and fix a broken pipe or leaky valve if I need to. Plus its free and open source which is a requirement for me. 
+
+If I can't instantly break the flow and see what all internals are doing, then I dont want to use your software. 
+It's 2018 and the internet is shady as hell right now, so I want. Recently as much as I can I only using programs that I compiled locally 
+and extensions that I built myself, or forked from a trusted source.   
+
+I'm not totally a hardline "I must do everything for myself" type, but after developing for a long enough, I've just collected enough bits and 
+pieces  of tools that I pretty much have the bases covered, also its way more fun to use things you made yourself than pulling something shiny off a shelf.
+
+
+
+## EDITOR CONFIG SYNCHRONIZATION 
+
+There is a wonderful package for atom that uses a github gits and an token to keep every change you make in the editor backed up and in sync, (works across machines as well)
+
+So before we do anything else, lets revive Atom from its last known state. 
+
+
+
+### Atom https://atom.io/
 
 
 ! NOTE: Resync settings 
@@ -90,7 +134,6 @@ https://atom.io/
   https://github.com/mjharris2407/00-dark-minimal-ui
   https://github.com/mjharris2407/00-dark-minimal-syntax
 
-  
 ---
 
 GitKraken
@@ -126,20 +169,21 @@ https://github.com/hashicorp/vagrant
   - hashicorp/precise64 ()
   - ubuntu/trusty64 
   - centos/7
-  
+
 ~optional vagrant plugins 
   ```vagrant plugin install <plugin-name>```
-  
+
     Vagrant::Ghost
     https://github.com/10up/vagrant-ghost
     Adds an entry to your /etc/hosts file on the host system 
     ```config.ghost.hosts = ["alias.testing.de", "alias2.somedomain.com"]```
       Additional aliases can be added by creating an /aliases file at the root of the Vagrant machine installation with one host alias per line. This file will be re-imported whenever Vagrant Ghost updates the hostsfile.
-
+    
     You may change the name of the aliases file by setting the hosts_files configuration option in your Vagrantfile:
-
+    
     config.ghost.hosts_files = "hosts_aliases" # Could be anything, e.g. "hosts", or whatever
-   	
+
+
    	
    	Vagrant::HostManager
    	https://github.com/devopsgroup-io/vagrant-hostmanager
@@ -148,7 +192,7 @@ https://github.com/hashicorp/vagrant
    	
    	Manages the hosts file on guest machines (and optionally the host). Its goal is to enable resolution of multi-machine environments deployed with a cloud provider where IP addresses are not known in advance.
    	update the hosts file on each active machine, run the following command:
-  
+
     ```vagrant hostmanager``` 
     
     Example configuration:
@@ -171,7 +215,7 @@ https://github.com/hashicorp/vagrant
 
 ---
 
- 
+
 Node.js
 
 https://nodejs.org/en/
@@ -280,3 +324,5 @@ php composer-setup.php --install-dir=~/bin --filename=composer
 php -r "unlink('composer-setup.php');"
 ``` 
 
+
+```
