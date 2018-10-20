@@ -1,4 +1,4 @@
-1. 
+. 
 gsettings list-recursively | awk '/hotkey/||/keybinding/||/media-key/'
 
 2.

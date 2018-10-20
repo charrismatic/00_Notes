@@ -46,20 +46,24 @@ was set to
 #   0 - disable sysrq completely
 #   1 - enable all functions of sysrq
 #  >1 - enable certain functions by adding up the following values:
-#          2 - enable control of console logging level
-#          4 - enable control of keyboard (SAK, unraw)
-#          8 - enable debugging dumps of processes etc.
-#         16 - enable sync command
-#         32 - enable remount read-only
-#         64 - enable signalling of processes (term, kill, oom-kill)
-#        128 - allow reboot/poweroff
-#        256 - allow nicing of all RT tasks
-#
+
 #   For example, to enable both control of console logging level and
 #   debugging dumps of processes: kernel.sysrq = 10
 #
 kernel.sysrq = 176
 ```
+
+| Num  | Bitmask | Capability                                            |
+| ---- | ------- | ----------------------------------------------------- |
+| 2    | 0x2     | enable control of console logging level               |
+| 4    | 0x4     | enable control of keyboard (SAK, unraw)               |
+| 8    | 0x8     | enable debugging dumps of processes etc.              |
+| 16   | 0x10    | enable sync command                                   |
+| 32   | 0x20    | enable remount read-only                              |
+| 64   | 0x40    | enable signalling of processes (term, kill, oom-kill) |
+| 128  | 0x80    | allow reboot/poweroff                                 |
+| 256  | 0x100   | allow nicing of all RT tasks                         
+|
 
 You can set the value in the file by the following command.
 
@@ -73,8 +77,6 @@ sysctl -w kernel.sysrq=1
 Note.
 The value of /proc/sys/kernel/sysrq influences only the invocation via a keyboard. Invocation of any operation via /proc/sysrq-trigger is always allowed (by a user with admin privileges-see below).
 
-
-
 1.3 How do I use the magic SysRq key?
 
 Ubuntu Desktop
@@ -86,72 +88,68 @@ N.B.- See the notes in this section and in the Troubleshooting section for other
 It is possible to set any character of your choosing:All Architectures
 
 Write a character to /proc/sysrq-trigger:
-
+```
 echo t > /proc/sysrq-trigger
-would set the T behave as SysRq
-Note.
+```
+
+
+## SysRq command keys?
+
+- __b__  Immediately *re__boot__* the system without syncing or unmounting your disks.
+- __c__  Perform a *kexec reboot* in order to take a __crashdump__
+- __d__  __Show all locks__ that are __held__
+- __e__  Send a __SIGTERM__ to all processes, __except init__
+- __f__  call __oom_kill__ to kill a memory hog process.
+- __g__  Used by __kgdb on ppc__ and sh platforms.
+- __h__  Display help (any key that is not listed here will bring forth help )
+- __i__  Send a __SIGKILL to all processes__, __except init__
+- __k__  __Secure Access Key__ (__SAK__) __Kills all programs__ on the *current virtual terminal*. NOTE. See important comments below in SAK section.
+- __l__  Shows a __stack backtrace for all active CPUs__
+- __m__  __Dump current memory__ info to your console.
+- __n__  Make __all RT tasks nice__-able
+- __o__  __Shut your system off__ (if configured and supported).
+- __p__   __Dump the current registers and flags to your console__
+- __q__  __Dump a list of all running timers__
+- __r__  __Turns off keyboard raw mode__ and sets it to __XLATE__
+- __s__  __Attempt to sync all mounted filesystems__
+- __t__  __Dump list of current tasks__ and their information to your console
+- __u__  Try __remount all mounted filesystems read-only__
+- __v__  Dumps __Voyager SMP processor info__ to your console.
+- __w__  Dumps __tasks__ that are in __uninterruptable (blocked) state__
+- __x__  Used by __xmon interface__ on ppc/powerpc platforms.
+- __0-9__  Sets the kernel __console log level__, (0 -> sets only emergency) 
 
 
 
-1.4 What are the 'command' keys?
 
-'b' - Will immediately reboot the system without syncing or unmounting your disks.
-'c' - Will perform a kexec reboot in order to take a crashdump.
-'d' - Shows all locks that are held.
-'e' - Send a SIGTERM to all processes, except for init.
-'f' - Will call oom_kill to kill a memory hog process.
-'g' - Used by kgdb on ppc and sh platforms.
-'h' - Will display help (any key that is not listed here will bring forth help )
-'i' - Send a SIGKILL to all processes, except for init.
-'k' - Secure Access Key (SAK) Kills all programs on the current virtual terminal.  
-Note.
-See important comments below in SAK section.
 
-'l' - Shows a stack backtrace for all active CPUs.
-'m' - Will dump current memory info to your console.
-'n' - Used to make RT tasks nice-able
-'o' - Will shut your system off (if configured and supported).
-'p' - Will dump the current registers and flags to your console.
-'q' - Will dump a list of all running timers.
-'r' - Turns off keyboard raw mode and sets it to XLATE.
-'s' - Will attempt to sync all mounted filesystems.
-'t' - Will dump a list of current tasks and their information to your console.
-'u' - Will attempt to remount all mounted filesystems read-only.
-'v' - Dumps Voyager SMP processor info to your console.
-'w' - Dumps tasks that are in uninterruptable (blocked) state.
-'x' - Used by xmon interface on ppc/powerpc platforms.
-'0'-'9' - Sets the console log level, controlling which kernel messages will be printed to your console. ('0', for example would make it so that only emergency messages like PANICs or OOPSes would make it to your console.) 
-1.5 Okay, so what can I use them for?
+## Okay, so what can I use them for?
 
-Unraw is very handy when your X server or a svgalib program crashes.
+- (r) Unraw is very handy when your X server or a svgalib program crashes.
 
-Sak (Secure Access Key) is useful when you want to be sure there is no trojan program running at console which could grab your password when you would try to login. It will kill all programs on given console, thus letting you make sure that the login prompt you see is actually the one from init, not some trojan program. Others find it useful as (System Attention Key) which is useful when you want to exit a program that will not let you switch consoles. (For example, X or a svgalib program.)
-Note.
-In its true form it is not a true SAK like the one in a c2 compliant system, and it should not be mistaken as such.
+- (k) Sak (Secure Access Key) is useful when you want to be sure there is no trojan program running at console which could grab your password when you would try to login. It will kill all programs on given console, thus letting you make sure that the login prompt you see is actually the one from init, not some trojan program. Others find it useful as (System Attention Key) which is useful when you want to exit a program that will not let you switch consoles. (For example, X or a svgalib program.)
+  Note.
+  In its true form it is not a true SAK like the one in a c2 compliant system, and it should not be mistaken as such.
 
-Reboot is good when you're unable to shut down.
-Note.
-It's general considered a good practice to umount first
+- (b) Reboot is good when you're unable to shut down. 
+  Note. It's general considered a good practice to umount first
+- (c) Crashdump can be used to manually trigger a crashdump when the system is hung.
+  Note. The kernel needs to have been built with CONFIG_KEXEC enabled!
 
-Crashdump can be used to manually trigger a crashdump when the system is hung.
-Note.
-The kernel needs to have been built with CONFIG_KEXEC enabled!
+- (s) Sync is great when your system is locked up, it allows you to sync your disks and will certainly lessen the chance of data loss and fscking. Warning The sync hasn't taken place until you see the "OK" and "Done" appear on the screen. (If the kernel is really in strife, you may not ever get the OK or Done message.
 
-Sync is great when your system is locked up, it allows you to sync your disks and will certainly lessen the chance of data loss and fscking.
-Warning
-The sync hasn't taken place until you see the "OK" and "Done" appear on the screen. (If the kernel is really in strife, you may not ever get the OK or Done message.
+- (u) Umount is basically useful in the same ways as Sync.
 
-Umount is basically useful in the same ways as Sync.
+- The loglevels 0-9 are useful when your console is being flooded with kernel messages you do not want to see. Selecting 0 will prevent all but the most urgent kernel messages from reaching your console.
+  Note.
+  They will still be logged if syslogd/klogd are alive
 
-The loglevels 0-9 are useful when your console is being flooded with kernel messages you do not want to see. Selecting 0 will prevent all but the most urgent kernel messages from reaching your console.
-Note.
-They will still be logged if syslogd/klogd are alive
+- Term and kill are useful if you have some sort of runaway process you are unable to kill any other way, especially if it's spawning other processes. 
+- Note. When experiencing bad kernel panic do `Alt+Sysrq+e` then `Alt+Sysrq+u` then `Alt+Sysrq+i` and finally `Alt+Sysrq+b`
 
-Term and kill are useful if you have some sort of runaway process you are unable to kill any other way, especially if it's spawning other processes.
-Note.
-When experiencing bad kernel panic do Alt+Sysrq+e then Alt+Sysrq+u then Alt+Sysrq+i and finally Alt+Sysrq+b
 
-1.6 Troubleshoot
+
+## Troubleshoot
 
 1.6.1 Hanging before initscripts get run
 
@@ -161,7 +159,9 @@ If the machine is hanging before the initscripts get to run, boot with sysrq_alw
 
 Tapping shift, alt, and control on both sides of the keyboard, and hitting an invalid sysrq sequence again will fix the problem. (i.e., something like alt+sysrq+z).
 
-Switching to another virtual console (Ctrl+Alt+Fn1-Fn6) and then back again Ctrl+Alt+Fn7 should also help.
+- Switching to another virtual console (`Ctrl+Alt+Fn1-Fn6`) and then back again `Ctrl+Alt+Fn7` should also help.
+
+
 
 1.6.3 I hit SysRq, but nothing seems to happen, what's wrong?
 
@@ -188,10 +188,15 @@ Null pointers in the table are always safe.
 If for some reason you feel the need to call the handle_sysrq function from within a function called by handle_sysrq, you must be aware that you are in a lock (you are also in an interrupt handler, which means don't sleep!), so you must call __handle_sysrq_nolock instead.
 
 1.6.5 Conclusion
-Use Alt + SysRq + S and then U and then B to sync, attempt to remount all mounted filesystems and then reboot if needed. Without changing a thing to system files.
-If Alt + SysRq + B does not reboot system it may be necessary to edit /etc/sysctl.d/10-magic-sysrq.conf in order to allow the attempt of applying Alt + SysRq + B (or/and O after editing /proc/sys/kernel/sysrq bitmask to enable the reboot and shutting down of the system by use of sysrq. You could do this by any of the methods described above.
+Use `Alt + SysRq + S` and then `U `and then `B` to sync, attempt to remount all mounted filesystems and then reboot if needed. Without changing a thing to system files.
+
+If`Alt + SysRq + B` does not reboot system it may be necessary to edit /etc/sysctl.d/10-magic-sysrq.conf in order to allow the attempt of applying `Alt + SysRq + B` (or/and `O`  after editing /proc/sys/kernel/sysrq bitmask to enable the reboot and shutting down of the system by use of sysrq. You could do this by any of the methods described above.
+
+
 
 1.6.6 APPENDIX: See also - http://ubuntuforums.org/showthread.php?t=617349 and https://www.kernel.org/doc/Documentation/sysrq.txt
+
+
 
 For those with Apple MacBook keyboard troubles regarding sysrq see: https://help.ubuntu.com/community/AppleKeyboard and https://bugs.launchpad.net/mactel-support/+bug/262408
 

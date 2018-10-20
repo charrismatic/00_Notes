@@ -1,0 +1,197 @@
+iptables v1.4.10
+
+```sh 
+iptables -[AD] chain rule-specification [options]
+iptables -I chain [rulenum] rule-specification [options]
+iptables -R chain rulenum rule-specification [options]
+iptables -D chain rulenum [options]
+iptables -[LS] [chain [rulenum]] [options]
+iptables -[FZ] [chain] [options]
+iptables -[NX] chain
+iptables -E old-chain-name new-chain-name
+iptables -P chain target [options]
+iptables -h (print this help information)
+```
+
+   
+      --append -A chain                   Append to chain
+      --delete -D chain                   Delete matching rule from chain
+      --delete -D chain rulenum           Delete rule rulenum (1 = first) from chain
+      --insert -I chain [rulenum]         Insert in chain as rulenum (default 1=first)
+      --replace -R chain rulenum          Replace rule rulenum (1 = first) in chain
+      --list -L [chain [rulenum]]         List the rules in a chain or all chains
+      --list-rules -S [chain [rulenum]]   Print the rules in a chain or all chains
+      --flush -F [chain]                  Delete all rules in  chain or all chains
+      --zero  -Z [chain [rulenum]]        Zero counters in chain or all chains
+      --new   -N chain                    Create a new user-defined chain
+      --delete-chain  -X [chain]          Delete a user-defined chain
+      --policy        -P                  chain target Change policy on chain to target
+      --rename-chain  -E                  old-chain new-chain Change chain name, (moving any references)
+  [!] --proto  -p                         proto protoco`l: by number or name, eg. `tcp'
+  [!] --source  -s                        address[/mask][...]   source specification
+  [!] --destination -d                    address[/mask][...] destination specification
+  [!] --in -interface -i                  input name[+] network interface name ([+] for wildcard)
+      --jump -j                           target target for rule (may load target extension)
+      --goto -g                           chain jump to chain with no return
+      --match  -m                         match  extended match (may load extension)
+      --numeric  -n                       numeric output of addresses and ports
+  [!] --out-interface -o                  output name[+] network interface name ([+] for wildcard)
+      --table  -t table                   table to manipulate (default: `filter')
+      --verbose  -v                       verbose mode 
+      --line-numbers                      print line numbers when listing
+      --exact  -x                         expand numbers (display exact values)
+  [!] --fragment  -f                      match second or further fragments only
+      --modprobe=<command>                try to insert modules using this command
+      --set-counters PKTS BYTES           set the counter during insert/append
+  [!] --version  -V                       print package version.
+
+
+
+
+
+  Chain INPUT (policy DROP)
+  # ---------------------------------------------
+  target             prot opt      source           destination         
+  ACCEPT             all       --  anywhere         anywhere            
+  ACCEPT             all       --  anywhere         anywhere            
+  ACCEPT             all       --  anywhere         anywhere state RELATED,ESTABLISHED 
+  ACCEPT             udp       --  anywhere         anywhere udp spt:bootpc dpt:bootps 
+  DROP               all       --  192.168.2.0/24   255.255.255.255     
+  DROP               all       --  anywhere         192.168.1.0/24      
+  DROP               icmp      --  anywhere         anywhere icmp echo-request 
+  DROP               tcp       --  anywhere         192.168.2.1         
+  input_icmp         icmp      --  anywhere         anywhere            
+  input_igmp         all       --  anywhere         anywhere            
+  IntfGrp_INPUT      all       --  anywhere         anywhere            
+  lan_local_default  all       --  anywhere         anywhere            
+  RMMG_SSH_INPUT     all       --  anywhere         anywhere            
+  RMMG_TELNET_INPUT  all       --  anywhere         anywhere            
+  RMMG_TELNET_INPUT  all       --  anywhere         anywhere            
+  RMMG_TR069         all       --  anywhere         anywhere            
+  RMMG_WWW_INPUT     all       --  anywhere         anywhere            
+  RMMG_WWW_INPUT     all       --  anywhere         anywhere            
+
+
+
+
+  Chain FORWARD (policy DROP)
+  # ---------------------------------------------
+  ACCEPT                      all    --  anywhere    anywhere            
+  ACCEPT                      all    --  anywhere    anywhere            
+  ACCEPT                      all    --  anywhere    anywhere state RELATED,ESTABLISHED 
+  ACCEPT                      udp    --  anywhere    base-address.mcast.net/4 
+  DROP                        all    --  anywhere    anywhere            
+  forwarding_icmp             icmp   --  anywhere    anywhere            
+  forwarding_rule_nat         all    --  anywhere    anywhere            
+  forwarding_rule_porttrigger all    --  anywhere    anywhere            
+  IntfGrp                     all    --  anywhere    anywhere            
+  target                      prot   opt source      destination         
+  TCPMSS                      tcp    --  anywhere    anywhere tcp flags:SYN,RST/SYN TCPMSS clamp to PMTU 
+
+
+
+  # Chain OUTPUT (policy ACCEPT)
+  num  target     prot opt source    destination         
+
+  Chain Int f Grp  
+  target prot opt source    destination         
+  # ---------------------------------------------
+  RETURN all  -- anywhere   anywhere            
+  RETURN all  -- anywhere   anywhere            
+  DROP   all  -- anywhere   anywhere            
+# ---------------------------------------------
+  Chain IntfGrp_INPUT 
+  target prot opt source          destination         
+  DROP   all  --  192.168.1.0/24  192.168.2.0/24      
+  DROP   all  --  192.168.2.0/24  192.168.1.0/24      
+# ---------------------------------------------
+  Chain RMMG_SSH_INPUT (1 references)
+  target  prot  opt  source               destination         
+  ACCEPT  tcp   --   anywhere anywhere tcp dpt:2222 
+  DROP    tcp   --   anywhere anywhere tcp dpt:2222 
+
+
+  Chain RMMG_TELNET_INPUT (2 references)
+  num  target     prot opt source destination         
+  # ---------------------------------------------
+  1    DROP       tcp  --  anywhere anywhere tcp dpt:telnet 
+  2    DROP       tcp  --  anywhere anywhere tcp dpt:telnet 
+
+
+  Chain RMMG_TR069 
+  num  target     prot opt source destination         
+# ---------------------------------------------
+   
+   Chain RMMG_WWW_INPUT
+   num  target     prot opt source destination         
+# ---------------------------------------------
+   ACCEPT     tcp  -- anywhere anywhere tcp dpt:8443 
+   DROP       tcp  -- anywhere anywhere tcp dpt:8443 
+   ACCEPT     tcp  -- anywhere anywhere tcp dpt:8081 
+   DROP       tcp  -- anywhere anywhere tcp dpt:8081 
+
+
+  Chain access_schedule 
+  num  target     prot opt source               destination         
+# ---------------------------------------------
+
+
+  Chain forwarding_icmp 
+  target  prot opt source destination         
+# ---------------------------------------------
+  ACCEPT  icmp -- anywhere anywhere icmp echo-request 
+  ACCEPT  icmp -- anywhere anywhere icmp echo-request 
+  DROP    icmp -- anywhere anywhere icmp echo-request 
+
+
+  Chain forwarding_rule_nat 
+  target     prot opt source    destination         
+# ---------------------------------------------
+  ACCEPT     udp  --  anywhere  192.168.1.162  udp dpt:8889 
+  ACCEPT     tcp  --  anywhere  192.168.1.162  tcp dpt:8889 
+  ACCEPT     udp  --  anywhere  192.168.1.162  udp dpt:8889 
+  ACCEPT     tcp  --  anywhere  192.168.1.162  tcp dpt:8889 
+  ACCEPT     tcp  --  anywhere  192.168.1.162  tcp dpt:ssh 
+  ACCEPT     tcp  --  anywhere  192.168.1.162  tcp dpt:ssh 
+  ACCEPT     tcp  --  anywhere  192.168.1.162  tcp dpt:https 
+  ACCEPT     tcp  --  anywhere  192.168.1.162  tcp dpt:https 
+  ACCEPT     udp  --  anywhere  192.168.1.162  udp dpt:80 
+  ACCEPT     tcp  --  anywhere  192.168.1.162  tcp dpt:www 
+  ACCEPT     udp  --  anywhere  192.168.1.162  udp dpt:80 
+  ACCEPT     tcp  --  anywhere  192.168.1.162  tcp dpt:www 
+  ACCEPT     all  --  anywhere  192.168.1.162     
+  ACCEPT     all  --  anywhere  192.168.1.162       
+
+
+
+  Chain forwarding_rule_ port trigger 
+  num  target     prot opt source destination         
+# ---------------------------------------------
+
+
+  Chain input_icmp 
+  target prot opt source   destination         
+# ---------------------------------------------
+  DROP   icmp --  anywhere  anywhere icmp echo-request 
+  ACCEPT icmp --  anywhere  anywhere icmp echo-request 
+
+
+  Chain input_igmp 
+  target  prot opt source  destination         
+# ---------------------------------------------
+  ACCEPT  igmp -- anywhere all-systems.mcast.net 
+  ACCEPT  igmp -- anywhere all-routers.mcast.net 
+
+
+  Chain lan_local_default
+  target  prot opt source destination         
+# ---------------------------------------------
+  ACCEPT  all  -- anywhere anywhere            
+  ACCEPT  all  -- anywhere anywhere            
+
+
+  Chain web_filter
+  target prot opt source destination         
+# ---------------------------------------------
+  root@EMG3425-Q10A:/# 
+

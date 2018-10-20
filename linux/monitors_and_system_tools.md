@@ -4,21 +4,13 @@ https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html
 
 # SYSTEM MONITORING 
 
-nmon - systems administrator, tuner, benchmark tool.
-
-
-
-sar - Collect, report, or save system activity information.
-
-mpstat - Report processors related statistics.
-
-sadf - Display data collected by sar in multiple formats.
-
-top
-
-htop
-
-atop
+- nmon - systems administrator, tuner, benchmark tool.
+- sar - Collect, report, or save system activity information.
+- mpstat - Report processors related statistics.
+- sadf - Display data collected by sar in multiple formats.
+- top
+- htop
+- atop
 
 
 

@@ -1,9 +1,5 @@
 https://askubuntu.com/questions/904628/default-17-04-swap-file-location
 
-
-
-22[down vote]()accepted
-
 2 commands:
 
 ```

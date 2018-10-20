@@ -9,7 +9,8 @@ With this you have a favdir command (function) to manage your favorites and a au
 # ---------
 
 __favdirs_storage=~/.favdirs
-__favdirs=( "$HOME" )
+
+__favdirs=( "$HOME" )ssh-keygen -t rsa -b 4096 -o -a 100 -C user@name -f file_name_rsa_409
 
 containsElement () {
     local e
@@ -22,7 +23,7 @@ function favdirs() {
     local cur
     local IFS
     local GLOBIGNORE
-
+    
     case $1 in
         list)
             echo "favorite folders ..."

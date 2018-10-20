@@ -29,7 +29,9 @@ One-line command install (needs NodeJS/NPM installed)
 
 You can then use it by typing in your terminal
 
-`psd myfile.psd -t`
+`psd myfile.psd -t`d myfile.psd -t
+
+This will create myfile.txt, containing all text extracted from each PSD
 
 This will create `myfile.txt`, containing all text extracted from each PSD layer with the layer structure attached.
 

@@ -17,12 +17,9 @@ ENABLE OVERRIDES IN THE PUBLIC_HTML FOLDER
         AllowOverride All
     </Directory>
 ```
- # ... 
- 
- 
-# make sure that the rewrite module is enabled
+### Enable rewrite module 
 
 ```
 sudo a2enmod rewrite
 ```
- 
+

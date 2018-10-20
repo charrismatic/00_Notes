@@ -1,20 +1,21 @@
-##  Can be commented out if causes errors, see notes above.
-# For security reasons, Option followsymlinks cannot be overridden.
-# Options +FollowSymLinks
+### For security reasons, Option followsymlinks cannot be overridden.
+
+```ruby
+Options +FollowSymLinks
 Options +SymLinksIfOwnerMatch
-
-#  mod_rewrite in use
-
-RewriteEngine On
-
 ```
-RewriteCond %{HTTP_HOST} !^watsonspence.com$ [NC]
+
+###  mod_rewrite in use
+
+```ruby
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^example.com$ [NC]
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^(.*)$ http://watsonspence.com/$1 [L,R=301]
+RewriteRule ^(.*)$ http://example.com/$1 [L,R=301]
 ```
 
-## Rewrite rules to block out some common exploits
+## Rewrite rules to block out common exploits
 
 __Deny access to extension xml files (uncomment out to activate)__
 
@@ -26,15 +27,23 @@ Satisfy all
 </Files>
 ```
 
-`RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]`
+
+
+```ruby
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+```
 
 __Block out any script trying to base64_encode crap to send via URL__
 
-`RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]`
+```ruby
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+```
 
-__Block out any script that includes a <script> tag in URL__
+__Block out any script that includes a `<script>` tag in URL__
 
-`RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]`
+```ruby
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+```
 
 __Block out any script trying to set a PHP GLOBALS variable via URL__
 
@@ -46,7 +55,7 @@ __Block out any script trying to modify a _REQUEST variable via URL__
 
 __Send all blocked request to homepage with 403 Forbidden error!__
 
-```
+```ruby
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule ^(.*)$ index.php [F,L]
@@ -54,12 +63,14 @@ RewriteRule ^(.*)$ index.php [F,L]
 
 __Webserver URL is not directly related to physical file paths__
 
-`RewriteBase /`
+```ruby
+RewriteBase /
+```
 
 
 __Rewrite rules__
 
-```
+```ruby
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/index.php
@@ -74,7 +85,7 @@ RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
 
 __Compression Rules__
 
-```
+```ruby
 <ifModule mod_gzip.c>
 mod_gzip_on Yes
 mod_gzip_dechunk Yes
@@ -91,7 +102,7 @@ __Cache Rules__
 
 http://developer.yahoo.com/performance/rules.html#expires
 
-```
+```ruby
 <IfModule mod_expires.c>
 
     ## Cache Expires Rules
@@ -132,8 +143,41 @@ http://developer.yahoo.com/performance/rules.html#expires
 
 __Cannonical URL__
 
-```
+```ruby
 RewriteEngine On
 RewriteCond %{HTTPS} OFF
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 ```
+
+__Force HTTPS__
+```ruby
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteEngine On 
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://www.example.com/$1 [R=301,L]
+```
+
+
+https://stackoverflow.com/questions/13977851/htaccess-redirect-to-https-www
+This answer from stack overflow 
+
+"To first force HTTPS, you must check the correct environment variable %{HTTPS} off, but your rule above then prepends the www. Since you have a second rule to enforce www., don't use it in the first rule."
+
+```ruby
+RewriteEngine On
+RewriteCond %{HTTPS} off
+# First rewrite to HTTPS:
+# Don't put www. here. If it is already there it will be included, if not
+# the subsequent rule will catch it.
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Now, rewrite any request to the wrong domain to use www.
+# [NC] is a case-insensitive match
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+```
+
+About proxying
+"When behind some forms of proxying, whereby the client is connecting via HTTPS to a proxy, load balancer, Passenger application, etc., the %{HTTPS} variable may never be on and cause a rewrite loop. This is because your application is actually receiving plain HTTP traffic even though the client and the proxy/load balancer are using HTTPS. In these cases, check the X-Forwarded-Proto header instead of the %{HTTPS} variable"
+ This answer shows the appropriate process
+https://stackoverflow.com/questions/26620670/apache-httpx-forwarded-proto-in-htaccess-is-causing-redirect-loop-in-dev-envir
