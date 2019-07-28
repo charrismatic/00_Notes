@@ -1,0 +1,189 @@
+gitlab-ctl status
+
+
+
+  list-units [PATTERN...]         List loaded units
+  list-sockets [PATTERN...]       List loaded sockets ordered by address
+  list-timers [PATTERN...]        List loaded timers ordered by next elapse
+
+ -o --output=STRING  Change journal output mode (short, short-iso,
+                              short-precise, short-monotonic, verbose,
+                              export, json, json-pretty, json-sse, cat)
+
+  --plain          Print unit dependencies as a list instead of a tree
+
+
+systemctl --property
+
+systemctl --failed
+systemctl list-units
+systemctl list-units --show-types
+systemctl status XX
+systemctl show XX // good for getting env variables and finding file paths
+systemctl show XX list-dependences
+sudo systemctl list-unit-files --all
+
+#cat PATTERN...                  Show files and drop-ins of one or more units
+
+  status [PATTERN...|PID...]      Show runtime status of one or more units
+  show [PATTERN...|JOB...]        Show properties of one or more
+                                  units/jobs or the manager
+
+list-dependencies [NAME]        Recursively show units which are required
+                                  or wanted by this unit or by which this
+                                  unit is required or wanted
+  -r --recursive      Show unit list of host and local containers
+     --reverse        Show reverse dependencies with 'list-dependencies'
+
+
+ list-unit-files
+edit NAME...                    Edit one or more unit files
+
+snapshot [NAME]                 Create a snapshot
+show-environment                Dump environment
+
+set-environment NAME=VALUE...   Set one or more environment variables
+ link PATH...                    Link one or more units files into
+                                  the search path
+ add-wants TARGET NAME...        Add 'Wants' dependency for the target
+                                  on specified one or more units
+  add-requires TARGET NAME...     Add 'Requires' dependency for the target
+                                  on specified one or more units
+
+
+
+
+` ``
+systemctl show postgresql-9.3.service
+
+```
+
+
+systemctl list-unit-files da
+
+same as 
+
+journalctl _SYSTEMD_UNIT=dnsmasq.service --reverse
+
+
+
+
+
+
+
+
+
+units
+---
+gitlab-runsvdir.service
+firewalld.service
+postfix.service
+postgresql-9.3.service
+rsyncd.service
+
+sshd-keygen.service
+sshd.service
+sshd@.service
+sssd-autofs.service                           indirect
+sssd-ifp.service                              static  
+sssd-nss.service                              indirect
+sssd-pac.service                              indirect
+sssd-pam.service                              indirect
+sssd-secrets.service                          indirect
+sssd-ssh.service                              indirect
+sssd-sudo.service                             indirect
+sssd.service                                  disabled
+tog-pegasus.service                           disabled
+tomcat.service                                disabled
+tomcat@.service                               disabled
+
+
+sshd.socket                                   disabled
+sssd-autofs.socket                            disabled
+sssd-nss.socket                               disabled
+sssd-pac.socket                               disabled
+sssd-pam-priv.socket                          disabled
+sssd-pam.socket                               disabled
+sssd-secrets.socket                           disabled
+sssd-ssh.socket                               disabled
+sssd-sudo.socket                              disabled
+
+
+
+
+
+sudo gitlab-ctl show-config
+
+
+
+
+
+
+
+REMOTE:icarus@higgs~ $ sudo gitlab-ctl service-list
+alertmanager*
+gitaly*
+gitlab-monitor*
+gitlab-workhorse*
+logrotate*
+nginx*
+node-exporter*
+postgres-exporter*
+postgresql*
+prometheus*
+redis*
+redis-exporter*
+sidekiq*
+unicorn*
+
+
+
+
+
+curl 'https://higgs/' -H 'authority: higgs' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'upgrade-insecure-requests: 1' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'dnt: 1' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9' --compressed --insecure
+
+
+
+
+FIREWALL NOTES;
+
+PROTOCOL CAN BE:
+tcp, udp, udplite, icmp, icmpv6,esp, ah, sctp, mh or the special keyword "all", 
+
+For compelete details ref:
+/etc/protocols
+/etc/services:23:msp
+/etc/ufw/user.rules:
+/etc/protocols:3:#
+/etc/lynx/lynx.cfg:494:#
+
+getprotobyname
+getprotobynumber
+ip-address
+ip-addresslabel
+
+
+     RFC 793 for the TCP specification.
+       RFC 1122 for the TCP requirements and a description of the Nagle algorithm.
+       RFC 1323 for TCP timestamp and window scaling options.
+       RFC 1337 for a description of TIME_WAIT assassination hazards.
+       RFC 3168 for a description of Explicit Congestion Notification.
+       RFC 2581 for TCP congestion control algorithms.
+       RFC 2018 and RFC 2883 for SACK and extensions to SACK.
+
+nmap protocol list (IP Protocol Ping)
+
+ One of the newer host discovery options is the IP protocol ping, which sends IP packets with the specified protocol number set in their IP header. The protocol list takes the same format as do port lists in the previously
+           discussed TCP, UDP and SCTP host discovery options. If no protocols are specified, the default is to send multiple IP packets for ICMP (protocol 1), IGMP (protocol 2), and IP-in-IP (protocol 4). The default protocols can
+           be configured at compile-time by changing DEFAULT_PROTO_PROBE_PORT_SPEC in nmap.h. Note that for the ICMP, IGMP, TCP (protocol 6), UDP (protocol 17) and SCTP (protocol 132), the packets are sent with the proper protocol
+           headers while other protocols are sent with no additional data beyond the IP header (unless any of --data, --data-string, or --data-length options are specified).
+
+
+firewall-cmd --get-services
+RH-Satellite-6 amanda-client amanda-k5-client bacula bacula-client bitcoin bitcoin-rpc bitcoin-testnet bitcoin-testnet-rpc ceph ceph-mon cfengine condor-collector ctdb dhcp dhcpv6 dhcpv6-client dns docker-registry dropbox-lansync elasticsearch freeipa-ldap freeipa-ldaps freeipa-replication freeipa-trust ftp ganglia-client ganglia-master high-availability http https imap imaps ipp ipp-client ipsec iscsi-target kadmin kerberos kibana klogin kpasswd kshell ldap ldaps libvirt libvirt-tls managesieve mdns mosh mountd ms-wbt mssql mysql nfs nfs3 nrpe ntp openvpn ovirt-imageio ovirt-storageconsole ovirt-vmconsole pmcd pmproxy pmwebapi pmwebapis pop3 pop3s postgresql privoxy proxy-dhcp ptp pulseaudio puppetmaster quassel radius rpc-bind rsh rsyncd samba samba-client sane sip sips smtp smtp-submission smtps snmp snmptrap spideroak-lansync squid ssh synergy syslog syslog-tls telnet tftp tftp-client tinc tor-socks transmission-client vdsm vnc-server wbem-https xmpp-bosh xmpp-client xmpp-local xmpp-server
+[root@higgs icarus]# 
+
+
+           This host discovery method looks for either responses using the same protocol as a probe, or ICMP protocol unreachable messages which signify that the given protocol isn't supported on the destination host. Either type of
+           response signifies that the target host is alive.
+
