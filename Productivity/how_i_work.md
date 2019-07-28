@@ -1,4 +1,4 @@
-# How I Work  
+#  How I Work
 
 Workstations, personalizations, setups, and preferred applications and plugins
 
